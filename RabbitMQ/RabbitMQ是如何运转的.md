@@ -1,0 +1,2 @@
+- [RabbitMQ是如何运转的？](https://www.cnblogs.com/jian0110/p/10389986.html)
+- [认识RabbitMQ交换机模型](https://www.cnblogs.com/jian0110/p/10389780.html)

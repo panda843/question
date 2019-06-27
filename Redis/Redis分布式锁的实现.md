@@ -1,0 +1,3 @@
+- [基于redis的分布式锁实现](https://segmentfault.com/a/1190000012919740?utm_source=tag-newest)
+- [redis分布式锁实现](https://www.jianshu.com/p/da41fe072d11)
+- [Redis分布式锁的实现原理看这篇就够了~](http://blog.itpub.net/31545684/viewspace-2221023/)

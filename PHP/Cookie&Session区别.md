@@ -1,0 +1,4 @@
+- [Cookie和Session的区别](https://www.jianshu.com/p/2f7031a69f43)
+- [Cookie和Session的区别总结](https://www.jianshu.com/p/c0a7bcba8987)
+- [Http协议COOKIE和SESSION有什么区别](https://www.jianshu.com/p/bfabd9852780)
+- [Session的两种实现机制](https://www.cnblogs.com/gengyi/p/6376239.html)

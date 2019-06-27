@@ -1,0 +1,3 @@
+- [MySQL的四种事务隔离级别](https://www.cnblogs.com/huanongying/p/7021555.html)
+- [面试官：谈谈Mysql事务隔离级别？](https://baijiahao.baidu.com/s?id=1629344395894429251&wfr=spider&for=pc)
+- [mysql/mariadb知识点总结（21）：事务隔离级别 (事务总结之三)](http://www.zsythink.net/archives/1233/)

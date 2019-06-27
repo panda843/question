@@ -1,0 +1,4 @@
+- [PHP四大安全策略](https://www.jb51.net/article/48039.htm)
+- [php如何做到安全](http://blog.mdoctor.org/post-758.html)
+- [PHP中MySQL的预处理(预编译)执行方式](https://www.jianshu.com/p/4f8ebea1d00b)
+- [php mysql语句预编译（preparestatement）](https://www.cnblogs.com/minigrasshopper/p/7805006.html)
