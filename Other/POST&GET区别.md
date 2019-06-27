@@ -1,0 +1,2 @@
+- [接口测试Post和Get区别](https://www.cnblogs.com/lanmosonny/p/8881362.html)
+- [GET 和 POST 请求的优缺点、区别以及误区](https://blog.csdn.net/qq_28483283/article/details/80207674)

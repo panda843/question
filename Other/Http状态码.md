@@ -1,0 +1,2 @@
+- [Http状态码常用对照表](http://tool.oschina.net/commons?type=5)
+- [HTTP状态码及其含义](https://www.cnblogs.com/shenhf/p/7695984.html)
