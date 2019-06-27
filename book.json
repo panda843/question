@@ -1,0 +1,30 @@
+{
+    "title": "PHP面试题集合",
+    "author": "SuperPandaMan",
+    "description": "PHP面试题集合",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "styles": {
+        "website": "./styles/website.css"
+    },
+    "structure": {
+        "readme": "README.md"
+    },
+    "links": {
+        "sidebar": {
+            "博客": "https://www.ganktools.com"
+        }
+    },
+    "plugins": [
+        "highlight",
+        "search",
+        "-sharing",
+        "github",
+        "github-buttons"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/chuanshuo843"
+        }
+    }
+}
