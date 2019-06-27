@@ -1,7 +1,7 @@
 # 目录
 * [项目简介](README.md)
 * [PHP](PHP/README.md)
- * [Nginx&PHP通信](Nginx&PHP通信.md)
+ * [Nginx&PHP通信](PHP/Nginx&PHP通信.md)
 * [SQL](SQL/README.md)
  * [InnoDB&MyIsam的区别](SQL/InnoDB&MyIsam的区别.md)
 * [Linux](Linux/README.md)
