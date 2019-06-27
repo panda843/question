@@ -1,0 +1,3 @@
+- [php require vs. include](https://blog.csdn.net/wizardforcel/article/details/25414671)
+- [PHP中include()与require()的区别](https://www.cnblogs.com/gaobint/p/6397486.html)
+- [PHP中include和require的区别详解](https://www.jianshu.com/p/955a7a794f1b)

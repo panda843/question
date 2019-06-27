@@ -1,0 +1,2 @@
+- [array-reverse](https://www.php.net/manual/zh/function.array-reverse.php)
+- [array-flip](https://www.php.net/manual/zh/function.array-flip.php)

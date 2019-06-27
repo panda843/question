@@ -1,0 +1,2 @@
+- [【RabbitMQ】7、RabbitMQ主备复制是异步还是同步？](https://www.cnblogs.com/wangzhongqiu/p/7831854.html)
+- [RabbitMQ集群搭建-镜像模式](https://www.jianshu.com/p/5b2879fba25b)
