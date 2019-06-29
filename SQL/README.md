@@ -1,1 +1,0 @@
-[理解 Nginx 与 PHP-FPM 通信的工作机制](https://www.jianshu.com/p/da152c6fdfa6)
