@@ -12,19 +12,36 @@
     },
     "links": {
         "sidebar": {
-            "博客": "https://www.ganktools.com"
+            "Blog": "https://www.ganktools.com"
         }
     },
     "plugins": [
+        "klipse",
         "highlight",
-        "search",
         "-sharing",
         "github",
-        "github-buttons"
+        "github-buttons",
+        "back-to-top-button",
+        "code",
+        "copy-code-button",
+        "-search",
+        "-lunr", 
+        "search-pro",
+        "tbfed-pagefooter",
+        "pageview-count",
+        "auto-scroll-table"
     ],
     "pluginsConfig": {
         "github": {
             "url": "https://github.com/chuanshuo843"
+        },
+        "theme-default": {
+            "showLevel": true
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright &copy ganktools.com 2019",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
         }
     }
 }

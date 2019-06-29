@@ -1,11 +1,6 @@
 # Summary
 
 * [项目简介](README.md)
-* [RabbitMQ](RabbitMQ/README.md)
-    * [消息一致性怎么保证](RabbitMQ/消息一致性怎么保证.md)
-    * [RabbitMQ是如何运转的](RabbitMQ/RabbitMQ是如何运转的.md)
-    * [RabbitMQ主从实现原理](RabbitMQ/RabbitMQ主从实现原理.md)
-* [JS](JS/README.md)
 * [SQL](SQL/README.md)
     * [InnoDB&MyIsam的区别](SQL/InnoDB&MyIsam的区别.md)
     * [取第一天登录&第二天没有登录的用户](SQL/取第一天登录&第二天没有登录的用户.md)
@@ -27,3 +22,8 @@
     * [PHP翻转数组](PHP/PHP翻转数组.md)
 * [Redis](Redis/README.md)    
     * [Redis分布式锁的实现](Redis/Redis分布式锁的实现.md)
+* [RabbitMQ](RabbitMQ/README.md)
+    * [消息一致性怎么保证](RabbitMQ/消息一致性怎么保证.md)
+    * [RabbitMQ是如何运转的](RabbitMQ/RabbitMQ是如何运转的.md)
+    * [RabbitMQ主从实现原理](RabbitMQ/RabbitMQ主从实现原理.md)
+* [JS](JS/README.md)
