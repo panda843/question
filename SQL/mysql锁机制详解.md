@@ -1,5 +1,0 @@
-- [mysql锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
-- [MySQL锁机制与用法分析](https://www.jb51.net/article/139113.htm)
-- [MySQL InnoDB锁机制全面解析分享](https://segmentfault.com/a/1190000014133576)
-- [乐观锁与悲观锁——解决并发问题](https://www.cnblogs.com/0201zcr/p/4782283.html)
-- [MySQL学习笔记（四）悲观锁与乐观锁](https://www.cnblogs.com/tinywan/p/9655664.html)

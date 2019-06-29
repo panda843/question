@@ -16,15 +16,13 @@
         }
     },
     "plugins": [
-        "klipse",
-        "-highlight",
-        "prism",
-        "-sharing",
-        "code",
-        "copy-code-button",
-        "-search",
         "-lunr", 
-        "ancre-navigation",
+        "-search",
+        "-highlight",
+        "-sharing",
+        "klipse",
+        "prism",
+        "code",
         "splitter",
         "search-pro",
         "pageview-count",
@@ -33,6 +31,9 @@
     "pluginsConfig": {
         "theme-default": {
             "showLevel": true
+        },
+        "code": {
+            "copyButtons": false
         }
     }
 }
