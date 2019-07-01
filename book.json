@@ -20,18 +20,18 @@
         "-search",
         "-highlight",
         "-sharing",
+        "theme-comscore",
         "klipse",
         "prism",
         "code",
         "splitter",
         "search-pro",
         "pageview-count",
-        "auto-scroll-table"
+        "auto-scroll-table",
+        "flexible-alerts",
+        "emphasize"
     ],
     "pluginsConfig": {
-        "theme-default": {
-            "showLevel": true
-        },
         "code": {
             "copyButtons": false
         }

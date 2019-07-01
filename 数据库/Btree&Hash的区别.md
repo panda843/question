@@ -1,3 +1,0 @@
-- [btree与hash索引的适用场景和限制](https://www.cnblogs.com/xiaoboluo768/p/5164342.html)
-- [Mysql索引类型Btree和Hash的区别以及使用场景](https://www.yidianphp.com/archives/811)
-- [MySQL索引类型 btree索引和hash索引的区别](https://www.jianshu.com/p/a58559f3fb48)
