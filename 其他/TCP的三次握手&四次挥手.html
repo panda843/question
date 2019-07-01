@@ -78,7 +78,7 @@
     <link rel="next" href="POST&GET区别.html" />
     
     
-    <link rel="prev" href="../Linux/Crontab表达式详解.html" />
+    <link rel="prev" href="../Linux/Linux文件权限说明.html" />
     
 
     </head>
@@ -262,6 +262,19 @@
             
         </li>
     
+        <li class="chapter " data-level="3.2" data-path="../Linux/Linux文件权限说明.html">
+            
+                <a href="../Linux/Linux文件权限说明.html">
+            
+                    
+                    Linux文件权限说明
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -301,6 +314,32 @@
             
                     
                     Http状态码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="OSI七层&TCP五层.html">
+            
+                <a href="OSI七层&TCP五层.html">
+            
+                    
+                    OSI七层&TCP五层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="栈和队列的区别.html">
+            
+                <a href="栈和队列的区别.html">
+            
+                    
+                    栈和队列的区别
             
                 </a>
             
@@ -416,16 +455,16 @@
 
     
         
-        <li class="header">RabbitMQ</li>
+        <li class="header">消息队列</li>
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../RabbitMQ/消息一致性怎么保证.html">
+        <li class="chapter " data-level="7.1" data-path="../消息队列/RabbitMQ消息一致性怎么保证.html">
             
-                <a href="../RabbitMQ/消息一致性怎么保证.html">
+                <a href="../消息队列/RabbitMQ消息一致性怎么保证.html">
             
                     
-                    消息一致性怎么保证
+                    RabbitMQ消息一致性怎么保证
             
                 </a>
             
@@ -433,9 +472,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="../RabbitMQ/RabbitMQ是如何运转的.html">
+        <li class="chapter " data-level="7.2" data-path="../消息队列/RabbitMQ是如何运转的.html">
             
-                <a href="../RabbitMQ/RabbitMQ是如何运转的.html">
+                <a href="../消息队列/RabbitMQ是如何运转的.html">
             
                     
                     RabbitMQ是如何运转的
@@ -446,9 +485,9 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3" data-path="../RabbitMQ/RabbitMQ集群实现方式.html">
+        <li class="chapter " data-level="7.3" data-path="../消息队列/RabbitMQ集群实现方式.html">
             
-                <a href="../RabbitMQ/RabbitMQ集群实现方式.html">
+                <a href="../消息队列/RabbitMQ集群实现方式.html">
             
                     
                     RabbitMQ集群实现方式
@@ -537,7 +576,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="https://images2015.cnblogs.com/blog/606573/201703/606573-20170317191401995-713085779.png" alt="TCP&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x53C2;&#x8003;"></p>
+                                <p><img src="https://haledeng.com/blog/2018/04/25/TCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/tcp_handshakes.png" alt="TCP&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x53C2;&#x8003;"></p>
 <h2 id="&#x7B2C;&#x4E00;&#x6B21;&#x63E1;&#x624B;syn1-seqx">&#x7B2C;&#x4E00;&#x6B21;&#x63E1;&#x624B;(SYN=1, seq=x):</h2>
 <ul>
 <li>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E00;&#x4E2A; TCP &#x7684; SYN &#x6807;&#x5FD7;&#x4F4D;&#x7F6E;1&#x7684;&#x5305;&#xFF0C;&#x6307;&#x660E;&#x5BA2;&#x6237;&#x7AEF;&#x6253;&#x7B97;&#x8FDE;&#x63A5;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x4EE5;&#x53CA;&#x521D;&#x59CB;&#x5E8F;&#x53F7; X,&#x4FDD;&#x5B58;&#x5728;&#x5305;&#x5934;&#x7684;&#x5E8F;&#x5217;&#x53F7;(Sequence Number)&#x5B57;&#x6BB5;&#x91CC;&#x3002;</li>
@@ -552,7 +591,7 @@
 <li>&#x5BA2;&#x6237;&#x7AEF;&#x518D;&#x6B21;&#x53D1;&#x9001;&#x786E;&#x8BA4;&#x5305;(ACK)&#xFF0C;SYN &#x6807;&#x5FD7;&#x4F4D;&#x4E3A;0&#xFF0C;ACK &#x6807;&#x5FD7;&#x4F4D;&#x4E3A;1&#xFF0C;&#x5E76;&#x4E14;&#x628A;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x6765; ACK &#x7684;&#x5E8F;&#x53F7;&#x5B57;&#x6BB5;+1&#xFF0C;&#x653E;&#x5728;&#x786E;&#x5B9A;&#x5B57;&#x6BB5;&#x4E2D;&#x53D1;&#x9001;&#x7ED9;&#x5BF9;&#x65B9;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x6570;&#x636E;&#x6BB5;&#x653E;&#x5199;ISN&#x7684;+1</li>
 <li>&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8FDB;&#x5165; ESTABLISHED &#x72B6;&#x6001;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x63A5;&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x5305;&#x65F6;&#xFF0C;&#x4E5F;&#x8FDB;&#x5165; ESTABLISHED &#x72B6;&#x6001;&#xFF0C;TCP &#x63E1;&#x624B;&#x7ED3;&#x675F;&#x3002;</li>
 </ul>
-<p><img src="https://images0.cnblogs.com/blog/630634/201409/161500301437417.jpg" alt="TCP&#x56DB;&#x6B21;&#x6325;&#x624B;&#x53C2;&#x8003;"></p>
+<p><img src="https://haledeng.com/blog/2018/04/25/TCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/tcp_closed.png" alt="TCP&#x56DB;&#x6B21;&#x6325;&#x624B;&#x53C2;&#x8003;"></p>
 <h2 id="&#x7B2C;&#x4E00;&#x6B21;&#x6325;&#x624B;fin1&#xFF0C;seqx">&#x7B2C;&#x4E00;&#x6B21;&#x6325;&#x624B;(FIN=1&#xFF0C;seq=x)</h2>
 <ul>
 <li>&#x5047;&#x8BBE;&#x5BA2;&#x6237;&#x7AEF;&#x60F3;&#x8981;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E00;&#x4E2A; FIN &#x6807;&#x5FD7;&#x4F4D;&#x7F6E;&#x4E3A;1&#x7684;&#x5305;&#xFF0C;&#x8868;&#x793A;&#x81EA;&#x5DF1;&#x5DF2;&#x7ECF;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x6570;&#x636E;&#x3002;</li>
@@ -601,7 +640,7 @@
 
             
                 
-                <a href="../Linux/Crontab表达式详解.html" class="navigation navigation-prev " aria-label="Previous page: Crontab表达式详解">
+                <a href="../Linux/Linux文件权限说明.html" class="navigation navigation-prev " aria-label="Previous page: Linux文件权限说明">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -617,7 +656,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"TCP的三次握手&四次挥手","level":"4.1","depth":1,"next":{"title":"POST&GET区别","level":"4.2","depth":1,"path":"其他/POST&GET区别.md","ref":"其他/POST&GET区别.md","articles":[]},"previous":{"title":"Crontab表达式详解","level":"3.1","depth":1,"path":"Linux/Crontab表达式详解.md","ref":"Linux/Crontab表达式详解.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","klipse","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"其他/TCP的三次握手&四次挥手.md","mtime":"2019-06-29T11:21:52.169Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T08:08:40.457Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"TCP的三次握手&四次挥手","level":"4.1","depth":1,"next":{"title":"POST&GET区别","level":"4.2","depth":1,"path":"其他/POST&GET区别.md","ref":"其他/POST&GET区别.md","articles":[]},"previous":{"title":"Linux文件权限说明","level":"3.2","depth":1,"path":"Linux/Linux文件权限说明.md","ref":"Linux/Linux文件权限说明.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","klipse","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"其他/TCP的三次握手&四次挥手.md","mtime":"2019-07-01T09:04:58.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:34:18.239Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
