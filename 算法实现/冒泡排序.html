@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -50,10 +50,6 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -576,19 +572,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre class="language-"><code class="lang-php"><span class="token variable">$demo_array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">43</span><span class="token punctuation">,</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token number">54</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">82</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// &#x7B2C;&#x4E00;&#x5C42;for&#x5FAA;&#x73AF;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x4ECE;&#x6570;&#x7EC4;&#x4E2D;&#x952E;&#x4E3A;0&#x5F00;&#x59CB;&#x5FAA;&#x73AF;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$demo_array</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// &#x7B2C;&#x4E8C;&#x5C42;&#x5C06;&#x4ECE;&#x952E;&#x4E3A;$i&#x7684;&#x5730;&#x65B9;&#x5FAA;&#x73AF;&#x5230;&#x6570;&#x7EC4;&#x6700;&#x540E;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$j</span><span class="token operator">=</span><span class="token variable">$i</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token variable">$j</span><span class="token operator">&lt;</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$demo_array</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$j</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">// &#x6BD4;&#x8F83;&#x6570;&#x7EC4;&#x4E2D;&#x76F8;&#x90BB;&#x4E24;&#x4E2A;&#x503C;&#x7684;&#x5927;&#x5C0F;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$demo_array</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token variable">$demo_array</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token variable">$tmp</span>            <span class="token operator">=</span> <span class="token variable">$demo_array</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// &#x8FD9;&#x91CC;&#x7684;tmp&#x662F;&#x4E34;&#x65F6;&#x53D8;&#x91CF;</span>
-            <span class="token variable">$demo_array</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$demo_array</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// &#x7B2C;&#x4E00;&#x6B21;&#x66F4;&#x6362;&#x4F4D;&#x7F6E;</span>
-            <span class="token variable">$demo_array</span><span class="token punctuation">[</span><span class="token variable">$j</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$tmp</span><span class="token punctuation">;</span>            <span class="token comment">// &#x5B8C;&#x6210;&#x4F4D;&#x7F6E;&#x4E92;&#x6362;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+                                <pre><code class="lang-php">$demo_array = <span class="hljs-keyword">array</span>(<span class="hljs-number">23</span>,<span class="hljs-number">15</span>,<span class="hljs-number">43</span>,<span class="hljs-number">25</span>,<span class="hljs-number">54</span>,<span class="hljs-number">2</span>,<span class="hljs-number">6</span>,<span class="hljs-number">82</span>,<span class="hljs-number">11</span>,<span class="hljs-number">5</span>,<span class="hljs-number">21</span>,<span class="hljs-number">32</span>,<span class="hljs-number">65</span>);
+<span class="hljs-comment">// &#x7B2C;&#x4E00;&#x5C42;for&#x5FAA;&#x73AF;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x4ECE;&#x6570;&#x7EC4;&#x4E2D;&#x952E;&#x4E3A;0&#x5F00;&#x59CB;&#x5FAA;&#x73AF;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;</span>
+<span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>;$i&lt;count($demo_array);$i++) {
+    <span class="hljs-comment">// &#x7B2C;&#x4E8C;&#x5C42;&#x5C06;&#x4ECE;&#x952E;&#x4E3A;$i&#x7684;&#x5730;&#x65B9;&#x5FAA;&#x73AF;&#x5230;&#x6570;&#x7EC4;&#x6700;&#x540E;</span>
+    <span class="hljs-keyword">for</span> ($j=$i+<span class="hljs-number">1</span>;$j&lt;count($demo_array);$j++) {
+        <span class="hljs-comment">// &#x6BD4;&#x8F83;&#x6570;&#x7EC4;&#x4E2D;&#x76F8;&#x90BB;&#x4E24;&#x4E2A;&#x503C;&#x7684;&#x5927;&#x5C0F;</span>
+        <span class="hljs-keyword">if</span> ($demo_array[$i] &gt; $demo_array[$j]) {
+            $tmp            = $demo_array[$i]; <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x7684;tmp&#x662F;&#x4E34;&#x65F6;&#x53D8;&#x91CF;</span>
+            $demo_array[$i] = $demo_array[$j]; <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x6B21;&#x66F4;&#x6362;&#x4F4D;&#x7F6E;</span>
+            $demo_array[$j] = $tmp;            <span class="hljs-comment">// &#x5B8C;&#x6210;&#x4F4D;&#x7F6E;&#x4E92;&#x6362;</span>
+        }
+    }
+}
 </code></pre>
 
                                 
@@ -633,7 +629,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"冒泡排序","level":"8.1","depth":1,"next":{"title":"快速排序","level":"8.2","depth":1,"path":"算法实现/快速排序.md","ref":"算法实现/快速排序.md","articles":[]},"previous":{"title":"RabbitMQ集群实现方式","level":"7.3","depth":1,"path":"消息队列/RabbitMQ集群实现方式.md","ref":"消息队列/RabbitMQ集群实现方式.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"算法实现/冒泡排序.md","mtime":"2019-06-29T11:39:12.246Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:35:22.478Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"冒泡排序","level":"8.1","depth":1,"next":{"title":"快速排序","level":"8.2","depth":1,"path":"算法实现/快速排序.md","ref":"算法实现/快速排序.md","articles":[]},"previous":{"title":"RabbitMQ集群实现方式","level":"7.3","depth":1,"path":"消息队列/RabbitMQ集群实现方式.md","ref":"消息队列/RabbitMQ集群实现方式.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"算法实现/冒泡排序.md","mtime":"2019-06-29T11:39:12.246Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:54:58.782Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -672,10 +668,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 

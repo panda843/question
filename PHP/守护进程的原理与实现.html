@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -50,10 +50,6 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -589,101 +585,101 @@
 <li>&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x9000;&#x51FA;&#x5904;&#x7406;</li>
 </ul>
 <h1 id="php&#x53C2;&#x8003;">PHP&#x53C2;&#x8003;</h1>
-<pre class="language-"><code class="lang-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$fatherFile</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;test.txt&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// &#x91CD;&#x8BBE;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x63A9;&#x7801;</span>
-<span class="token function">umask</span><span class="token punctuation">(</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// &#x521B;&#x5EFA;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x7EC8;&#x6B62;&#x7236;&#x8FDB;&#x7A0B;</span>
-<span class="token variable">$pid</span> <span class="token operator">=</span> <span class="token function">pcntl_fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token variable">$pid</span> <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;fork error.&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token variable">$pid</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">// &#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x4E2D;&#x521B;&#x5EFA;&#x65B0;&#x4F1A;&#x8BDD;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token operator">!</span><span class="token function">posix_setsid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;setsid error.&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token variable">$pid</span> <span class="token operator">=</span> <span class="token function">pcntl_fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token variable">$pid</span>  <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;fork error&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token variable">$pid</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">exit</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">// &#x6539;&#x53D8;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;</span>
-<span class="token function">chdir</span><span class="token punctuation">(</span> <span class="token single-quoted-string string">&apos;/tmp&apos;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+$fatherFile = fopen(<span class="hljs-string">&apos;test.txt&apos;</span>);
+<span class="hljs-comment">// &#x91CD;&#x8BBE;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x63A9;&#x7801;</span>
+umask( <span class="hljs-number">0</span> );
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x7EC8;&#x6B62;&#x7236;&#x8FDB;&#x7A0B;</span>
+$pid = pcntl_fork();
+<span class="hljs-keyword">if</span>( $pid &lt; <span class="hljs-number">0</span> ){
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&apos;fork error.&apos;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( $pid &gt; <span class="hljs-number">0</span> ) {
+    <span class="hljs-keyword">exit</span>();
+}
+<span class="hljs-comment">// &#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x4E2D;&#x521B;&#x5EFA;&#x65B0;&#x4F1A;&#x8BDD;</span>
+<span class="hljs-keyword">if</span>( !posix_setsid() ){
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&apos;setsid error.&apos;</span>);
+}
+$pid = pcntl_fork();
+<span class="hljs-keyword">if</span>( $pid  &lt; <span class="hljs-number">0</span> ){
+    <span class="hljs-keyword">exit</span>(<span class="hljs-string">&apos;fork error&apos;</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( $pid &gt; <span class="hljs-number">0</span> ) {
+    <span class="hljs-keyword">exit</span>;
+}
+<span class="hljs-comment">// &#x6539;&#x53D8;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;</span>
+chdir( <span class="hljs-string">&apos;/tmp&apos;</span> );
 
-<span class="token comment">// &#x5173;&#x95ED;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;</span>
-<span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$fatherFile</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="hljs-comment">// &#x5173;&#x95ED;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;</span>
+fclose($fatherFile);
 </code></pre>
 <h1 id="c&#x53C2;&#x8003;">C&#x53C2;&#x8003;</h1>
-<pre class="language-"><code class="lang-c">
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;fcntl.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;sys/types.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;sys/wait.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;signal.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">define</span> MAXFILE 65535</span>
+<pre><code class="lang-c">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;fcntl.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;signal.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXFILE 65535</span>
 
-<span class="token keyword">volatile</span> sig_atomic_t _running <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="hljs-keyword">volatile</span> <span class="hljs-keyword">sig_atomic_t</span> _running = <span class="hljs-number">1</span>;
 
-<span class="token keyword">void</span> <span class="token function">sigterm_handler</span><span class="token punctuation">(</span><span class="token keyword">int</span> arg<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    _running <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sigterm_handler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> arg)</span>
+</span>{
+    _running = <span class="hljs-number">0</span>;
+}
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    pid_t pc<span class="token punctuation">,</span> pid<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span> fd<span class="token punctuation">,</span> len<span class="token punctuation">;</span>
-    <span class="token keyword">char</span> <span class="token operator">*</span>buf <span class="token operator">=</span> <span class="token string">&quot;this is a Dameon\n&quot;</span><span class="token punctuation">;</span>
-    len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">//&#x7B2C;&#x4E00;&#x6B65;</span>
-    pc <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>pc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;error fork\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>pc <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">//&#x7B2C;&#x4E8C;&#x6B65;</span>
-    <span class="token function">setsid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    pid <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//&#x4E0E;&#x7EC8;&#x7AEF;&#x5B8C;&#x5168;&#x8131;&#x79BB;[1]</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>pid <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">&quot;fork error&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>pid <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">//&#x7B2C;&#x4E09;&#x6B65;</span>
-    <span class="token function">chdir</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">//&#x7B2C;&#x56DB;&#x6B65;</span>
-    <span class="token function">umask</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">//&#x7B2C;&#x4E94;&#x6B65;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> MAXFILE<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token function">close</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">signal</span><span class="token punctuation">(</span>SIGTERM<span class="token punctuation">,</span> sigterm_handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span> _running <span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">&quot;/tmp/dameon.log&quot;</span><span class="token punctuation">,</span> O_CREAT <span class="token operator">|</span> O_WRONLY <span class="token operator">|</span> O_APPEND<span class="token punctuation">,</span> <span class="token number">0600</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">&quot;open&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">write</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">usleep</span><span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//10&#x6BEB;&#x79D2;</span>
-    <span class="token punctuation">}</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">pid_t</span> pc, pid;
+    <span class="hljs-keyword">int</span> i, fd, len;
+    <span class="hljs-keyword">char</span> *buf = <span class="hljs-string">&quot;this is a Dameon\n&quot;</span>;
+    len = <span class="hljs-built_in">strlen</span>(buf);
+    <span class="hljs-comment">//&#x7B2C;&#x4E00;&#x6B65;</span>
+    pc = fork();
+    <span class="hljs-keyword">if</span>(pc &lt; <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;error fork\n&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pc &gt; <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);
+    }
+    <span class="hljs-comment">//&#x7B2C;&#x4E8C;&#x6B65;</span>
+    setsid();
+    pid = fork();<span class="hljs-comment">//&#x4E0E;&#x7EC8;&#x7AEF;&#x5B8C;&#x5168;&#x8131;&#x79BB;[1]</span>
+    <span class="hljs-keyword">if</span> (pid &lt; <span class="hljs-number">0</span>)
+    {
+        perror(<span class="hljs-string">&quot;fork error&quot;</span>);
+    }
+    <span class="hljs-keyword">if</span> (pid &gt; <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);
+    }
+    <span class="hljs-comment">//&#x7B2C;&#x4E09;&#x6B65;</span>
+    chdir(<span class="hljs-string">&quot;/&quot;</span>);
+    <span class="hljs-comment">//&#x7B2C;&#x56DB;&#x6B65;</span>
+    umask(<span class="hljs-number">0</span>);
+    <span class="hljs-comment">//&#x7B2C;&#x4E94;&#x6B65;</span>
+    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; MAXFILE; i++)
+    {
+        close(i);
+    }
+    signal(SIGTERM, sigterm_handler);
+    <span class="hljs-keyword">while</span>( _running )
+    {
+        <span class="hljs-keyword">if</span>((fd = open(<span class="hljs-string">&quot;/tmp/dameon.log&quot;</span>, O_CREAT | O_WRONLY | O_APPEND, <span class="hljs-number">0600</span>)) &lt; <span class="hljs-number">0</span>)
+        {
+            perror(<span class="hljs-string">&quot;open&quot;</span>);
+            <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);
+        }
+        write(fd, buf, len);
+        close(fd);
+        usleep(<span class="hljs-number">10</span> * <span class="hljs-number">1000</span>);<span class="hljs-comment">//10&#x6BEB;&#x79D2;</span>
+    }
 </code></pre>
 <ul>
 <li><a href="https://blog.csdn.net/whatday/article/details/89555511" target="_blank">Linux&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x7684;&#x539F;&#x7406;&#x4E0E;&#x5B9E;&#x73B0;</a></li>
@@ -733,7 +729,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"守护进程的原理与实现","level":"5.2","depth":1,"next":{"title":"Cookie&Session区别","level":"5.3","depth":1,"path":"PHP/Cookie&Session区别.md","ref":"PHP/Cookie&Session区别.md","articles":[]},"previous":{"title":"Nginx&PHP通信","level":"5.1","depth":1,"path":"PHP/Nginx&PHP通信.md","ref":"PHP/Nginx&PHP通信.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"PHP/守护进程的原理与实现.md","mtime":"2019-06-29T11:32:33.879Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:35:22.478Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"守护进程的原理与实现","level":"5.2","depth":1,"next":{"title":"Cookie&Session区别","level":"5.3","depth":1,"path":"PHP/Cookie&Session区别.md","ref":"PHP/Cookie&Session区别.md","articles":[]},"previous":{"title":"Nginx&PHP通信","level":"5.1","depth":1,"path":"PHP/Nginx&PHP通信.md","ref":"PHP/Nginx&PHP通信.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"PHP/守护进程的原理与实现.md","mtime":"2019-06-29T11:32:33.879Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:54:58.782Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -772,10 +768,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 

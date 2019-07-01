@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -50,10 +50,6 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -574,33 +570,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <pre class="language-"><code class="lang-php"><span class="token keyword">function</span> <span class="token function">quick_sort</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">//&#x5148;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;</span>
-    <span class="token variable">$length</span> <span class="token operator">=</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$length</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token variable">$arr</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">//&#x9009;&#x62E9;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;&#x57FA;&#x51C6;</span>
-    <span class="token variable">$base_num</span> <span class="token operator">=</span> <span class="token variable">$arr</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token comment">//&#x904D;&#x5386;&#x9664;&#x4E86;&#x6807;&#x5C3A;&#x5916;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x6309;&#x7167;&#x5927;&#x5C0F;&#x5173;&#x7CFB;&#x653E;&#x5165;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x5185;</span>
-    <span class="token comment">//&#x521D;&#x59CB;&#x5316;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;</span>
-    <span class="token variable">$left_array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//&#x5C0F;&#x4E8E;&#x57FA;&#x51C6;&#x7684;</span>
-    <span class="token variable">$right_array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//&#x5927;&#x4E8E;&#x57FA;&#x51C6;&#x7684;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token variable">$length</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$base_num</span> <span class="token operator">&gt;</span> <span class="token variable">$arr</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">//&#x653E;&#x5165;&#x5DE6;&#x8FB9;&#x6570;&#x7EC4;</span>
-            <span class="token variable">$left_array</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$arr</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token comment">//&#x653E;&#x5165;&#x53F3;&#x8FB9;</span>
-            <span class="token variable">$right_array</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$arr</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">//&#x518D;&#x5206;&#x522B;&#x5BF9;&#x5DE6;&#x8FB9;&#x548C;&#x53F3;&#x8FB9;&#x7684;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x76F8;&#x540C;&#x7684;&#x6392;&#x5E8F;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;</span>
-    <span class="token variable">$left_array</span> <span class="token operator">=</span> <span class="token function">quick_sort</span><span class="token punctuation">(</span><span class="token variable">$left_array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token variable">$right_array</span> <span class="token operator">=</span> <span class="token function">quick_sort</span><span class="token punctuation">(</span><span class="token variable">$right_array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">//&#x5408;&#x5E76;</span>
-    <span class="token keyword">return</span> <span class="token function">array_merge</span><span class="token punctuation">(</span><span class="token variable">$left_array</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$base_num</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$right_array</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+                                <pre><code class="lang-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">($arr)</span></span>{
+    <span class="hljs-comment">//&#x5148;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;</span>
+    $length = count($arr);
+    <span class="hljs-keyword">if</span>($length &lt;= <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">return</span> $arr;
+    }
+    <span class="hljs-comment">//&#x9009;&#x62E9;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;&#x57FA;&#x51C6;</span>
+    $base_num = $arr[<span class="hljs-number">0</span>];
+    <span class="hljs-comment">//&#x904D;&#x5386;&#x9664;&#x4E86;&#x6807;&#x5C3A;&#x5916;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x6309;&#x7167;&#x5927;&#x5C0F;&#x5173;&#x7CFB;&#x653E;&#x5165;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x5185;</span>
+    <span class="hljs-comment">//&#x521D;&#x59CB;&#x5316;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;</span>
+    $left_array = <span class="hljs-keyword">array</span>();  <span class="hljs-comment">//&#x5C0F;&#x4E8E;&#x57FA;&#x51C6;&#x7684;</span>
+    $right_array = <span class="hljs-keyword">array</span>();  <span class="hljs-comment">//&#x5927;&#x4E8E;&#x57FA;&#x51C6;&#x7684;</span>
+    <span class="hljs-keyword">for</span>($i=<span class="hljs-number">1</span>; $i&lt;$length; $i++) {
+        <span class="hljs-keyword">if</span>($base_num &gt; $arr[$i]) {
+            <span class="hljs-comment">//&#x653E;&#x5165;&#x5DE6;&#x8FB9;&#x6570;&#x7EC4;</span>
+            $left_array[] = $arr[$i];
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">//&#x653E;&#x5165;&#x53F3;&#x8FB9;</span>
+            $right_array[] = $arr[$i];
+        }
+    }
+    <span class="hljs-comment">//&#x518D;&#x5206;&#x522B;&#x5BF9;&#x5DE6;&#x8FB9;&#x548C;&#x53F3;&#x8FB9;&#x7684;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x76F8;&#x540C;&#x7684;&#x6392;&#x5E8F;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x9012;&#x5F52;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;</span>
+    $left_array = quick_sort($left_array);
+    $right_array = quick_sort($right_array);
+    <span class="hljs-comment">//&#x5408;&#x5E76;</span>
+    <span class="hljs-keyword">return</span> array_merge($left_array, <span class="hljs-keyword">array</span>($base_num), $right_array);;
+}
 </code></pre>
 
                                 
@@ -641,7 +637,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"快速排序","level":"8.2","depth":1,"previous":{"title":"冒泡排序","level":"8.1","depth":1,"path":"算法实现/冒泡排序.md","ref":"算法实现/冒泡排序.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"算法实现/快速排序.md","mtime":"2019-06-29T11:41:47.038Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:35:22.478Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"快速排序","level":"8.2","depth":1,"previous":{"title":"冒泡排序","level":"8.1","depth":1,"path":"算法实现/冒泡排序.md","ref":"算法实现/冒泡排序.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"算法实现/快速排序.md","mtime":"2019-06-29T11:41:47.038Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:54:58.782Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -680,10 +676,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 

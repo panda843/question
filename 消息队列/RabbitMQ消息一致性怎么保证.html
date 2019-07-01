@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -50,10 +50,6 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -583,14 +579,14 @@
 <p>[!TIP|label:&#x8BF4;&#x660E;]
 &#x4E0E;&#x4E8B;&#x52A1;&#x673A;&#x5236;&#x76F8;&#x5173;&#x7684;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5206;&#x522B;&#x662F;channel.txSelect&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x4FE1;&#x9053;&#x4E3A;&#x4E8B;&#x52A1;&#x6A21;&#x5F0F;&#x3001;channel.txCommit&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#x548C;channel.txRollback&#x4E8B;&#x52A1;&#x56DE;&#x6EDA;&#x3002;&#x5982;&#x679C;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x6D88;&#x606F;&#x4E00;&#x5B9A;&#x662F;&#x5230;&#x8FBE;&#x4E86;RabbitMQ&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x4E4B;&#x524D;&#x7531;&#x4E8E;&#x53D1;&#x9001;&#x5F02;&#x5E38;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x539F;&#x56E0;&#xFF0C;&#x6355;&#x83B7;&#x540E;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;channel.txRollback&#x56DE;&#x6EDA;&#x3002;</p>
 </blockquote>
-<pre class="language-"><code class="lang-java"><span class="token comment">// &#x5C06;&#x4FE1;&#x9053;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E8B;&#x52A1;&#x6A21;&#x5F0F;&#xFF0C;&#x5F00;&#x542F;&#x4E8B;&#x52A1;</span>
-channel<span class="token punctuation">.</span><span class="token function">txSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token comment">// &#x53D1;&#x9001;&#x6301;&#x4E45;&#x5316;&#x6D88;&#x606F;</span>
-channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span>EXCHANGE_NAME<span class="token punctuation">,</span> ROUTING_KEY<span class="token punctuation">,</span> <span class="token class-name">MessageProperties</span><span class="token punctuation">.</span>PERSISTENT_TEXT_PLAIN<span class="token punctuation">,</span> <span class="token string">&quot;transaction messages&quot;</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token comment">// &#x4E8B;&#x52A1;&#x63D0;&#x4EA4;</span>
-channel<span class="token punctuation">.</span><span class="token function">txCommit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// &#x4E8B;&#x7269;&#x56DE;&#x6EDA;</span>
-channel<span class="token punctuation">.</span><span class="token function">txRollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x5C06;&#x4FE1;&#x9053;&#x8BBE;&#x7F6E;&#x4E3A;&#x4E8B;&#x52A1;&#x6A21;&#x5F0F;&#xFF0C;&#x5F00;&#x542F;&#x4E8B;&#x52A1;</span>
+channel.txSelect(); 
+<span class="hljs-comment">// &#x53D1;&#x9001;&#x6301;&#x4E45;&#x5316;&#x6D88;&#x606F;</span>
+channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, MessageProperties.PERSISTENT_TEXT_PLAIN, <span class="hljs-string">&quot;transaction messages&quot;</span>.getBytes()); 
+<span class="hljs-comment">// &#x4E8B;&#x52A1;&#x63D0;&#x4EA4;</span>
+channel.txCommit();
+<span class="hljs-comment">// &#x4E8B;&#x7269;&#x56DE;&#x6EDA;</span>
+channel.txRollback();
 </code></pre>
 <h2 id="&#x6D88;&#x606F;&#x786E;&#x8BA4;&#x673A;&#x5236;">&#x6D88;&#x606F;&#x786E;&#x8BA4;&#x673A;&#x5236;</h2>
 <blockquote>
@@ -601,71 +597,71 @@ channel<span class="token punctuation">.</span><span class="token function">txRo
 </ul>
 </blockquote>
 <h3 id="&#x5355;&#x6761;&#x786E;&#x8BA4;">&#x5355;&#x6761;&#x786E;&#x8BA4;</h3>
-<pre class="language-"><code class="lang-java"><span class="token comment">// &#x8BBE;&#x7F6E; channel &#x6D88;&#x606F;&#x63A8;&#x9001;&#x4E3A; &#x5355;&#x6761;&#x786E;&#x8BA4;&#x6A21;&#x5F0F; </span>
-channel<span class="token punctuation">.</span><span class="token function">confirmSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// &#x63A8;&#x9001;&#x6D88;&#x606F;</span>
-channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">&quot;exchange&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;routingkey&quot;</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">&quot;publisher confirm test&quot;</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// &#x6D88;&#x606F;&#x63A8;&#x9001;&#x5931;&#x8D25;&#x5904;&#x7406;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>channel<span class="token punctuation">.</span><span class="token function">waitForConfirms</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">//publisher confirm failed handle</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x8BBE;&#x7F6E; channel &#x6D88;&#x606F;&#x63A8;&#x9001;&#x4E3A; &#x5355;&#x6761;&#x786E;&#x8BA4;&#x6A21;&#x5F0F; </span>
+channel.confirmSelect();
+<span class="hljs-comment">// &#x63A8;&#x9001;&#x6D88;&#x606F;</span>
+channel.basicPublish(<span class="hljs-string">&quot;exchange&quot;</span>, <span class="hljs-string">&quot;routingkey&quot;</span>, <span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;publisher confirm test&quot;</span>.getBytes());
+<span class="hljs-comment">// &#x6D88;&#x606F;&#x63A8;&#x9001;&#x5931;&#x8D25;&#x5904;&#x7406;</span>
+<span class="hljs-keyword">if</span> (!channel.waitForConfirms()) {
+    <span class="hljs-comment">//publisher confirm failed handle</span>
+}
 </code></pre>
 <h3 id="&#x6279;&#x91CF;&#x786E;&#x8BA4;">&#x6279;&#x91CF;&#x786E;&#x8BA4;</h3>
 <blockquote>
 <p>[!TIP|label:&#x95EE;&#x9898;]
 &#x6279;&#x91CF;&#x786E;&#x8BA4;comfirm&#x9700;&#x8981;&#x89E3;&#x51B3;&#x51FA;&#x73B0;&#x8FD4;&#x56DE;&#x7684;Basic.Nack&#x6216;&#x8005;&#x8D85;&#x65F6;&#x60C5;&#x51B5;&#x7684;&#x6D88;&#x606F;&#x5168;&#x90E8;&#x91CD;&#x53D1;&#x600E;&#x4E48;&#x89E3;&#x51B3;</p>
 </blockquote>
-<pre class="language-"><code class="lang-java"># &#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#xFF0C;&#x5C06;&#x53D1;&#x9001;&#x6210;&#x529F;&#x5E76;&#x4E14;&#x786E;&#x8BA4;<span class="token class-name">Ack</span>&#x4E4B;&#x540E;&#x7684;&#x6D88;&#x606F;&#x53BB;&#x9664;&#xFF0C;&#x5269;&#x4E0B;<span class="token class-name">Nack</span>&#x6216;&#x8005;&#x8D85;&#x65F6;&#x7684;&#x6D88;&#x606F;
-<span class="token comment">// take ArrayList or BlockingQueue as a cache</span>
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// set channel publisher confirm mode</span>
-channel<span class="token punctuation">.</span><span class="token function">confirmSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// publish message</span>
-    <span class="token class-name">String</span> message <span class="token operator">=</span> <span class="token string">&quot;publisher message[&quot;</span><span class="token operator">+</span> i <span class="token operator">+</span><span class="token string">&quot;]&quot;</span><span class="token punctuation">;</span>
-    cache<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">&quot;exchange&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;routingkey&quot;</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> message<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>channel<span class="token punctuation">.</span><span class="token function">waitForConfirms</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment">// remove message publisher confirm</span>
-        cache<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// TODO handle Nack message&#xFF1A;republish</span>
-<span class="token punctuation">}</span>
+<pre><code class="lang-java"># &#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#xFF0C;&#x5C06;&#x53D1;&#x9001;&#x6210;&#x529F;&#x5E76;&#x4E14;&#x786E;&#x8BA4;Ack&#x4E4B;&#x540E;&#x7684;&#x6D88;&#x606F;&#x53BB;&#x9664;&#xFF0C;&#x5269;&#x4E0B;Nack&#x6216;&#x8005;&#x8D85;&#x65F6;&#x7684;&#x6D88;&#x606F;
+// take ArrayList or BlockingQueue as a cache
+List&lt;Object&gt; cache = new ArrayList&lt;&gt;();
+// set channel publisher confirm mode
+channel.confirmSelect();
+for (int i=0; i &lt; 20; i++) {
+    // publish message
+    String message = &quot;publisher message[&quot;+ i +&quot;]&quot;;
+    cache.add(message);
+    channel.basicPublish(&quot;exchange&quot;, &quot;routingkey&quot;, null, message.getBytes());
+    if (channel.waitForConfirms()) {
+        // remove message publisher confirm
+        cache.remove(i);
+    }
+    // TODO handle Nack message&#xFF1A;republish
+}
 </code></pre>
 <h3 id="&#x5F02;&#x6B65;&#x6279;&#x91CF;&#x786E;&#x8BA4;">&#x5F02;&#x6B65;&#x6279;&#x91CF;&#x786E;&#x8BA4;</h3>
 <blockquote>
 <p>[!NOTE|lable:&#x8BF4;&#x660E;]
 &#x5F02;&#x6B65;&#x786E;&#x8BA4;&#x65B9;&#x5F0F;&#x901A;&#x8FC7;&#x5728;&#x5BA2;&#x6237;&#x7AEF;addConfirmListener&#x589E;&#x52A0;ConfirmListener&#x56DE;&#x8C03;&#x63A5;&#x53E3;&#xFF0C;&#x5305;&#x62EC;handleAck&#x4E0E;handleNack&#x5904;&#x7406;&#x65B9;&#x6CD5;</p>
 </blockquote>
-<pre class="language-"><code class="lang-java"><span class="token comment">// take  as a cache</span>
-<span class="token class-name">SortedSet</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// set channel publisher confirm mode</span>
-channel<span class="token punctuation">.</span><span class="token function">confirmSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// publish message</span>
-    <span class="token keyword">long</span> nextSeqNo <span class="token operator">=</span> channel<span class="token punctuation">.</span><span class="token function">getNextPublishSeqNo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">String</span> message <span class="token operator">=</span> <span class="token string">&quot;publisher message[&quot;</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">&quot;]&quot;</span><span class="token punctuation">;</span>
-    cache<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">&quot;exchange&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;routingkey&quot;</span><span class="token punctuation">,</span> <span class="token class-name">MessageProperties</span><span class="token punctuation">.</span>PERSISTENT_TEXT_PLAIN<span class="token punctuation">,</span> message<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    cache<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>nextSeqNo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">// add confirmCalback: handleAck, handleNack</span>
-channel<span class="token punctuation">.</span><span class="token function">addConfirmListener</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ConfirmListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleAck</span><span class="token punctuation">(</span><span class="token keyword">long</span> deliveryTag<span class="token punctuation">,</span> <span class="token keyword">boolean</span> multiple<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>multiple<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">// batch remove ack message</span>
-            cache<span class="token punctuation">.</span><span class="token function">headSet</span><span class="token punctuation">(</span>deliveryTag <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token comment">// remove ack message</span>
-            cache<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>deliveryTag<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleNack</span><span class="token punctuation">(</span><span class="token keyword">long</span> deliveryTag<span class="token punctuation">,</span> <span class="token keyword">boolean</span> multiple<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">// TODO handle Nack message&#xFF1A;republish</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre><code class="lang-java"><span class="hljs-comment">// take  as a cache</span>
+SortedSet cache = <span class="hljs-keyword">new</span> TreeSet();
+<span class="hljs-comment">// set channel publisher confirm mode</span>
+channel.confirmSelect();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) {
+    <span class="hljs-comment">// publish message</span>
+    <span class="hljs-keyword">long</span> nextSeqNo = channel.getNextPublishSeqNo();
+    String message = <span class="hljs-string">&quot;publisher message[&quot;</span> + i + <span class="hljs-string">&quot;]&quot;</span>;
+    cache.add(message);
+    channel.basicPublish(<span class="hljs-string">&quot;exchange&quot;</span>, <span class="hljs-string">&quot;routingkey&quot;</span>, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
+    cache.add(nextSeqNo);
+}
+<span class="hljs-comment">// add confirmCalback: handleAck, handleNack</span>
+channel.addConfirmListener(<span class="hljs-keyword">new</span> ConfirmListener() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleAck</span><span class="hljs-params">(<span class="hljs-keyword">long</span> deliveryTag, <span class="hljs-keyword">boolean</span> multiple)</span> </span>{
+        <span class="hljs-keyword">if</span> (multiple) {
+            <span class="hljs-comment">// batch remove ack message</span>
+            cache.headSet(deliveryTag - <span class="hljs-number">1</span>).clear();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// remove ack message</span>
+            cache.remove(deliveryTag);
+        }
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleNack</span><span class="hljs-params">(<span class="hljs-keyword">long</span> deliveryTag, <span class="hljs-keyword">boolean</span> multiple)</span> </span>{
+            <span class="hljs-comment">// TODO handle Nack message&#xFF1A;republish</span>
+    }
+});
 </code></pre>
 <h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
 <ul>
@@ -716,7 +712,7 @@ channel<span class="token punctuation">.</span><span class="token function">addC
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"next":{"title":"RabbitMQ是如何运转的","level":"7.2","depth":1,"path":"消息队列/RabbitMQ是如何运转的.md","ref":"消息队列/RabbitMQ是如何运转的.md","articles":[]},"previous":{"title":"Redis分布式锁的实现","level":"6.1","depth":1,"path":"缓存/Redis分布式锁的实现.md","ref":"缓存/Redis分布式锁的实现.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"消息队列/RabbitMQ消息一致性怎么保证.md","mtime":"2019-07-01T09:33:13.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:35:22.478Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"next":{"title":"RabbitMQ是如何运转的","level":"7.2","depth":1,"path":"消息队列/RabbitMQ是如何运转的.md","ref":"消息队列/RabbitMQ是如何运转的.md","articles":[]},"previous":{"title":"Redis分布式锁的实现","level":"6.1","depth":1,"path":"缓存/Redis分布式锁的实现.md","ref":"缓存/Redis分布式锁的实现.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"消息队列/RabbitMQ消息一致性怎么保证.md","mtime":"2019-07-01T09:33:13.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:54:58.782Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -755,10 +751,6 @@ channel<span class="token punctuation">.</span><span class="token function">addC
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 

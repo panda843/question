@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -50,10 +50,6 @@
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -577,164 +573,164 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="&#x65B9;&#x6848;1">&#x65B9;&#x6848;1</h2>
-<pre class="language-"><code class="lang-php"><span class="token keyword">class</span> <span class="token class-name">Lock</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token variable">$redis</span><span class="token operator">=</span><span class="token single-quoted-string string">&apos;&apos;</span><span class="token punctuation">;</span>  <span class="token shell-comment comment">#&#x5B58;&#x50A8;redis&#x5BF9;&#x8C61;</span>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Lock</span>
+</span>{
+    <span class="hljs-keyword">private</span> $redis=<span class="hljs-string">&apos;&apos;</span>;  <span class="hljs-comment">#&#x5B58;&#x50A8;redis&#x5BF9;&#x8C61;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token variable">$host</span><span class="token punctuation">,</span><span class="token variable">$port</span><span class="token operator">=</span><span class="token number">6379</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Redis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token variable">$host</span><span class="token punctuation">,</span><span class="token variable">$port</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> 
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($host,$port=<span class="hljs-number">6379</span>)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;redis=<span class="hljs-keyword">new</span> Redis();
+        <span class="hljs-keyword">$this</span>-&gt;redis-&gt;connect($host,$port);
+    } 
 
-    <span class="token comment">/**
-    * @desc &#x52A0;&#x9501;&#x65B9;&#x6CD5;
+    <span class="hljs-comment">/**
+    * <span class="hljs-doctag">@desc</span> &#x52A0;&#x9501;&#x65B9;&#x6CD5;
     *
-    * @param $lockName string | &#x9501;&#x7684;&#x540D;&#x5B57;
-    * @param $timeout int | &#x9501;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;
+    * <span class="hljs-doctag">@param</span> $lockName string | &#x9501;&#x7684;&#x540D;&#x5B57;
+    * <span class="hljs-doctag">@param</span> $timeout int | &#x9501;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;
     *
-    * @return &#x6210;&#x529F;&#x8FD4;&#x56DE;identifier/&#x5931;&#x8D25;&#x8FD4;&#x56DE;false
+    * <span class="hljs-doctag">@return</span> &#x6210;&#x529F;&#x8FD4;&#x56DE;identifier/&#x5931;&#x8D25;&#x8FD4;&#x56DE;false
     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getLock</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">,</span> <span class="token variable">$timeout</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token variable">$identifier</span><span class="token operator">=</span><span class="token function">uniqid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token shell-comment comment">#&#x83B7;&#x53D6;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7B26;</span>
-        <span class="token variable">$timeout</span><span class="token operator">=</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token variable">$timeout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token shell-comment comment">#&#x786E;&#x4FDD;&#x662F;&#x6574;&#x6570;</span>
-        <span class="token variable">$end</span><span class="token operator">=</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token variable">$timeout</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token variable">$end</span><span class="token punctuation">)</span>          <span class="token shell-comment comment">#&#x5FAA;&#x73AF;&#x83B7;&#x53D6;&#x9501;</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">setnx</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">,</span> <span class="token variable">$identifier</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token shell-comment comment">#&#x67E5;&#x770B;$lockName&#x662F;&#x5426;&#x88AB;&#x4E0A;&#x9501;</span>
-            <span class="token punctuation">{</span>
-                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">expire</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">,</span> <span class="token variable">$timeout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token shell-comment comment">#&#x4E3A;$lockName&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x9632;&#x6B62;&#x6B7B;&#x9501;</span>
-                <span class="token keyword">return</span> <span class="token variable">$identifier</span><span class="token punctuation">;</span>                             <span class="token shell-comment comment">#&#x8FD4;&#x56DE;&#x4E00;&#x7EF4;&#x6807;&#x8BC6;&#x7B26;</span>
-            <span class="token punctuation">}</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">ttl</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000; &#x3000;
-                <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">expire</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">,</span> <span class="token variable">$timeout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token shell-comment comment">#&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x6709;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x6CA1;&#x6709;&#x5219;&#x52A0;&#x4E0A;&#xFF08;&#x5047;&#x8BBE;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;A&#x4E0A;&#x4E00;&#x6B65;&#x6CA1;&#x80FD;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x5C31;&#x8FDB;&#x7A0B;&#x5954;&#x6E83;&#x4E86;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;B&#x5C31;&#x53EF;&#x68C0;&#x6D4B;&#x51FA;&#x6765;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#xFF09;</span>
-            <span class="token punctuation">}</span>
-            <span class="token function">usleep</span><span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token shell-comment comment">#&#x505C;&#x6B62;0.001ms</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLock</span><span class="hljs-params">($lockName, $timeout=<span class="hljs-number">2</span>)</span>
+    </span>{
+        $identifier=uniqid();       <span class="hljs-comment">#&#x83B7;&#x53D6;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7B26;</span>
+        $timeout=ceil($timeout);    <span class="hljs-comment">#&#x786E;&#x4FDD;&#x662F;&#x6574;&#x6570;</span>
+        $end=time()+$timeout;
+        <span class="hljs-keyword">while</span>(time()&lt;$end)          <span class="hljs-comment">#&#x5FAA;&#x73AF;&#x83B7;&#x53D6;&#x9501;</span>
+        {
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;redis-&gt;setnx($lockName, $identifier))    <span class="hljs-comment">#&#x67E5;&#x770B;$lockName&#x662F;&#x5426;&#x88AB;&#x4E0A;&#x9501;</span>
+            {
+                <span class="hljs-keyword">$this</span>-&gt;redis-&gt;expire($lockName, $timeout);     <span class="hljs-comment">#&#x4E3A;$lockName&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x9632;&#x6B62;&#x6B7B;&#x9501;</span>
+                <span class="hljs-keyword">return</span> $identifier;                             <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x4E00;&#x7EF4;&#x6807;&#x8BC6;&#x7B26;</span>
+            } <span class="hljs-keyword">elseif</span> (<span class="hljs-keyword">$this</span>-&gt;redis-&gt;ttl($lockName)===<span class="hljs-number">-1</span>) {&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000;&#x3000; &#x3000;
+                <span class="hljs-keyword">$this</span>-&gt;redis-&gt;expire($lockName, $timeout);     <span class="hljs-comment">#&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x6709;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x6CA1;&#x6709;&#x5219;&#x52A0;&#x4E0A;&#xFF08;&#x5047;&#x8BBE;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;A&#x4E0A;&#x4E00;&#x6B65;&#x6CA1;&#x80FD;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x5C31;&#x8FDB;&#x7A0B;&#x5954;&#x6E83;&#x4E86;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;B&#x5C31;&#x53EF;&#x68C0;&#x6D4B;&#x51FA;&#x6765;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#xFF09;</span>
+            }
+            usleep(<span class="hljs-number">0.001</span>);         <span class="hljs-comment">#&#x505C;&#x6B62;0.001ms</span>
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    }
 
-    <span class="token comment">/**
-    * @desc &#x91CA;&#x653E;&#x9501;
+    <span class="hljs-comment">/**
+    * <span class="hljs-doctag">@desc</span> &#x91CA;&#x653E;&#x9501;
     *
-    * @param $lockName string   | &#x9501;&#x540D;
-    * @param $identifier string | &#x9501;&#x7684;&#x552F;&#x4E00;&#x503C;
+    * <span class="hljs-doctag">@param</span> $lockName string   | &#x9501;&#x540D;
+    * <span class="hljs-doctag">@param</span> $identifier string | &#x9501;&#x7684;&#x552F;&#x4E00;&#x503C;
     *
-    * @param bool
+    * <span class="hljs-doctag">@param</span> bool
     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">releaseLock</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">,</span><span class="token variable">$identifier</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token variable">$identifier</span><span class="token punctuation">)</span>   <span class="token shell-comment comment">#&#x5224;&#x65AD;&#x662F;&#x9501;&#x6709;&#x6CA1;&#x6709;&#x88AB;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x4FEE;&#x6539;</span>
-        <span class="token punctuation">{</span> 
-            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">multi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">del</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token shell-comment comment">#&#x91CA;&#x653E;&#x9501;</span>
-            <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token boolean constant">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">else</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>   <span class="token shell-comment comment">#&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x4FEE;&#x6539;&#x4E86;&#x9501;&#xFF0C;&#x4E0D;&#x80FD;&#x5220;&#x9664;&#x522B;&#x4EBA;&#x7684;&#x9501;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">releaseLock</span><span class="hljs-params">($lockName,$identifier)</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">$this</span>-&gt;redis-&gt;get($lockName)==$identifier)   <span class="hljs-comment">#&#x5224;&#x65AD;&#x662F;&#x9501;&#x6709;&#x6CA1;&#x6709;&#x88AB;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x4FEE;&#x6539;</span>
+        { 
+            <span class="hljs-keyword">$this</span>-&gt;redis-&gt;multi();
+            <span class="hljs-keyword">$this</span>-&gt;redis-&gt;del($lockName);   <span class="hljs-comment">#&#x91CA;&#x653E;&#x9501;</span>
+            <span class="hljs-keyword">$this</span>-&gt;redis-&gt;exec();
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;   <span class="hljs-comment">#&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x4FEE;&#x6539;&#x4E86;&#x9501;&#xFF0C;&#x4E0D;&#x80FD;&#x5220;&#x9664;&#x522B;&#x4EBA;&#x7684;&#x9501;</span>
+        }
+    }
 
-    <span class="token comment">/**
-    * @desc &#x6D4B;&#x8BD5;
+    <span class="hljs-comment">/**
+    * <span class="hljs-doctag">@desc</span> &#x6D4B;&#x8BD5;
     * 
-    * @param $lockName string | &#x9501;&#x540D;
+    * <span class="hljs-doctag">@param</span> $lockName string | &#x9501;&#x540D;
     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token variable">$start</span><span class="token operator">=</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> 
-        <span class="token punctuation">{</span> 
-            <span class="token variable">$identifier</span><span class="token operator">=</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getLock</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$identifier</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-              <span class="token variable">$count</span><span class="token operator">=</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;count&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-              <span class="token variable">$count</span><span class="token operator">=</span><span class="token variable">$count</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
-              <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token single-quoted-string string">&apos;count&apos;</span><span class="token punctuation">,</span><span class="token variable">$count</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-              <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">releaseLock</span><span class="token punctuation">(</span><span class="token variable">$lockName</span><span class="token punctuation">,</span><span class="token variable">$identifier</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span> 
-        <span class="token punctuation">}</span>
-        <span class="token variable">$end</span><span class="token operator">=</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token double-quoted-string string">&quot;this OK&lt;br/&gt;&quot;</span><span class="token punctuation">;</span>
-        <span class="token keyword">echo</span> <span class="token double-quoted-string string">&quot;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x4E3A;&#xFF1A;&quot;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token variable">$end</span><span class="token operator">-</span><span class="token variable">$start</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">($lockName)</span>
+    </span>{
+        $start=time();
+        <span class="hljs-keyword">for</span> ($i=<span class="hljs-number">0</span>; $i &lt; <span class="hljs-number">10000</span>; $i++) 
+        { 
+            $identifier=<span class="hljs-keyword">$this</span>-&gt;getLock($lockName);
+            <span class="hljs-keyword">if</span>($identifier)
+            {
+              $count=<span class="hljs-keyword">$this</span>-&gt;redis-&gt;get(<span class="hljs-string">&apos;count&apos;</span>);
+              $count=$count+<span class="hljs-number">1</span>;
+              <span class="hljs-keyword">$this</span>-&gt;redis-&gt;set(<span class="hljs-string">&apos;count&apos;</span>,$count);
+              <span class="hljs-keyword">$this</span>-&gt;releaseLock($lockName,$identifier);
+            } 
+        }
+        $end=time();
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;this OK&lt;br/&gt;&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&#x6267;&#x884C;&#x65F6;&#x95F4;&#x4E3A;&#xFF1A;&quot;</span>.($end-$start);
+    }
+}
 </code></pre>
 <h2 id="&#x65B9;&#x6848;2">&#x65B9;&#x6848;2</h2>
-<pre class="language-"><code class="lang-php"><span class="token keyword">class</span> <span class="token class-name">RedisMutexLock</span>
-<span class="token punctuation">{</span>
-    <span class="token comment">/**
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedisMutexLock</span>
+</span>{
+    <span class="hljs-comment">/**
      * &#x7F13;&#x5B58; Redis &#x8FDE;&#x63A5;&#x3002;
      *
-     * @return void
+     * <span class="hljs-doctag">@return</span> void
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getRedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token comment">// &#x8FD9;&#x884C;&#x4EE3;&#x7801;&#x8BF7;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x66FF;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x83B7;&#x53D6; Redis &#x8FDE;&#x63A5;&#x3002;</span>
-        <span class="token keyword">return</span> YCache<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getRedisClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRedis</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// &#x8FD9;&#x884C;&#x4EE3;&#x7801;&#x8BF7;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x66FF;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x83B7;&#x53D6; Redis &#x8FDE;&#x63A5;&#x3002;</span>
+        <span class="hljs-keyword">return</span> YCache::getRedisClient();
+    }
 
-    <span class="token comment">/**
+    <span class="hljs-comment">/**
      * &#x83B7;&#x5F97;&#x9501;,&#x5982;&#x679C;&#x9501;&#x88AB;&#x5360;&#x7528;,&#x963B;&#x585E;,&#x76F4;&#x5230;&#x83B7;&#x5F97;&#x9501;&#x6216;&#x8005;&#x8D85;&#x65F6;&#x3002;
      * -- 1&#x3001;&#x5982;&#x679C; $timeout &#x53C2;&#x6570;&#x4E3A; 0,&#x5219;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x9501;&#x3002;
      * -- 2&#x3001;&#x5EFA;&#x8BAE; timeout &#x8BBE;&#x7F6E;&#x4E3A; 0,&#x907F;&#x514D; redis &#x56E0;&#x4E3A;&#x963B;&#x585E;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;&#x8BF7;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x9700;&#x6C42;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002;
      *
-     * @param  string  $key         &#x7F13;&#x5B58;KEY&#x3002;
-     * @param  int     $timeout     &#x53D6;&#x9501;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;&#x5355;&#x4F4D;(&#x79D2;)&#x3002;&#x7B49;&#x4E8E;0,&#x5982;&#x679C;&#x5F53;&#x524D;&#x9501;&#x88AB;&#x5360;&#x7528;,&#x5219;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x5931;&#x8D25;&#x3002;&#x5982;&#x679C;&#x5927;&#x4E8E;0,&#x5219;&#x53CD;&#x590D;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x9501;&#x76F4;&#x5230;&#x8FBE;&#x5230;&#x8BE5;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;
-     * @param  int     $lockSecond  &#x9501;&#x5B9A;&#x65F6;&#x95F4;&#x3002;&#x5355;&#x4F4D;(&#x79D2;)&#x3002;
-     * @param  int     $sleep       &#x53D6;&#x9501;&#x95F4;&#x9694;&#x65F6;&#x95F4;&#x3002;&#x5355;&#x4F4D;(&#x5FAE;&#x79D2;)&#x3002;&#x5F53;&#x9501;&#x4E3A;&#x5360;&#x7528;&#x72B6;&#x6001;&#x65F6;&#x3002;&#x6BCF;&#x9694;&#x591A;&#x4E45;&#x5C1D;&#x8BD5;&#x53BB;&#x53D6;&#x9501;&#x3002;&#x9ED8;&#x8BA4; 0.1 &#x79D2;&#x4E00;&#x6B21;&#x53D6;&#x9501;&#x3002;
-     * @return bool &#x6210;&#x529F;:true&#x3001;&#x5931;&#x8D25;:false
+     * <span class="hljs-doctag">@param</span>  string  $key         &#x7F13;&#x5B58;KEY&#x3002;
+     * <span class="hljs-doctag">@param</span>  int     $timeout     &#x53D6;&#x9501;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;&#x5355;&#x4F4D;(&#x79D2;)&#x3002;&#x7B49;&#x4E8E;0,&#x5982;&#x679C;&#x5F53;&#x524D;&#x9501;&#x88AB;&#x5360;&#x7528;,&#x5219;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x5931;&#x8D25;&#x3002;&#x5982;&#x679C;&#x5927;&#x4E8E;0,&#x5219;&#x53CD;&#x590D;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x9501;&#x76F4;&#x5230;&#x8FBE;&#x5230;&#x8BE5;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x3002;
+     * <span class="hljs-doctag">@param</span>  int     $lockSecond  &#x9501;&#x5B9A;&#x65F6;&#x95F4;&#x3002;&#x5355;&#x4F4D;(&#x79D2;)&#x3002;
+     * <span class="hljs-doctag">@param</span>  int     $sleep       &#x53D6;&#x9501;&#x95F4;&#x9694;&#x65F6;&#x95F4;&#x3002;&#x5355;&#x4F4D;(&#x5FAE;&#x79D2;)&#x3002;&#x5F53;&#x9501;&#x4E3A;&#x5360;&#x7528;&#x72B6;&#x6001;&#x65F6;&#x3002;&#x6BCF;&#x9694;&#x591A;&#x4E45;&#x5C1D;&#x8BD5;&#x53BB;&#x53D6;&#x9501;&#x3002;&#x9ED8;&#x8BA4; 0.1 &#x79D2;&#x4E00;&#x6B21;&#x53D6;&#x9501;&#x3002;
+     * <span class="hljs-doctag">@return</span> bool &#x6210;&#x529F;:true&#x3001;&#x5931;&#x8D25;:false
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$timeout</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token variable">$lockSecond</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token variable">$sleep</span> <span class="token operator">=</span> <span class="token number">100000</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">// &#x8BF7;&#x66F4;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x629B;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#x3002;</span>
-            YCore<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">exception</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">&apos;&#x7F13;&#x5B58;KEY&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token variable">$start</span> <span class="token operator">=</span> self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getMicroTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$redis</span> <span class="token operator">=</span> self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getRedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">do</span> <span class="token punctuation">{</span>
-            <span class="token comment">// [1] &#x9501;&#x7684; KEY &#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x8BBE;&#x7F6E;&#x5176;&#x503C;&#x5E76;&#x628A;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8BBE;&#x7F6E;&#x4E3A;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x9501;&#x7684;&#x503C;&#x5E76;&#x4E0D;&#x91CD;&#x8981;&#x3002;&#x91CD;&#x8981;&#x7684;&#x662F;&#x5229;&#x7528; Redis &#x7684;&#x7279;&#x6027;&#x3002;</span>
-            <span class="token variable">$acquired</span> <span class="token operator">=</span> <span class="token variable">$redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;Lock:<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$key</span><span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token single-quoted-string string">&apos;NX&apos;</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">&apos;EX&apos;</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$lockSecond</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$acquired</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$timeout</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token function">usleep</span><span class="token punctuation">(</span><span class="token variable">$sleep</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$timeout</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getMicroTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token variable">$start</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token variable">$timeout</span> <span class="token operator">*</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token variable">$acquired</span> <span class="token operator">?</span> <span class="token boolean constant">true</span> <span class="token punctuation">:</span> <span class="token boolean constant">false</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lock</span><span class="hljs-params">($key, $timeout = <span class="hljs-number">0</span>, $lockSecond = <span class="hljs-number">20</span>, $sleep = <span class="hljs-number">100000</span>)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (strlen($key) === <span class="hljs-number">0</span>) {
+            <span class="hljs-comment">// &#x8BF7;&#x66F4;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x629B;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#x3002;</span>
+            YCore::exception(<span class="hljs-number">500</span>, <span class="hljs-string">&apos;&#x7F13;&#x5B58;KEY&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&apos;</span>);
+        }
+        $start = <span class="hljs-keyword">self</span>::getMicroTime();
+        $redis = <span class="hljs-keyword">self</span>::getRedis();
+        <span class="hljs-keyword">do</span> {
+            <span class="hljs-comment">// [1] &#x9501;&#x7684; KEY &#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x8BBE;&#x7F6E;&#x5176;&#x503C;&#x5E76;&#x628A;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8BBE;&#x7F6E;&#x4E3A;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x9501;&#x7684;&#x503C;&#x5E76;&#x4E0D;&#x91CD;&#x8981;&#x3002;&#x91CD;&#x8981;&#x7684;&#x662F;&#x5229;&#x7528; Redis &#x7684;&#x7279;&#x6027;&#x3002;</span>
+            $acquired = $redis-&gt;set(<span class="hljs-string">&quot;Lock:{$key}&quot;</span>, <span class="hljs-number">1</span>, [<span class="hljs-string">&apos;NX&apos;</span>, <span class="hljs-string">&apos;EX&apos;</span> =&gt; $lockSecond]);
+            <span class="hljs-keyword">if</span> ($acquired) {
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">if</span> ($timeout === <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">break</span>;
+            }
+            usleep($sleep);
+        } <span class="hljs-keyword">while</span> (!is_numeric($timeout) || (<span class="hljs-keyword">self</span>::getMicroTime()) &lt; ($start + ($timeout * <span class="hljs-number">1000000</span>)));
+        <span class="hljs-keyword">return</span> $acquired ? <span class="hljs-keyword">true</span> : <span class="hljs-keyword">false</span>;
+    }
 
-    <span class="token comment">/**
+    <span class="hljs-comment">/**
      * &#x91CA;&#x653E;&#x9501;
      *
-     * @param  mixed  $key  &#x88AB;&#x52A0;&#x9501;&#x7684;KEY&#x3002;
-     * @return void
+     * <span class="hljs-doctag">@param</span>  mixed  $key  &#x88AB;&#x52A0;&#x9501;&#x7684;KEY&#x3002;
+     * <span class="hljs-doctag">@return</span> void
      */</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">release</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment">// &#x8BF7;&#x66F4;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x629B;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#x3002;</span>
-            YCore<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">exception</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">&apos;&#x7F13;&#x5B58;KEY&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token variable">$redis</span> <span class="token operator">=</span> self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getRedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token variable">$redis</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">del</span><span class="token punctuation">(</span><span class="token double-quoted-string string">&quot;Lock:<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$key</span><span class="token punctuation">}</span></span>&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">release</span><span class="hljs-params">($key)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (strlen($key) === <span class="hljs-number">0</span>) {
+            <span class="hljs-comment">// &#x8BF7;&#x66F4;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x9879;&#x76EE;&#x629B;&#x5F02;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#x3002;</span>
+            YCore::exception(<span class="hljs-number">500</span>, <span class="hljs-string">&apos;&#x7F13;&#x5B58;KEY&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&apos;</span>);
+        }
+        $redis = <span class="hljs-keyword">self</span>::getRedis();
+        $redis-&gt;del(<span class="hljs-string">&quot;Lock:{$key}&quot;</span>);
+    }
 
-    <span class="token comment">/**
+    <span class="hljs-comment">/**
      * &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5FAE;&#x79D2;&#x3002;
      *
-     * @return bigint
+     * <span class="hljs-doctag">@return</span> bigint
      */</span>
-    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getMicroTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">bcmul</span><span class="token punctuation">(</span><span class="token function">microtime</span><span class="token punctuation">(</span><span class="token boolean constant">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMicroTime</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> bcmul(microtime(<span class="hljs-keyword">true</span>), <span class="hljs-number">1000000</span>);
+    }
+}
 </code></pre>
 
                                 
@@ -779,7 +775,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Redis分布式锁的实现","level":"6.1","depth":1,"next":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"path":"消息队列/RabbitMQ消息一致性怎么保证.md","ref":"消息队列/RabbitMQ消息一致性怎么保证.md","articles":[]},"previous":{"title":"PHP翻转数组","level":"5.6","depth":1,"path":"PHP/PHP翻转数组.md","ref":"PHP/PHP翻转数组.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"缓存/Redis分布式锁的实现.md","mtime":"2019-07-01T08:58:03.554Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:35:22.478Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redis分布式锁的实现","level":"6.1","depth":1,"next":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"path":"消息队列/RabbitMQ消息一致性怎么保证.md","ref":"消息队列/RabbitMQ消息一致性怎么保证.md","articles":[]},"previous":{"title":"PHP翻转数组","level":"5.6","depth":1,"path":"PHP/PHP翻转数组.md","ref":"PHP/PHP翻转数组.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"缓存/Redis分布式锁的实现.md","mtime":"2019-07-01T08:58:03.554Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T09:54:58.782Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -818,10 +814,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 
