@@ -18,10 +18,8 @@
     "plugins": [
         "-lunr", 
         "-search",
-        "-highlight",
+        "highlight",
         "-sharing",
-        "theme-comscore",
-        "prism",
         "code",
         "splitter",
         "search-pro",
