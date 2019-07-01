@@ -1,10 +1,5 @@
 面试问题集合
 
-
-```eval-python
-print [x + 1 for x in range(10)]
-```
-
 >[!NOTE|lable:插件使用列子]
 >这是插件使用例子
 

@@ -15,11 +15,14 @@
 
 ### Linux
 * [Crontab表达式详解](Linux/Crontab表达式详解.md)
+* [Linux文件权限说明](Linux/Linux文件权限说明.md)
 
 ### 其他
 * [TCP的三次握手&四次挥手](其他/TCP的三次握手&四次挥手.md)
 * [POST&GET区别](其他/POST&GET区别.md)
 * [Http状态码](其他/Http状态码.md)
+* [OSI七层&TCP五层](其他/OSI七层&TCP五层.md)
+* [栈和队列的区别](其他/栈和队列的区别.md)
 
 ### PHP
 * [Nginx&PHP通信](PHP/Nginx&PHP通信.md)
@@ -32,10 +35,10 @@
 ### 缓存
 * [Redis分布式锁的实现](缓存/Redis分布式锁的实现.md)
 
-### RabbitMQ
-* [消息一致性怎么保证](RabbitMQ/消息一致性怎么保证.md)
-* [RabbitMQ是如何运转的](RabbitMQ/RabbitMQ是如何运转的.md)
-* [RabbitMQ集群实现方式](RabbitMQ/RabbitMQ集群实现方式.md)
+### 消息队列
+* [RabbitMQ消息一致性怎么保证](消息队列/RabbitMQ消息一致性怎么保证.md)
+* [RabbitMQ是如何运转的](消息队列/RabbitMQ是如何运转的.md)
+* [RabbitMQ集群实现方式](消息队列/RabbitMQ集群实现方式.md)
 
 ### 算法实现
 * [冒泡排序](算法实现/冒泡排序.md)

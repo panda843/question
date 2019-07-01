@@ -1,4 +1,4 @@
-![TCP三次握手参考](https://images2015.cnblogs.com/blog/606573/201703/606573-20170317191401995-713085779.png)
+![TCP三次握手参考](https://haledeng.com/blog/2018/04/25/TCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/tcp_handshakes.png)
 ## 第一次握手(SYN=1, seq=x):
 - 客户端发送一个 TCP 的 SYN 标志位置1的包，指明客户端打算连接的服务器的端口，以及初始序号 X,保存在包头的序列号(Sequence Number)字段里。
 - 发送完毕后，客户端进入 SYN_SEND 状态。
@@ -10,7 +10,7 @@
 - 客户端再次发送确认包(ACK)，SYN 标志位为0，ACK 标志位为1，并且把服务器发来 ACK 的序号字段+1，放在确定字段中发送给对方，并且在数据段放写ISN的+1
 - 发送完毕后，客户端进入 ESTABLISHED 状态，当服务器端接收到这个包时，也进入 ESTABLISHED 状态，TCP 握手结束。
 
-![TCP四次挥手参考](https://images0.cnblogs.com/blog/630634/201409/161500301437417.jpg)
+![TCP四次挥手参考](https://haledeng.com/blog/2018/04/25/TCP%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/tcp_closed.png)
 
 ## 第一次挥手(FIN=1，seq=x)
 - 假设客户端想要关闭连接，客户端发送一个 FIN 标志位置为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。

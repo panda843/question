@@ -21,7 +21,6 @@
         "-highlight",
         "-sharing",
         "theme-comscore",
-        "klipse",
         "prism",
         "code",
         "splitter",
