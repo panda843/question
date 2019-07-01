@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Btree&Hash的区别 · PHP面试题集合</title>
+        <title>Mysql主从同步原理 · PHP面试题集合</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -41,7 +41,19 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -63,10 +75,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Mysql事物隔离级别.html" />
+    <link rel="next" href="../Linux/Crontab表达式详解.html" />
     
     
-    <link rel="prev" href="取第一天登录&第二天没有登录的用户.html" />
+    <link rel="prev" href="mysql锁机制详解.html" />
     
 
     </head>
@@ -111,8 +123,6 @@
                 <a href="../">
             
                     
-                        <b>1.1.</b>
-                    
                     项目简介
             
                 </a>
@@ -133,8 +143,6 @@
                 <a href="索引使用说明&注意事项.html">
             
                     
-                        <b>2.1.</b>
-                    
                     索引使用说明&注意事项
             
                 </a>
@@ -147,8 +155,6 @@
             
                 <a href="InnoDB&MyIsam的区别.html">
             
-                    
-                        <b>2.2.</b>
                     
                     InnoDB&MyIsam的区别
             
@@ -163,8 +169,6 @@
                 <a href="取第一天登录&第二天没有登录的用户.html">
             
                     
-                        <b>2.3.</b>
-                    
                     取第一天登录&第二天没有登录的用户
             
                 </a>
@@ -173,14 +177,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.4" data-path="Btree&Hash的区别.html">
+        <li class="chapter " data-level="2.4" data-path="Mysql的索引类型.html">
             
-                <a href="Btree&Hash的区别.html">
+                <a href="Mysql的索引类型.html">
             
                     
-                        <b>2.4.</b>
-                    
-                    Btree&Hash的区别
+                    Mysql的索引类型
             
                 </a>
             
@@ -188,12 +190,23 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="Mysql事物隔离级别.html">
+        <li class="chapter " data-level="2.5" data-path="Mysql聚集索引&非聚集索引.html">
+            
+                <a href="Mysql聚集索引&非聚集索引.html">
+            
+                    
+                    Mysql聚集索引&非聚集索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="Mysql事物隔离级别.html">
             
                 <a href="Mysql事物隔离级别.html">
             
-                    
-                        <b>2.5.</b>
                     
                     Mysql事物隔离级别
             
@@ -203,14 +216,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="mysql锁机制详解.html">
+        <li class="chapter " data-level="2.7" data-path="mysql锁机制详解.html">
             
                 <a href="mysql锁机制详解.html">
             
                     
-                        <b>2.6.</b>
-                    
                     mysql锁机制详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.8" data-path="Mysql主从同步原理.html">
+            
+                <a href="Mysql主从同步原理.html">
+            
+                    
+                    Mysql主从同步原理
             
                 </a>
             
@@ -229,8 +253,6 @@
             
                 <a href="../Linux/Crontab表达式详解.html">
             
-                    
-                        <b>3.1.</b>
                     
                     Crontab表达式详解
             
@@ -252,8 +274,6 @@
                 <a href="../其他/TCP的三次握手&四次挥手.html">
             
                     
-                        <b>4.1.</b>
-                    
                     TCP的三次握手&四次挥手
             
                 </a>
@@ -267,8 +287,6 @@
                 <a href="../其他/POST&GET区别.html">
             
                     
-                        <b>4.2.</b>
-                    
                     POST&GET区别
             
                 </a>
@@ -281,8 +299,6 @@
             
                 <a href="../其他/Http状态码.html">
             
-                    
-                        <b>4.3.</b>
                     
                     Http状态码
             
@@ -304,8 +320,6 @@
                 <a href="../PHP/Nginx&PHP通信.html">
             
                     
-                        <b>5.1.</b>
-                    
                     Nginx&PHP通信
             
                 </a>
@@ -318,8 +332,6 @@
             
                 <a href="../PHP/守护进程的原理与实现.html">
             
-                    
-                        <b>5.2.</b>
                     
                     守护进程的原理与实现
             
@@ -334,8 +346,6 @@
                 <a href="../PHP/Cookie&Session区别.html">
             
                     
-                        <b>5.3.</b>
-                    
                     Cookie&Session区别
             
                 </a>
@@ -348,8 +358,6 @@
             
                 <a href="../PHP/PHP安全处理机制.html">
             
-                    
-                        <b>5.4.</b>
                     
                     PHP安全处理机制
             
@@ -364,8 +372,6 @@
                 <a href="../PHP/require&include的区别.html">
             
                     
-                        <b>5.5.</b>
-                    
                     require&include的区别
             
                 </a>
@@ -378,8 +384,6 @@
             
                 <a href="../PHP/PHP翻转数组.html">
             
-                    
-                        <b>5.6.</b>
                     
                     PHP翻转数组
             
@@ -401,8 +405,6 @@
                 <a href="../缓存/Redis分布式锁的实现.html">
             
                     
-                        <b>6.1.</b>
-                    
                     Redis分布式锁的实现
             
                 </a>
@@ -423,8 +425,6 @@
                 <a href="../RabbitMQ/消息一致性怎么保证.html">
             
                     
-                        <b>7.1.</b>
-                    
                     消息一致性怎么保证
             
                 </a>
@@ -438,8 +438,6 @@
                 <a href="../RabbitMQ/RabbitMQ是如何运转的.html">
             
                     
-                        <b>7.2.</b>
-                    
                     RabbitMQ是如何运转的
             
                 </a>
@@ -448,14 +446,12 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3" data-path="../RabbitMQ/RabbitMQ主从实现原理.html">
+        <li class="chapter " data-level="7.3" data-path="../RabbitMQ/RabbitMQ集群实现方式.html">
             
-                <a href="../RabbitMQ/RabbitMQ主从实现原理.html">
+                <a href="../RabbitMQ/RabbitMQ集群实现方式.html">
             
                     
-                        <b>7.3.</b>
-                    
-                    RabbitMQ主从实现原理
+                    RabbitMQ集群实现方式
             
                 </a>
             
@@ -475,8 +471,6 @@
                 <a href="../算法实现/冒泡排序.html">
             
                     
-                        <b>8.1.</b>
-                    
                     冒泡排序
             
                 </a>
@@ -489,8 +483,6 @@
             
                 <a href="../算法实现/快速排序.html">
             
-                    
-                        <b>8.2.</b>
                     
                     快速排序
             
@@ -530,7 +522,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Btree&Hash的区别</a>
+        <a href=".." >Mysql主从同步原理</a>
     </h1>
 </div>
 
@@ -545,10 +537,73 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li><a href="https://www.cnblogs.com/xiaoboluo768/p/5164342.html" target="_blank">btree&#x4E0E;hash&#x7D22;&#x5F15;&#x7684;&#x9002;&#x7528;&#x573A;&#x666F;&#x548C;&#x9650;&#x5236;</a></li>
-<li><a href="https://www.yidianphp.com/archives/811" target="_blank">Mysql&#x7D22;&#x5F15;&#x7C7B;&#x578B;Btree&#x548C;Hash&#x7684;&#x533A;&#x522B;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x573A;&#x666F;</a></li>
-<li><a href="https://www.jianshu.com/p/a58559f3fb48" target="_blank">MySQL&#x7D22;&#x5F15;&#x7C7B;&#x578B; btree&#x7D22;&#x5F15;&#x548C;hash&#x7D22;&#x5F15;&#x7684;&#x533A;&#x522B;</a></li>
+                                <h1 id="mysql-&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x539F;&#x7406;">MySQL &#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x539F;&#x7406;</h1>
+<blockquote>
+<p>[!TIP|label:&#x8BF4;&#x660E;]
+MySQL&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x6D89;&#x53CA;&#x5230;&#x4E09;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#xFF08;log dump thread&#xFF09;&#xFF0C;&#x5176;&#x4F59;&#x4E24;&#x4E2A;(I/O thread, SQL thread)&#x8FD0;&#x884C;&#x5728;&#x4ECE;&#x8282;&#x70B9;,&#x5F53;&#x4E3B;&#x8282;&#x70B9;&#x6709;&#x591A;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x65F6;,&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x4E2A;&#x4E3B;&#x4ECE;&#x8FDE;&#x63A5;,&#x4E3B;&#x8282;&#x70B9;&#x4F1A;&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#x5EFA;&#x4E00;&#x4E2A;binary log dump &#x8FDB;&#x7A0B;</p>
+</blockquote>
+<p><img src="https://pic1.zhimg.com/80/v2-1b0c3f31bd398c39b9e0930059b0ca24_hd.jpg" alt="MySQL&#x4E3B;&#x4ECE;&#x590D;&#x5236;"></p>
+<ol>
+<li>&#x4E3B;&#x8282;&#x70B9; binary log dump &#x7EBF;&#x7A0B;
+&#x5F53;&#x4ECE;&#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x4E3B;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x4E3B;&#x8282;&#x70B9;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;log dump &#x7EBF;&#x7A0B;&#xFF0C;&#x7528;&#x4E8E;&#x53D1;&#x9001;bin-log&#x7684;&#x5185;&#x5BB9;&#x3002;&#x5728;&#x8BFB;&#x53D6;bin-log&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6B64;&#x7EBF;&#x7A0B;&#x4F1A;&#x5BF9;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x7684;bin-log&#x52A0;&#x9501;&#xFF0C;&#x5F53;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#xFF0C;&#x751A;&#x81F3;&#x5728;&#x53D1;&#x52A8;&#x7ED9;&#x4ECE;&#x8282;&#x70B9;&#x4E4B;&#x524D;&#xFF0C;&#x9501;&#x4F1A;&#x88AB;&#x91CA;&#x653E;&#x3002;</li>
+<li>&#x4ECE;&#x8282;&#x70B9;I/O&#x7EBF;&#x7A0B;
+&#x5F53;&#x4ECE;&#x8282;&#x70B9;&#x4E0A;&#x6267;&#x884C;<code>start slave</code>&#x547D;&#x4EE4;&#x4E4B;&#x540E;&#xFF0C;&#x4ECE;&#x8282;&#x70B9;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;I/O&#x7EBF;&#x7A0B;&#x7528;&#x6765;&#x8FDE;&#x63A5;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x8BF7;&#x6C42;&#x4E3B;&#x5E93;&#x4E2D;&#x66F4;&#x65B0;&#x7684;bin-log&#x3002;I/O&#x7EBF;&#x7A0B;&#x63A5;&#x6536;&#x5230;&#x4E3B;&#x8282;&#x70B9;binlog dump &#x8FDB;&#x7A0B;&#x53D1;&#x6765;&#x7684;&#x66F4;&#x65B0;&#x4E4B;&#x540E;&#xFF0C;&#x4FDD;&#x5B58;&#x5728;&#x672C;&#x5730;relay-log&#x4E2D;&#x3002;</li>
+<li>&#x4ECE;&#x8282;&#x70B9;SQL&#x7EBF;&#x7A0B;
+SQL&#x7EBF;&#x7A0B;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;relay log&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x89E3;&#x6790;&#x6210;&#x5177;&#x4F53;&#x7684;&#x64CD;&#x4F5C;&#x5E76;&#x6267;&#x884C;&#xFF0C;&#x6700;&#x7EC8;&#x4FDD;&#x8BC1;&#x4E3B;&#x4ECE;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;</li>
+</ol>
+<h2 id="&#x6D41;&#x7A0B;">&#x6D41;&#x7A0B;</h2>
+<p>&#x6570;&#x636E;&#x5E93;&#x6709;&#x4E2A;bin-log&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#xFF0C;&#x8BB0;&#x5F55;&#x4E86;&#x6240;&#x6709;sql&#x8BED;&#x53E5;&#x3002;</p>
+<ol>
+<li>binlog&#x8F93;&#x51FA;&#x7EBF;&#x7A0B;:&#x6BCF;&#x5F53;&#x6709;&#x4ECE;&#x5E93;&#x8FDE;&#x63A5;&#x5230;&#x4E3B;&#x5E93;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E3B;&#x5E93;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x7136;&#x540E;&#x53D1;&#x9001;binlog&#x5185;&#x5BB9;&#x5230;&#x4ECE;&#x5E93;&#x3002;&#x5728;&#x4ECE;&#x5E93;&#x91CC;&#xFF0C;&#x5F53;&#x590D;&#x5236;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4ECE;&#x5E93;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;</li>
+<li>&#x4ECE;&#x5E93;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;I/O&#x7EBF;&#x7A0B;&#xFF0C;&#x8BE5;&#x7EBF;&#x7A0B;&#x8FDE;&#x63A5;&#x5230;&#x4E3B;&#x5E93;&#x5E76;&#x8BF7;&#x6C42;&#x4E3B;&#x5E93;&#x53D1;&#x9001;binlog&#x91CC;&#x9762;&#x7684;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;&#x5230;&#x4ECE;&#x5E93;&#x4E0A;&#x3002;&#x4ECE;&#x5E93;I/O&#x7EBF;&#x7A0B;&#x8BFB;&#x53D6;&#x4E3B;&#x5E93;&#x7684;binlog&#x8F93;&#x51FA;&#x7EBF;&#x7A0B;&#x53D1;&#x9001;&#x7684;&#x66F4;&#x65B0;&#x5E76;&#x62F7;&#x8D1D;&#x8FD9;&#x4E9B;&#x66F4;&#x65B0;&#x5230;&#x672C;&#x5730;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;relay log&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x4ECE;&#x5E93;&#x7684;SQL&#x7EBF;&#x7A0B;:&#x4ECE;&#x5E93;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;SQL&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x8BFB;&#x53D6;&#x4ECE;&#x5E93;I/O&#x7EBF;&#x7A0B;&#x5199;&#x5230;relay log&#x7684;&#x66F4;&#x65B0;&#x4E8B;&#x4EF6;&#x5E76;&#x6267;&#x884C;&#x3002;</li>
+</ol>
+<h2 id="&#x95EE;&#x9898;&#x89E3;&#x51B3;">&#x95EE;&#x9898;&amp;&#x89E3;&#x51B3;</h2>
+<ul>
+<li>&#x4E3B;&#x5E93;&#x5B95;&#x673A;&#x540E;&#xFF0C;&#x6570;&#x636E;&#x4E22;&#x5931;</li>
+</ul>
+<p>&#x534A;&#x540C;&#x6B65;&#x590D;&#x5236;</p>
+<ul>
+<li>&#x4E3B;&#x5E93;&#x5199;&#x538B;&#x529B;&#x5927;&#xFF0C;&#x56E0;&#x4ECE;&#x5E93;&#x53EA;&#x6709;&#x4E00;&#x4E2A;sql &#x7EBF;&#x7A0B;&#x6765;&#x6301;&#x4E45;&#x5316;&#xFF0C;&#x590D;&#x5236;&#x53EF;&#x80FD;&#x5EF6;&#x8FDF;</li>
+</ul>
+<p>&#x5E76;&#x884C;&#x590D;&#x5236;</p>
+<ul>
+<li>&#x590D;&#x5236;&#x51FA;&#x9519;&#x5904;&#x7406; &#x5E38;&#x89C1;&#xFF1A;1062&#xFF08;&#x4E3B;&#x952E;&#x51B2;&#x7A81;&#xFF09;&#xFF0C;1032&#xFF08;&#x8BB0;&#x5F55;&#x4E0D;&#x5B58;&#x5728;&#xFF09;</li>
+</ul>
+<p>&#x624B;&#x52A8;&#x5904;&#x7406; OR &#x8DF3;&#x8FC7;&#x590D;&#x5236;&#x9519;&#x8BEF;&#xFF1A;set global sql_slave_skip_counter=1</p>
+<h3 id="&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x5EF6;&#x8FDF;">&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x5EF6;&#x8FDF;</h3>
+<ol>
+<li>&#x4E3B;&#x8282;&#x70B9;&#x5982;&#x679C;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x5F88;&#x5927;&#x7684;&#x4E8B;&#x52A1;(&#x66F4;&#x65B0;&#x5343;&#x4E07;&#x884C;&#x8BED;&#x53E5;&#xFF0C;&#x603B;&#x4E4B;&#x6267;&#x884C;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#x7684;&#x4E8B;&#x52A1;)&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x5BF9;&#x4E3B;&#x4ECE;&#x5EF6;&#x8FDF;&#x4EA7;&#x751F;&#x8F83;&#x5927;&#x7684;&#x5F71;&#x54CD;</li>
+<li>&#x7F51;&#x7EDC;&#x5EF6;&#x8FDF;&#xFF0C;&#x65E5;&#x5FD7;&#x8F83;&#x5927;&#xFF0C;slave&#x6570;&#x91CF;&#x8FC7;&#x591A;&#x3002;</li>
+<li>&#x4E3B;&#x4E0A;&#x591A;&#x7EBF;&#x7A0B;&#x5199;&#x5165;&#xFF0C;&#x4ECE;&#x8282;&#x70B9;&#x53EA;&#x6709;&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;</li>
+</ol>
+<p>&#x5904;&#x7406;&#x529E;&#x6CD5;&#xFF1A;</p>
+<ol>
+<li>&#x5927;&#x4E8B;&#x52A1;&#xFF1A;&#x5C06;&#x5927;&#x4E8B;&#x52A1;&#x5206;&#x4E3A;&#x5C0F;&#x4E8B;&#x52A1;&#xFF0C;&#x5206;&#x6279;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x51CF;&#x5C11;Slave&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x4E0D;&#x8981;&#x8D85;&#x8FC7;5&#x4E2A;&#xFF0C;&#x51CF;&#x5C11;&#x5355;&#x6B21;&#x4E8B;&#x52A1;&#x7684;&#x5927;&#x5C0F;&#x3002;</li>
+<li>MySQL 5.7&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x7EBF;&#x7A0B;&#x590D;&#x5236;&#xFF0C;&#x4F7F;&#x7528;MGR&#x590D;&#x5236;&#x67B6;&#x6784;</li>
+</ol>
+<h3 id="&#x534A;&#x540C;&#x6B65;&#x590D;&#x5236;">&#x534A;&#x540C;&#x6B65;&#x590D;&#x5236;</h3>
+<p>&#x539F;&#x7406;:&#x4E8B;&#x52A1;&#x5728;&#x4E3B;&#x5E93;&#x5199;&#x5B8C;binlog&#x540E;&#x9700;&#x8981;&#x4ECE;&#x5E93;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5DF2;&#x63A5;&#x53D7;&#xFF0C;&#x624D;&#x653E;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;</p>
+<ul>
+<li>5.5&#x96C6;&#x6210;&#x5230;mysql&#xFF0C;&#x4EE5;&#x63D2;&#x4EF6;&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#xFF0C;&#x9700;&#x8981;&#x5355;&#x72EC;&#x5B89;&#x88C5;</li>
+<li>&#x786E;&#x4FDD;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x540E;binlog&#x81F3;&#x5C11;&#x4F20;&#x8F93;&#x5230;&#x4E00;&#x4E2A;&#x4ECE;&#x5E93;</li>
+<li>&#x4E0D;&#x4FDD;&#x8BC1;&#x4ECE;&#x5E93;&#x5E94;&#x7528;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x4E8B;&#x52A1;&#x7684;binlog</li>
+<li>&#x6027;&#x80FD;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x964D;&#x4F4E;</li>
+<li>&#x7F51;&#x7EDC;&#x5F02;&#x5E38;&#x6216;&#x4ECE;&#x5E93;&#x5B95;&#x673A;&#xFF0C;&#x5361;&#x4E3B;&#x5E93;&#xFF0C;&#x76F4;&#x5230;&#x8D85;&#x65F6;&#x6216;&#x4ECE;&#x5E93;&#x6062;&#x590D;</li>
+</ul>
+<h3 id="&#x5E76;&#x884C;&#x590D;&#x5236;">&#x5E76;&#x884C;&#x590D;&#x5236;</h3>
+<p>&#x539F;&#x7406;&#xFF1A;&#x4ECE;&#x5E93;&#x591A;&#x7EBF;&#x7A0B;apply binlog</p>
+<ul>
+<li>&#x5728;&#x793E;&#x533A;5.6&#x4E2D;&#x65B0;&#x589E;</li>
+<li>&#x5E93;&#x7EA7;&#x522B;&#x5E76;&#x884C;&#x5E94;&#x7528;binlog&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x5E93;&#x6570;&#x636E;&#x66F4;&#x6539;&#x8FD8;&#x662F;&#x4E32;&#x884C;&#x7684;</li>
+<li>5.7&#x7248;&#x672C;&#x5E76;&#x884C;&#x590D;&#x5236;&#x57FA;&#x4E8E;&#x4E8B;&#x52A1;&#x7EC4;</li>
+</ul>
+<h3 id="&#x8054;&#x7EA7;&#x590D;&#x5236;&#xFF08;&#x90E8;&#x5206;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF09;">&#x8054;&#x7EA7;&#x590D;&#x5236;&#xFF08;&#x90E8;&#x5206;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF09;</h3>
+<ul>
+<li>A-&gt;B-&gt;C</li>
+<li>B&#x4E2D;&#x6DFB;&#x52A0;&#x53C2;&#x6570;log_slave_updates</li>
+<li>B&#x5C06;&#x628A;A&#x7684;binlog&#x8BB0;&#x5F55;&#x5230;&#x81EA;&#x5DF1;&#x7684;binlog&#x65E5;&#x5FD7;&#x4E2D;</li>
 </ul>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
@@ -577,12 +632,12 @@
 
             
                 
-                <a href="取第一天登录&第二天没有登录的用户.html" class="navigation navigation-prev " aria-label="Previous page: 取第一天登录&第二天没有登录的用户">
+                <a href="mysql锁机制详解.html" class="navigation navigation-prev " aria-label="Previous page: mysql锁机制详解">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Mysql事物隔离级别.html" class="navigation navigation-next " aria-label="Next page: Mysql事物隔离级别">
+                <a href="../Linux/Crontab表达式详解.html" class="navigation navigation-next " aria-label="Next page: Crontab表达式详解">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -593,7 +648,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Btree&Hash的区别","level":"2.4","depth":1,"next":{"title":"Mysql事物隔离级别","level":"2.5","depth":1,"path":"数据库/Mysql事物隔离级别.md","ref":"数据库/Mysql事物隔离级别.md","articles":[]},"previous":{"title":"取第一天登录&第二天没有登录的用户","level":"2.3","depth":1,"path":"数据库/取第一天登录&第二天没有登录的用户.md","ref":"数据库/取第一天登录&第二天没有登录的用户.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","klipse","prism","code","splitter","search-pro","pageview-count","auto-scroll-table"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"pageview-count":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"数据库/Btree&Hash的区别.md","mtime":"2019-06-29T02:51:58.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-29T11:45:34.144Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mysql主从同步原理","level":"2.8","depth":1,"next":{"title":"Crontab表达式详解","level":"3.1","depth":1,"path":"Linux/Crontab表达式详解.md","ref":"Linux/Crontab表达式详解.md","articles":[]},"previous":{"title":"mysql锁机制详解","level":"2.7","depth":1,"path":"数据库/mysql锁机制详解.md","ref":"数据库/mysql锁机制详解.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","klipse","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"数据库/Mysql主从同步原理.md","mtime":"2019-07-01T07:53:17.657Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T08:08:40.457Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -627,7 +682,15 @@
         
     
         
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 

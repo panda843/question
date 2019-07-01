@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>RabbitMQ主从实现原理 · PHP面试题集合</title>
+        <title>Mysql聚集索引&非聚集索引 · PHP面试题集合</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -41,7 +41,19 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-comscore/test.css">
                 
             
         
@@ -63,10 +75,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../算法实现/冒泡排序.html" />
+    <link rel="next" href="Mysql事物隔离级别.html" />
     
     
-    <link rel="prev" href="RabbitMQ是如何运转的.html" />
+    <link rel="prev" href="Mysql的索引类型.html" />
     
 
     </head>
@@ -111,8 +123,6 @@
                 <a href="../">
             
                     
-                        <b>1.1.</b>
-                    
                     项目简介
             
                 </a>
@@ -128,12 +138,10 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../数据库/索引使用说明&注意事项.html">
+        <li class="chapter " data-level="2.1" data-path="索引使用说明&注意事项.html">
             
-                <a href="../数据库/索引使用说明&注意事项.html">
+                <a href="索引使用说明&注意事项.html">
             
-                    
-                        <b>2.1.</b>
                     
                     索引使用说明&注意事项
             
@@ -143,12 +151,10 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="../数据库/InnoDB&MyIsam的区别.html">
+        <li class="chapter " data-level="2.2" data-path="InnoDB&MyIsam的区别.html">
             
-                <a href="../数据库/InnoDB&MyIsam的区别.html">
+                <a href="InnoDB&MyIsam的区别.html">
             
-                    
-                        <b>2.2.</b>
                     
                     InnoDB&MyIsam的区别
             
@@ -158,12 +164,10 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="../数据库/取第一天登录&第二天没有登录的用户.html">
+        <li class="chapter " data-level="2.3" data-path="取第一天登录&第二天没有登录的用户.html">
             
-                <a href="../数据库/取第一天登录&第二天没有登录的用户.html">
+                <a href="取第一天登录&第二天没有登录的用户.html">
             
-                    
-                        <b>2.3.</b>
                     
                     取第一天登录&第二天没有登录的用户
             
@@ -173,14 +177,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="../数据库/Btree&Hash的区别.html">
+        <li class="chapter " data-level="2.4" data-path="Mysql的索引类型.html">
             
-                <a href="../数据库/Btree&Hash的区别.html">
+                <a href="Mysql的索引类型.html">
             
                     
-                        <b>2.4.</b>
-                    
-                    Btree&Hash的区别
+                    Mysql的索引类型
             
                 </a>
             
@@ -188,12 +190,23 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="../数据库/Mysql事物隔离级别.html">
+        <li class="chapter active" data-level="2.5" data-path="Mysql聚集索引&非聚集索引.html">
             
-                <a href="../数据库/Mysql事物隔离级别.html">
+                <a href="Mysql聚集索引&非聚集索引.html">
             
                     
-                        <b>2.5.</b>
+                    Mysql聚集索引&非聚集索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="Mysql事物隔离级别.html">
+            
+                <a href="Mysql事物隔离级别.html">
+            
                     
                     Mysql事物隔离级别
             
@@ -203,14 +216,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="../数据库/mysql锁机制详解.html">
+        <li class="chapter " data-level="2.7" data-path="mysql锁机制详解.html">
             
-                <a href="../数据库/mysql锁机制详解.html">
+                <a href="mysql锁机制详解.html">
             
-                    
-                        <b>2.6.</b>
                     
                     mysql锁机制详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="Mysql主从同步原理.html">
+            
+                <a href="Mysql主从同步原理.html">
+            
+                    
+                    Mysql主从同步原理
             
                 </a>
             
@@ -229,8 +253,6 @@
             
                 <a href="../Linux/Crontab表达式详解.html">
             
-                    
-                        <b>3.1.</b>
                     
                     Crontab表达式详解
             
@@ -252,8 +274,6 @@
                 <a href="../其他/TCP的三次握手&四次挥手.html">
             
                     
-                        <b>4.1.</b>
-                    
                     TCP的三次握手&四次挥手
             
                 </a>
@@ -267,8 +287,6 @@
                 <a href="../其他/POST&GET区别.html">
             
                     
-                        <b>4.2.</b>
-                    
                     POST&GET区别
             
                 </a>
@@ -281,8 +299,6 @@
             
                 <a href="../其他/Http状态码.html">
             
-                    
-                        <b>4.3.</b>
                     
                     Http状态码
             
@@ -304,8 +320,6 @@
                 <a href="../PHP/Nginx&PHP通信.html">
             
                     
-                        <b>5.1.</b>
-                    
                     Nginx&PHP通信
             
                 </a>
@@ -318,8 +332,6 @@
             
                 <a href="../PHP/守护进程的原理与实现.html">
             
-                    
-                        <b>5.2.</b>
                     
                     守护进程的原理与实现
             
@@ -334,8 +346,6 @@
                 <a href="../PHP/Cookie&Session区别.html">
             
                     
-                        <b>5.3.</b>
-                    
                     Cookie&Session区别
             
                 </a>
@@ -348,8 +358,6 @@
             
                 <a href="../PHP/PHP安全处理机制.html">
             
-                    
-                        <b>5.4.</b>
                     
                     PHP安全处理机制
             
@@ -364,8 +372,6 @@
                 <a href="../PHP/require&include的区别.html">
             
                     
-                        <b>5.5.</b>
-                    
                     require&include的区别
             
                 </a>
@@ -378,8 +384,6 @@
             
                 <a href="../PHP/PHP翻转数组.html">
             
-                    
-                        <b>5.6.</b>
                     
                     PHP翻转数组
             
@@ -401,8 +405,6 @@
                 <a href="../缓存/Redis分布式锁的实现.html">
             
                     
-                        <b>6.1.</b>
-                    
                     Redis分布式锁的实现
             
                 </a>
@@ -418,12 +420,10 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="消息一致性怎么保证.html">
+        <li class="chapter " data-level="7.1" data-path="../RabbitMQ/消息一致性怎么保证.html">
             
-                <a href="消息一致性怎么保证.html">
+                <a href="../RabbitMQ/消息一致性怎么保证.html">
             
-                    
-                        <b>7.1.</b>
                     
                     消息一致性怎么保证
             
@@ -433,12 +433,10 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="RabbitMQ是如何运转的.html">
+        <li class="chapter " data-level="7.2" data-path="../RabbitMQ/RabbitMQ是如何运转的.html">
             
-                <a href="RabbitMQ是如何运转的.html">
+                <a href="../RabbitMQ/RabbitMQ是如何运转的.html">
             
-                    
-                        <b>7.2.</b>
                     
                     RabbitMQ是如何运转的
             
@@ -448,14 +446,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="7.3" data-path="RabbitMQ主从实现原理.html">
+        <li class="chapter " data-level="7.3" data-path="../RabbitMQ/RabbitMQ集群实现方式.html">
             
-                <a href="RabbitMQ主从实现原理.html">
+                <a href="../RabbitMQ/RabbitMQ集群实现方式.html">
             
                     
-                        <b>7.3.</b>
-                    
-                    RabbitMQ主从实现原理
+                    RabbitMQ集群实现方式
             
                 </a>
             
@@ -475,8 +471,6 @@
                 <a href="../算法实现/冒泡排序.html">
             
                     
-                        <b>8.1.</b>
-                    
                     冒泡排序
             
                 </a>
@@ -489,8 +483,6 @@
             
                 <a href="../算法实现/快速排序.html">
             
-                    
-                        <b>8.2.</b>
                     
                     快速排序
             
@@ -530,7 +522,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >RabbitMQ主从实现原理</a>
+        <a href=".." >Mysql聚集索引&非聚集索引</a>
     </h1>
 </div>
 
@@ -545,9 +537,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <ul>
-<li><a href="https://www.cnblogs.com/wangzhongqiu/p/7831854.html" target="_blank">&#x3010;RabbitMQ&#x3011;7&#x3001;RabbitMQ&#x4E3B;&#x5907;&#x590D;&#x5236;&#x662F;&#x5F02;&#x6B65;&#x8FD8;&#x662F;&#x540C;&#x6B65;&#xFF1F;</a></li>
-<li><a href="https://www.jianshu.com/p/5b2879fba25b" target="_blank">RabbitMQ&#x96C6;&#x7FA4;&#x642D;&#x5EFA;-&#x955C;&#x50CF;&#x6A21;&#x5F0F;</a></li>
+                                <h1 id="&#x805A;&#x96C6;&#x7D22;&#x5F15;">&#x805A;&#x96C6;&#x7D22;&#x5F15;</h1>
+<blockquote>
+<p>[!TIP|label:&#x8BF4;&#x660E;]
+&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x8868;&#x8BB0;&#x5F55;&#x7684;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x4E0E;&#x7D22;&#x5F15;&#x7684;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x4E00;&#x81F4;</p>
+</blockquote>
+<h1 id="&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;">&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;</h1>
+<blockquote>
+<p>[!TIP|label:&#x8BF4;&#x660E;]
+&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x6307;&#x5B9A;&#x4E86;&#x8868;&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x903B;&#x8F91;&#x987A;&#x5E8F;&#xFF0C;&#x4F46;&#x8BB0;&#x5F55;&#x7684;&#x7269;&#x7406;&#x987A;&#x5E8F;&#x548C;&#x7D22;&#x5F15;&#x7684;&#x987A;&#x5E8F;&#x4E0D;&#x4E00;&#x81F4;</p>
+</blockquote>
+<h1 id="&#x533A;&#x522B;">&#x533A;&#x522B;</h1>
+<ul>
+<li>&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x4E00;&#x4E2A;&#x8868;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x800C;&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x4E00;&#x4E2A;&#x8868;&#x53EF;&#x4EE5;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x3002;(&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x805A;&#x7C07;&#x7D22;&#x5F15;&#x7684;&#x987A;&#x5E8F;&#x5C31;&#x51B3;&#x5B9A;&#x4E86;&#x6570;&#x636E;&#x7684;&#x987A;&#x5E8F;)</li>
+<li>&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x5B58;&#x50A8;&#x8BB0;&#x5F55;&#x662F;&#x7269;&#x7406;&#x4E0A;&#x8FDE;&#x7EED;&#x5B58;&#x5728;&#xFF0C;&#x800C;&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x662F;&#x903B;&#x8F91;&#x4E0A;&#x7684;&#x8FDE;&#x7EED;&#xFF0C;&#x7269;&#x7406;&#x5B58;&#x50A8;&#x5E76;&#x4E0D;&#x8FDE;&#x7EED;&#x3002;</li>
+<li>&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x901F;&#x5EA6;&#x5FEB;&#xFF0C;&#x63D2;&#x5165;&#x6570;&#x636E;&#x901F;&#x5EA6;&#x6162;(&#x65F6;&#x95F4;&#x82B1;&#x8D39;&#x5728;&#x201C;&#x7269;&#x7406;&#x5B58;&#x50A8;&#x7684;&#x6392;&#x5E8F;&#x201D;&#x4E0A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9996;&#x5148;&#x8981;&#x627E;&#x5230;&#x4F4D;&#x7F6E;&#x7136;&#x540E;&#x63D2;&#x5165;);&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x53CD;&#x4E4B;&#x3002;</li>
+</ul>
+<h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
+<ul>
+<li>&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x8868;&#x8BB0;&#x5F55;&#x7684;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x4E0E;&#x7D22;&#x5F15;&#x7684;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#xFF0C;&#x4F18;&#x70B9;&#x662F;&#x67E5;&#x8BE2;&#x901F;&#x5EA6;&#x5FEB;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x65E6;&#x5177;&#x6709;&#x7B2C;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x503C;&#x7684;&#x7EAA;&#x5F55;&#x88AB;&#x627E;&#x5230;&#xFF0C;&#x5177;&#x6709;&#x8FDE;&#x7EED;&#x7D22;&#x5F15;&#x503C;&#x7684;&#x8BB0;&#x5F55;&#x4E5F;&#x4E00;&#x5B9A;&#x7269;&#x7406;&#x7684;&#x7D27;&#x8DDF;&#x5176;&#x540E;&#x3002;
+&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x7684;&#x7F3A;&#x70B9;&#x662F;&#x5BF9;&#x8868;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x901F;&#x5EA6;&#x8F83;&#x6162;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x6301;&#x8868;&#x4E2D;&#x7684;&#x8BB0;&#x5F55;&#x7684;&#x7269;&#x7406;&#x987A;&#x5E8F;&#x4E0E;&#x7D22;&#x5F15;&#x7684;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#xFF0C;&#x800C;&#x628A;&#x8BB0;&#x5F55;&#x63D2;&#x5165;&#x5230;&#x6570;&#x636E;&#x9875;&#x7684;&#x76F8;&#x5E94;&#x4F4D;&#x7F6E;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x6570;&#x636E;&#x9875;&#x4E2D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x91CD;&#x6392;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x6267;&#x884C;&#x901F;&#x5EA6;&#x3002;&#x63D2;&#x5165;&#x6570;&#x636E;&#x65F6;&#x901F;&#x5EA6;&#x8981;&#x6162;(&#x65F6;&#x95F4;&#x82B1;&#x8D39;&#x5728;&#x201C;&#x7269;&#x7406;&#x5B58;&#x50A8;&#x7684;&#x6392;&#x5E8F;&#x201D;&#x4E0A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9996;&#x5148;&#x8981;&#x627E;&#x5230;&#x4F4D;&#x7F6E;&#x7136;&#x540E;&#x63D2;&#x5165;)&#x3002;</li>
+<li>&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x6307;&#x5B9A;&#x4E86;&#x8868;&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x903B;&#x8F91;&#x987A;&#x5E8F;&#xFF0C;&#x4F46;&#x8BB0;&#x5F55;&#x7684;&#x7269;&#x7406;&#x987A;&#x5E8F;&#x548C;&#x7D22;&#x5F15;&#x7684;&#x987A;&#x5E8F;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x548C;&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x90FD;&#x91C7;&#x7528;&#x4E86;B+&#x6811;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x4F46;&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x7684;&#x53F6;&#x5B50;&#x5C42;&#x5E76;&#x4E0D;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x6570;&#x636E;&#x9875;&#x76F8;&#x91CD;&#x53E0;&#xFF0C;&#x800C;&#x91C7;&#x7528;&#x53F6;&#x5B50;&#x5C42;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8868;&#x4E2D;&#x7684;&#x8BB0;&#x5F55;&#x5728;&#x6570;&#x636E;&#x9875;&#x4E2D;&#x7684;&#x6307;&#x9488;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x975E;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x6BD4;&#x805A;&#x96C6;&#x7D22;&#x5F15;&#x5C42;&#x6B21;&#x591A;&#xFF0C;&#x6DFB;&#x52A0;&#x8BB0;&#x5F55;&#x4E0D;&#x4F1A;&#x5F15;&#x8D77;&#x6570;&#x636E;&#x987A;&#x5E8F;&#x7684;&#x91CD;&#x7EC4;&#x3002;</li>
+<li>&#x7D22;&#x5F15;&#x662F;&#x901A;&#x8FC7;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6765;&#x63CF;&#x8FF0;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x7406;&#x89E3;&#x805A;&#x7C07;&#x7D22;&#x5F15;&#xFF1A;&#x7D22;&#x5F15;&#x7684;&#x53F6;&#x8282;&#x70B9;&#x5C31;&#x662F;&#x6570;&#x636E;&#x8282;&#x70B9;&#x3002;&#x800C;&#x975E;&#x805A;&#x7C07;&#x7D22;&#x5F15;&#x7684;&#x53F6;&#x8282;&#x70B9;&#x4ECD;&#x7136;&#x662F;&#x7D22;&#x5F15;&#x8282;&#x70B9;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x6307;&#x5411;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5757;</li>
 </ul>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
@@ -576,12 +587,12 @@
 
             
                 
-                <a href="RabbitMQ是如何运转的.html" class="navigation navigation-prev " aria-label="Previous page: RabbitMQ是如何运转的">
+                <a href="Mysql的索引类型.html" class="navigation navigation-prev " aria-label="Previous page: Mysql的索引类型">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../算法实现/冒泡排序.html" class="navigation navigation-next " aria-label="Next page: 冒泡排序">
+                <a href="Mysql事物隔离级别.html" class="navigation navigation-next " aria-label="Next page: Mysql事物隔离级别">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -592,7 +603,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RabbitMQ主从实现原理","level":"7.3","depth":1,"next":{"title":"冒泡排序","level":"8.1","depth":1,"path":"算法实现/冒泡排序.md","ref":"算法实现/冒泡排序.md","articles":[]},"previous":{"title":"RabbitMQ是如何运转的","level":"7.2","depth":1,"path":"RabbitMQ/RabbitMQ是如何运转的.md","ref":"RabbitMQ/RabbitMQ是如何运转的.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","klipse","prism","code","splitter","search-pro","pageview-count","auto-scroll-table"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"pageview-count":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"RabbitMQ/RabbitMQ主从实现原理.md","mtime":"2019-06-29T02:51:58.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-29T11:45:34.144Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Mysql聚集索引&非聚集索引","level":"2.5","depth":1,"next":{"title":"Mysql事物隔离级别","level":"2.6","depth":1,"path":"数据库/Mysql事物隔离级别.md","ref":"数据库/Mysql事物隔离级别.md","articles":[]},"previous":{"title":"Mysql的索引类型","level":"2.4","depth":1,"path":"数据库/Mysql的索引类型.md","ref":"数据库/Mysql的索引类型.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-highlight","-sharing","theme-comscore","klipse","prism","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"prism":{},"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"数据库/Mysql聚集索引&非聚集索引.md","mtime":"2019-07-01T07:05:01.311Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-01T08:08:40.457Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -626,7 +637,15 @@
         
     
         
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
         
     
 
