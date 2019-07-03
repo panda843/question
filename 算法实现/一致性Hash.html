@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Linux文件权限说明 · PHP面试题集合</title>
+        <title>一致性Hash · PHP面试题集合</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,10 +71,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../其他/TCP的三次握手&四次挥手.html" />
     
-    
-    <link rel="prev" href="Crontab表达式详解.html" />
+    <link rel="prev" href="快速排序.html" />
     
 
     </head>
@@ -297,9 +295,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="Crontab表达式详解.html">
+        <li class="chapter " data-level="3.1" data-path="../Linux/Crontab表达式详解.html">
             
-                <a href="Crontab表达式详解.html">
+                <a href="../Linux/Crontab表达式详解.html">
             
                     
                     Crontab表达式详解
@@ -310,9 +308,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="Linux文件权限说明.html">
+        <li class="chapter " data-level="3.2" data-path="../Linux/Linux文件权限说明.html">
             
-                <a href="Linux文件权限说明.html">
+                <a href="../Linux/Linux文件权限说明.html">
             
                     
                     Linux文件权限说明
@@ -592,9 +590,9 @@
         
         
     
-        <li class="chapter " data-level="8.1" data-path="../算法实现/常见算法时间复杂度.html">
+        <li class="chapter " data-level="8.1" data-path="常见算法时间复杂度.html">
             
-                <a href="../算法实现/常见算法时间复杂度.html">
+                <a href="常见算法时间复杂度.html">
             
                     
                     常见算法时间复杂度
@@ -605,9 +603,9 @@
             
         </li>
     
-        <li class="chapter " data-level="8.2" data-path="../算法实现/冒泡排序.html">
+        <li class="chapter " data-level="8.2" data-path="冒泡排序.html">
             
-                <a href="../算法实现/冒泡排序.html">
+                <a href="冒泡排序.html">
             
                     
                     冒泡排序
@@ -618,9 +616,9 @@
             
         </li>
     
-        <li class="chapter " data-level="8.3" data-path="../算法实现/快速排序.html">
+        <li class="chapter " data-level="8.3" data-path="快速排序.html">
             
-                <a href="../算法实现/快速排序.html">
+                <a href="快速排序.html">
             
                     
                     快速排序
@@ -631,9 +629,9 @@
             
         </li>
     
-        <li class="chapter " data-level="8.4" data-path="../算法实现/一致性Hash.html">
+        <li class="chapter active" data-level="8.4" data-path="一致性Hash.html">
             
-                <a href="../算法实现/一致性Hash.html">
+                <a href="一致性Hash.html">
             
                     
                     一致性Hash
@@ -674,7 +672,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Linux文件权限说明</a>
+        <a href=".." >一致性Hash</a>
     </h1>
 </div>
 
@@ -689,50 +687,117 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4F8B;&#x5B50;">&#x4F8B;&#x5B50;</h1>
-<p><img src="https://upload-images.jianshu.io/upload_images/3369258-e1798cc0cb109185.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="&#x5B9E;&#x4F8B;&#x56FE;"></p>
-<h1 id="&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;">&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;</h1>
-<p><img src="https://upload-images.jianshu.io/upload_images/3369258-c196788e7b51224d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/468/format/webp" alt="&#x6743;&#x9650;&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;"></p>
-<h1 id="&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;">&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;</h1>
+                                <p>&#x5728;&#x4F7F;&#x7528;&#x5206;&#x5E03;&#x5F0F;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#x65F6;&#xFF0C;&#x7ECF;&#x5E38;&#x4F1A;&#x78B0;&#x5230;&#x9700;&#x8981;&#x65B0;&#x589E;&#x8282;&#x70B9;&#x6765;&#x6EE1;&#x8DB3;&#x4E1A;&#x52A1;&#x5FEB;&#x901F;&#x589E;&#x957F;&#x7684;&#x9700;&#x6C42;&#x3002;&#x7136;&#x800C;&#x5728;&#x65B0;&#x589E;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5904;&#x7406;&#x4E0D;&#x5584;&#x4F1A;&#x5BFC;&#x81F4;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x91CD;&#x65B0;&#x5206;&#x7247;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x67D0;&#x4E9B;&#x7CFB;&#x7EDF;&#x6765;&#x8BF4;&#x53EF;&#x80FD;&#x662F;&#x707E;&#x96BE;&#x6027;&#x7684;&#x3002;
+&#x90A3;&#x4E48;&#x662F;&#x5426;&#x6709;&#x53EF;&#x884C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x6570;&#x636E;&#x91CD;&#x5206;&#x7247;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8FC1;&#x79FB;&#x4E0E;&#x4E4B;&#x5173;&#x8054;&#x7684;&#x8282;&#x70B9;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x8FC1;&#x79FB;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5462;&#xFF1F;&#x5F53;&#x7136;&#x6709;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x81F4;&#x6027;Hash&#x6765;&#x5904;&#x7406;&#x3002;
+<img src="https://images2015.cnblogs.com/blog/819496/201512/819496-20151219095510427-1103075290.jpg" alt="&#x539F;&#x7406;&#x56FE;"></p>
+<h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
 <ul>
-<li>- &#x4EE3;&#x8868;&#x6587;&#x4EF6;</li>
-<li>d &#x4EE3;&#x8868;&#x76EE;&#x5F55;</li>
-<li>l &#x4EE3;&#x8868;&#x94FE;&#x63A5;</li>
-<li>c &#x4EE3;&#x8868;&#x5B57;&#x7B26;&#x578B;&#x8BBE;&#x5907;</li>
-<li>b &#x4EE3;&#x8868;&#x5757;&#x8BBE;&#x5907;</li>
-<li>n &#x4EE3;&#x8868;&#x7F51;&#x7EDC;&#x8BBE;&#x5907;</li>
+<li>&#x7528;&#x4E00;&#x5B9A;&#x7684;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#xFF08;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x7B49;&#xFF09;&#x5C06;&#x4E00;&#x7EC4;&#x670D;&#x52A1;&#x5668;&#x7684;&#x591A;&#x4E2A;&#xFF08;&#x6570;&#x76EE;&#x81EA;&#x5DF1;&#x8BBE;&#x5B9A;&#xFF09;&#x8282;&#x70B9;&#x968F;&#x673A;&#x6620;&#x5C04;&#x5206;&#x6563;&#x5230;0-2&#x7684;32&#x6B21;&#x65B9;&#x4E4B;&#x95F4;&#xFF0C;&#x7531;&#x4E8E;&#x5176;&#x968F;&#x673A;&#x5206;&#x5E03;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x5176;&#x6570;&#x636E;&#x5E73;&#x5747;&#x5206;&#x5E03;&#x7684;&#x7279;&#x70B9;&#xFF1B;</li>
+<li>&#x7528;&#x540C;&#x4E00;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;&#x8981;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x952E;&#xFF0C;&#x6839;&#x636E;&#x670D;&#x52A1;&#x5668;&#x8282;&#x70B9;&#x786E;&#x5B9A;&#x5176;&#x5B58;&#x50A8;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7ED3;&#x70B9;&#xFF0C;&#x7531;&#x4E8E;&#x6BCF;&#x6B21;&#x7528;&#x540C;&#x4E00;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;&#xFF0C;&#x6240;&#x4EE5;&#x5F97;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x4F7F;&#x5176;&#x67E5;&#x627E;&#x5B9A;&#x4F4D;&#x51C6;&#x786E;&#xFF1B;</li>
+<li>&#x67E5;&#x627E;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x518D;&#x6B21;&#x7528;&#x540C;&#x4E00;&#x7B97;&#x6CD5;&#x8BA1;&#x7B97;&#x952E;&#xFF0C;&#x5E76;&#x67E5;&#x627E;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x70B9;&#xFF1B;</li>
+<li>&#x4ECE;&#x6570;&#x636E;&#x6620;&#x5C04;&#x5230;&#x7684;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x987A;&#x65F6;&#x9488;&#x67E5;&#x627E;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x5230;&#x627E;&#x5230;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;&#x5982;&#x679C;&#x8D85;&#x8FC7;2&#x7684;32&#x6B21;&#x65B9;&#x4ECD;&#x7136;&#x627E;&#x4E0D;&#x5230;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5C31;&#x4F1A;&#x4FDD;&#x5B58;&#x5230;&#x7B2C;&#x4E00;&#x53F0;memcached&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#xFF0C;&#x6D88;&#x9664;&#x5176;&#x670D;&#x52A1;&#x5668;&#x7ED3;&#x70B9;&#xFF0C;&#x5E76;&#x5C06;&#x6570;&#x636E;&#x653E;&#x5728;&#x4E0B;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x4E0A;&#xFF0C;&#x7531;&#x4E8E;&#x968F;&#x673A;&#x8282;&#x70B9;&#x4F4D;&#x7F6E;&#x7684;&#x968F;&#x673A;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x6570;&#x636E;&#x88AB;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x5668;&#x5E73;&#x5747;&#x8D1F;&#x8F7D;&#xFF0C;&#x4E5F;&#x5C31;&#x964D;&#x4F4E;&#x4E86;&#x5B95;&#x673A;&#x5F71;&#x54CD;&#x3002;</li>
 </ul>
-<h1 id="&#x6743;&#x9650;&#x503C;&#x8BF4;&#x660E;">&#x6743;&#x9650;&#x503C;&#x8BF4;&#x660E;</h1>
-<table>
-<thead>
-<tr>
-<th>&#x6743;&#x9650;</th>
-<th>&#x6743;&#x9650;&#x6570;&#x503C;</th>
-<th>&#x4E8C;&#x8FDB;&#x5236;</th>
-<th>&#x5177;&#x4F53;&#x4F5C;&#x7528;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td>4</td>
-<td>00000100</td>
-<td>read&#xFF0C;&#x8BFB;&#x53D6;&#x3002;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6D4F;&#x89C8;&#x76EE;&#x5F55;&#x3002;</td>
-</tr>
-<tr>
-<td>w</td>
-<td>2</td>
-<td>00000010</td>
-<td>write&#xFF0C;&#x5199;&#x5165;&#x3002;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x65B0;&#x589E;&#x6216;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x3001;&#x79FB;&#x52A8;&#x76EE;&#x5F55;&#x6216;&#x76EE;&#x5F55;&#x5185;&#x6587;&#x4EF6;&#x3002;</td>
-</tr>
-<tr>
-<td>x</td>
-<td>1</td>
-<td>00000001</td>
-<td>execute&#xFF0C;&#x6267;&#x884C;&#x3002;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x76EE;&#x5F55;&#x3002;</td>
-</tr>
-</tbody>
-</table>
+<h1 id="php&#x5B9E;&#x73B0;">PHP&#x5B9E;&#x73B0;</h1>
+<pre><code class="lang-php"><span class="hljs-comment">// &#x4E00;&#x81F4;&#x6027;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConsistentHashing</span>
+</span>{
+    <span class="hljs-keyword">protected</span> $nodes = <span class="hljs-keyword">array</span>();    <span class="hljs-comment">//&#x771F;&#x5B9E;&#x8282;&#x70B9;</span>
+    <span class="hljs-keyword">protected</span> $position = <span class="hljs-keyword">array</span>();  <span class="hljs-comment">//&#x865A;&#x62DF;&#x8282;&#x70B9;</span>
+    <span class="hljs-keyword">protected</span> $mul = <span class="hljs-number">64</span>;  <span class="hljs-comment">// &#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x5BF9;&#x5E94;64&#x4E2A;&#x865A;&#x62DF;&#x8282;&#x70B9;</span>
+
+    <span class="hljs-comment">/**
+     * &#x628A;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x4E3A;32&#x4F4D;&#x7B26;&#x53F7;&#x6574;&#x6570;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hash</span><span class="hljs-params">($str)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> sprintf(<span class="hljs-string">&apos;%u&apos;</span>, crc32($str));
+    }
+
+    <span class="hljs-comment">/**
+     * &#x6838;&#x5FC3;&#x529F;&#x80FD;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lookup</span><span class="hljs-params">($key)</span>
+    </span>{
+        $point = <span class="hljs-keyword">$this</span>-&gt;hash($key);
+
+        <span class="hljs-comment">//&#x5148;&#x53D6;&#x5706;&#x73AF;&#x4E0A;&#x6700;&#x5C0F;&#x7684;&#x4E00;&#x4E2A;&#x8282;&#x70B9;,&#x5F53;&#x6210;&#x7ED3;&#x679C;</span>
+        $node = current(<span class="hljs-keyword">$this</span>-&gt;position);
+
+        <span class="hljs-comment">// &#x5FAA;&#x73AF;&#x83B7;&#x53D6;&#x76F8;&#x8FD1;&#x7684;&#x8282;&#x70B9;</span>
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;position <span class="hljs-keyword">as</span> $key =&gt; $val) {
+            <span class="hljs-keyword">if</span> ($point &lt;= $key) {
+                $node = $val;
+                <span class="hljs-keyword">break</span>;
+            }
+        }
+
+        reset(<span class="hljs-keyword">$this</span>-&gt;position);    <span class="hljs-comment">//&#x628A;&#x6570;&#x7EC4;&#x7684;&#x5185;&#x90E8;&#x6307;&#x9488;&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4FBF;&#x4E8E;&#x4E0B;&#x6B21;&#x67E5;&#x8BE2;&#x4ECE;&#x5934;&#x67E5;&#x627E;</span>
+
+        <span class="hljs-keyword">return</span> $node;
+    }
+
+    <span class="hljs-comment">/**
+     * &#x6DFB;&#x52A0;&#x8282;&#x70B9;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addNode</span><span class="hljs-params">($node)</span>
+    </span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;nodes[$node])) <span class="hljs-keyword">return</span>;
+
+        <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x8282;&#x70B9;&#x548C;&#x865A;&#x62DF;&#x8282;&#x70B9;</span>
+        <span class="hljs-keyword">for</span> ($i = <span class="hljs-number">0</span>; $i &lt; <span class="hljs-keyword">$this</span>-&gt;mul; $i++) {
+            $pos = <span class="hljs-keyword">$this</span>-&gt;hash($node . <span class="hljs-string">&apos;-&apos;</span> . $i);
+            <span class="hljs-keyword">$this</span>-&gt;position[$pos] = $node;
+            <span class="hljs-keyword">$this</span>-&gt;nodes[$node][] = $pos;
+        }
+
+        <span class="hljs-comment">// &#x91CD;&#x65B0;&#x6392;&#x5E8F;</span>
+        <span class="hljs-keyword">$this</span>-&gt;sortPos();
+    }
+
+    <span class="hljs-comment">/**
+     * &#x5220;&#x9664;&#x8282;&#x70B9;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delNode</span><span class="hljs-params">($node)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>(<span class="hljs-keyword">$this</span>-&gt;nodes[$node])) <span class="hljs-keyword">return</span>;
+
+        <span class="hljs-comment">// &#x5FAA;&#x73AF;&#x5220;&#x9664;&#x865A;&#x62DF;&#x8282;&#x70B9;</span>
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">$this</span>-&gt;nodes[$node] <span class="hljs-keyword">as</span> $val) {
+            <span class="hljs-keyword">unset</span>(<span class="hljs-keyword">$this</span>-&gt;position[$val]);
+        }
+
+        <span class="hljs-comment">// &#x5220;&#x9664;&#x8282;&#x70B9;</span>
+        <span class="hljs-keyword">unset</span>(<span class="hljs-keyword">$this</span>-&gt;nodes[$node]);
+    }
+
+    <span class="hljs-comment">/**
+     * &#x6392;&#x5E8F;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sortPos</span><span class="hljs-params">()</span>
+    </span>{
+        ksort(<span class="hljs-keyword">$this</span>-&gt;position, SORT_REGULAR);
+    }
+}
+
+<span class="hljs-comment">// &#x6D4B;&#x8BD5;</span>
+$con = <span class="hljs-keyword">new</span> ConsistentHashing();
+
+$con-&gt;addNode(<span class="hljs-string">&apos;a&apos;</span>);
+$con-&gt;addNode(<span class="hljs-string">&apos;b&apos;</span>);
+$con-&gt;addNode(<span class="hljs-string">&apos;c&apos;</span>);
+$con-&gt;addNode(<span class="hljs-string">&apos;d&apos;</span>);
+
+$key1 = <span class="hljs-string">&apos;www.zhihu.com&apos;</span>;
+$key2 = <span class="hljs-string">&apos;www.baidu.com&apos;</span>;
+$key3 = <span class="hljs-string">&apos;www.google.com&apos;</span>;
+$key4 = <span class="hljs-string">&apos;www.testabc.com&apos;</span>;
+
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;key&apos;</span> . $key1 . <span class="hljs-string">&apos;&#x843D;&#x5728;&apos;</span> . $con-&gt;lookup($key1) . <span class="hljs-string">&apos;&#x53F7;&#x8282;&#x70B9;&#x4E0A;&#xFF01;&lt;br&gt;&apos;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;key&apos;</span> . $key2 . <span class="hljs-string">&apos;&#x843D;&#x5728;&apos;</span> . $con-&gt;lookup($key2) . <span class="hljs-string">&apos;&#x53F7;&#x8282;&#x70B9;&#x4E0A;&#xFF01;&lt;br&gt;&apos;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;key&apos;</span> . $key3 . <span class="hljs-string">&apos;&#x843D;&#x5728;&apos;</span> . $con-&gt;lookup($key3) . <span class="hljs-string">&apos;&#x53F7;&#x8282;&#x70B9;&#x4E0A;&#xFF01;&lt;br&gt;&apos;</span>;
+<span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;key&apos;</span> . $key4 . <span class="hljs-string">&apos;&#x843D;&#x5728;&apos;</span> . $con-&gt;lookup($key4) . <span class="hljs-string">&apos;&#x53F7;&#x8282;&#x70B9;&#x4E0A;&#xFF01;&lt;br&gt;&apos;</span>;
+</code></pre>
 
                                 
                                 </section>
@@ -760,14 +825,10 @@
 
             
                 
-                <a href="Crontab表达式详解.html" class="navigation navigation-prev " aria-label="Previous page: Crontab表达式详解">
+                <a href="快速排序.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 快速排序">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="../其他/TCP的三次握手&四次挥手.html" class="navigation navigation-next " aria-label="Next page: TCP的三次握手&四次挥手">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -776,7 +837,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux文件权限说明","level":"3.2","depth":1,"next":{"title":"TCP的三次握手&四次挥手","level":"4.1","depth":1,"path":"其他/TCP的三次握手&四次挥手.md","ref":"其他/TCP的三次握手&四次挥手.md","articles":[]},"previous":{"title":"Crontab表达式详解","level":"3.1","depth":1,"path":"Linux/Crontab表达式详解.md","ref":"Linux/Crontab表达式详解.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"Linux/Linux文件权限说明.md","mtime":"2019-07-01T09:23:09.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T10:30:03.143Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"一致性Hash","level":"8.4","depth":1,"previous":{"title":"快速排序","level":"8.3","depth":1,"path":"算法实现/快速排序.md","ref":"算法实现/快速排序.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"算法实现/一致性Hash.md","mtime":"2019-07-03T09:53:19.334Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T10:30:03.143Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

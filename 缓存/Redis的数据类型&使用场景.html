@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Linux文件权限说明 · PHP面试题集合</title>
+        <title>Redis的数据类型&使用场景 · PHP面试题集合</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,10 +71,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../其他/TCP的三次握手&四次挥手.html" />
+    <link rel="next" href="../消息队列/RabbitMQ消息一致性怎么保证.html" />
     
     
-    <link rel="prev" href="Crontab表达式详解.html" />
+    <link rel="prev" href="发送短信的缓存设计方案.html" />
     
 
     </head>
@@ -297,9 +297,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="Crontab表达式详解.html">
+        <li class="chapter " data-level="3.1" data-path="../Linux/Crontab表达式详解.html">
             
-                <a href="Crontab表达式详解.html">
+                <a href="../Linux/Crontab表达式详解.html">
             
                     
                     Crontab表达式详解
@@ -310,9 +310,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.2" data-path="Linux文件权限说明.html">
+        <li class="chapter " data-level="3.2" data-path="../Linux/Linux文件权限说明.html">
             
-                <a href="Linux文件权限说明.html">
+                <a href="../Linux/Linux文件权限说明.html">
             
                     
                     Linux文件权限说明
@@ -500,9 +500,9 @@
         
         
     
-        <li class="chapter " data-level="6.1" data-path="../缓存/Redis分布式锁的实现.html">
+        <li class="chapter " data-level="6.1" data-path="Redis分布式锁的实现.html">
             
-                <a href="../缓存/Redis分布式锁的实现.html">
+                <a href="Redis分布式锁的实现.html">
             
                     
                     Redis分布式锁的实现
@@ -513,9 +513,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2" data-path="../缓存/发送短信的缓存设计方案.html">
+        <li class="chapter " data-level="6.2" data-path="发送短信的缓存设计方案.html">
             
-                <a href="../缓存/发送短信的缓存设计方案.html">
+                <a href="发送短信的缓存设计方案.html">
             
                     
                     发送短信的缓存设计方案
@@ -526,9 +526,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.3" data-path="../缓存/Redis的数据类型&使用场景.html">
+        <li class="chapter active" data-level="6.3" data-path="Redis的数据类型&使用场景.html">
             
-                <a href="../缓存/Redis的数据类型&使用场景.html">
+                <a href="Redis的数据类型&使用场景.html">
             
                     
                     Redis的数据类型&使用场景
@@ -674,7 +674,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Linux文件权限说明</a>
+        <a href=".." >Redis的数据类型&使用场景</a>
     </h1>
 </div>
 
@@ -689,50 +689,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4F8B;&#x5B50;">&#x4F8B;&#x5B50;</h1>
-<p><img src="https://upload-images.jianshu.io/upload_images/3369258-e1798cc0cb109185.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="&#x5B9E;&#x4F8B;&#x56FE;"></p>
-<h1 id="&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;">&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;</h1>
-<p><img src="https://upload-images.jianshu.io/upload_images/3369258-c196788e7b51224d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/468/format/webp" alt="&#x6743;&#x9650;&#x4F4D;&#x7F6E;&#x8BF4;&#x660E;"></p>
-<h1 id="&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;">&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;</h1>
-<ul>
-<li>- &#x4EE3;&#x8868;&#x6587;&#x4EF6;</li>
-<li>d &#x4EE3;&#x8868;&#x76EE;&#x5F55;</li>
-<li>l &#x4EE3;&#x8868;&#x94FE;&#x63A5;</li>
-<li>c &#x4EE3;&#x8868;&#x5B57;&#x7B26;&#x578B;&#x8BBE;&#x5907;</li>
-<li>b &#x4EE3;&#x8868;&#x5757;&#x8BBE;&#x5907;</li>
-<li>n &#x4EE3;&#x8868;&#x7F51;&#x7EDC;&#x8BBE;&#x5907;</li>
-</ul>
-<h1 id="&#x6743;&#x9650;&#x503C;&#x8BF4;&#x660E;">&#x6743;&#x9650;&#x503C;&#x8BF4;&#x660E;</h1>
-<table>
-<thead>
-<tr>
-<th>&#x6743;&#x9650;</th>
-<th>&#x6743;&#x9650;&#x6570;&#x503C;</th>
-<th>&#x4E8C;&#x8FDB;&#x5236;</th>
-<th>&#x5177;&#x4F53;&#x4F5C;&#x7528;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td>4</td>
-<td>00000100</td>
-<td>read&#xFF0C;&#x8BFB;&#x53D6;&#x3002;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6D4F;&#x89C8;&#x76EE;&#x5F55;&#x3002;</td>
-</tr>
-<tr>
-<td>w</td>
-<td>2</td>
-<td>00000010</td>
-<td>write&#xFF0C;&#x5199;&#x5165;&#x3002;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x65B0;&#x589E;&#x6216;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x3001;&#x79FB;&#x52A8;&#x76EE;&#x5F55;&#x6216;&#x76EE;&#x5F55;&#x5185;&#x6587;&#x4EF6;&#x3002;</td>
-</tr>
-<tr>
-<td>x</td>
-<td>1</td>
-<td>00000001</td>
-<td>execute&#xFF0C;&#x6267;&#x884C;&#x3002;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x76EE;&#x5F55;&#x3002;</td>
-</tr>
-</tbody>
-</table>
+                                <p>//&#x5E26;&#x6DFB;&#x52A0;</p>
 
                                 
                                 </section>
@@ -760,12 +717,12 @@
 
             
                 
-                <a href="Crontab表达式详解.html" class="navigation navigation-prev " aria-label="Previous page: Crontab表达式详解">
+                <a href="发送短信的缓存设计方案.html" class="navigation navigation-prev " aria-label="Previous page: 发送短信的缓存设计方案">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../其他/TCP的三次握手&四次挥手.html" class="navigation navigation-next " aria-label="Next page: TCP的三次握手&四次挥手">
+                <a href="../消息队列/RabbitMQ消息一致性怎么保证.html" class="navigation navigation-next " aria-label="Next page: RabbitMQ消息一致性怎么保证">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -776,7 +733,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linux文件权限说明","level":"3.2","depth":1,"next":{"title":"TCP的三次握手&四次挥手","level":"4.1","depth":1,"path":"其他/TCP的三次握手&四次挥手.md","ref":"其他/TCP的三次握手&四次挥手.md","articles":[]},"previous":{"title":"Crontab表达式详解","level":"3.1","depth":1,"path":"Linux/Crontab表达式详解.md","ref":"Linux/Crontab表达式详解.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"Linux/Linux文件权限说明.md","mtime":"2019-07-01T09:23:09.982Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T10:30:03.143Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redis的数据类型&使用场景","level":"6.3","depth":1,"next":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"path":"消息队列/RabbitMQ消息一致性怎么保证.md","ref":"消息队列/RabbitMQ消息一致性怎么保证.md","articles":[]},"previous":{"title":"发送短信的缓存设计方案","level":"6.2","depth":1,"path":"缓存/发送短信的缓存设计方案.md","ref":"缓存/发送短信的缓存设计方案.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"缓存/Redis的数据类型&使用场景.md","mtime":"2019-07-03T10:29:51.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T10:30:03.143Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

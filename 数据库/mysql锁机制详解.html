@@ -526,6 +526,19 @@
             
         </li>
     
+        <li class="chapter " data-level="6.3" data-path="../缓存/Redis的数据类型&使用场景.html">
+            
+                <a href="../缓存/Redis的数据类型&使用场景.html">
+            
+                    
+                    Redis的数据类型&使用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -579,7 +592,20 @@
         
         
     
-        <li class="chapter " data-level="8.1" data-path="../算法实现/冒泡排序.html">
+        <li class="chapter " data-level="8.1" data-path="../算法实现/常见算法时间复杂度.html">
+            
+                <a href="../算法实现/常见算法时间复杂度.html">
+            
+                    
+                    常见算法时间复杂度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../算法实现/冒泡排序.html">
             
                 <a href="../算法实现/冒泡排序.html">
             
@@ -592,12 +618,25 @@
             
         </li>
     
-        <li class="chapter " data-level="8.2" data-path="../算法实现/快速排序.html">
+        <li class="chapter " data-level="8.3" data-path="../算法实现/快速排序.html">
             
                 <a href="../算法实现/快速排序.html">
             
                     
                     快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="../算法实现/一致性Hash.html">
+            
+                <a href="../算法实现/一致性Hash.html">
+            
+                    
+                    一致性Hash
             
                 </a>
             
@@ -696,6 +735,23 @@
 <ul>
 <li>&#x81EA;&#x589E;&#x9501;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x8868;&#x7EA7;&#x522B;&#x9501;&#xFF08;table-level lock&#xFF09;&#xFF0C;&#x4E13;&#x95E8;&#x9488;&#x5BF9;&#x4E8B;&#x52A1;&#x63D2;&#x5165;AUTO_INCREMENT&#x7C7B;&#x578B;&#x7684;&#x5217;&#x3002;&#x6700;&#x7B80;&#x5355;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x6B63;&#x5728;&#x5F80;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x8BB0;&#x5F55;&#xFF0C;&#x6240;&#x6709;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x7684;&#x63D2;&#x5165;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#xFF0C;&#x4EE5;&#x4FBF;&#x7B2C;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x63D2;&#x5165;&#x7684;&#x884C;&#xFF0C;&#x662F;&#x8FDE;&#x7EED;&#x7684;&#x4E3B;&#x952E;&#x503C;&#x3002;</li>
 </ul>
+<h1 id="mysql&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x7531;&#x884C;&#x9501;&#x5347;&#x7EA7;&#x4E3A;&#x8868;&#x9501;">mysql&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x7531;&#x884C;&#x9501;&#x5347;&#x7EA7;&#x4E3A;&#x8868;&#x9501;</h1>
+<ul>
+<li>innodb&#x884C;&#x9501;&#x673A;&#x5236;&#x662F;&#x5BF9;&#x7D22;&#x5F15;&#x8FDB;&#x884C;&#x52A0;&#x9501;&#xFF0C;&#x5982;&#x679C;&#x7D22;&#x5F15;&#x5931;&#x6548;&#x90A3;&#x4E48;&#x5347;&#x7EA7;&#x4E3A;&#x8868;&#x6240;</li>
+<li>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#xFF0C;&#x90A3;&#x4E48;&#x5347;&#x7EA7;&#x4E3A;&#x8868;&#x9501;</li>
+<li>&#x60F3;&#x8981;&#x5728;&#x5DF2;&#x88AB;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x7528;&#x6392;&#x4ED6;&#x9501;&#x5360;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x4E0A;&#x9762;&#x52A0;&#x9501;&#xFF0C;&#x5373;&#x610F;&#x5411;&#x5171;&#x4EAB;&#x9501;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x884C;&#x9501;&#x4F1A;&#x5347;&#x7EA7;&#x4E3A;&#x8868;&#x9501;</li>
+</ul>
+<h1 id="&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x9501;&#x8868;">&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x9501;&#x8868;</h1>
+<ul>
+<li>&#x5171;&#x4EAB;&#x9501;(S)</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>*<span class="hljs-keyword">FROM</span> table_nameWHERE... <span class="hljs-keyword">LOCK</span> <span class="hljs-keyword">IN</span> <span class="hljs-keyword">SHARE</span> <span class="hljs-keyword">MODE</span>
+</code></pre>
+<ul>
+<li>&#x6392;&#x4ED6;&#x9501;(X)</li>
+</ul>
+<pre><code class="lang-sql"><span class="hljs-keyword">SELECT</span>*FROMtable_nameWHERE...FOR <span class="hljs-keyword">UPDATE</span>
+</code></pre>
 <h1 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h1>
 <ul>
 <li><a href="https://www.cnblogs.com/volcano-liu/p/9890832.html" target="_blank">mysql&#x9501;&#x673A;&#x5236;&#x8BE6;&#x89E3;</a></li>
@@ -747,7 +803,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mysql锁机制详解","level":"2.7","depth":1,"next":{"title":"Mysql主从同步原理","level":"2.8","depth":1,"path":"数据库/Mysql主从同步原理.md","ref":"数据库/Mysql主从同步原理.md","articles":[]},"previous":{"title":"Mysql事物隔离级别","level":"2.6","depth":1,"path":"数据库/Mysql事物隔离级别.md","ref":"数据库/Mysql事物隔离级别.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"数据库/mysql锁机制详解.md","mtime":"2019-06-29T11:20:11.142Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T08:28:31.515Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mysql锁机制详解","level":"2.7","depth":1,"next":{"title":"Mysql主从同步原理","level":"2.8","depth":1,"path":"数据库/Mysql主从同步原理.md","ref":"数据库/Mysql主从同步原理.md","articles":[]},"previous":{"title":"Mysql事物隔离级别","level":"2.6","depth":1,"path":"数据库/Mysql事物隔离级别.md","ref":"数据库/Mysql事物隔离级别.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"数据库/mysql锁机制详解.md","mtime":"2019-07-03T10:12:22.549Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T10:30:03.143Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
