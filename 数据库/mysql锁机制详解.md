@@ -33,6 +33,23 @@
 # 自增锁(Auto-inc Locks)
 - 自增锁是一种特殊的表级别锁（table-level lock），专门针对事务插入AUTO_INCREMENT类型的列。最简单的情况，如果一个事务正在往表中插入记录，所有其他事务的插入必须等待，以便第一个事务插入的行，是连续的主键值。
 
+# mysql什么时候会由行锁升级为表锁
+- innodb行锁机制是对索引进行加锁，如果索引失效那么升级为表所
+- 如果没有使用索引，那么升级为表锁
+- 想要在已被其他事务用排他锁占用的资源上面加锁，即意向共享锁，那么会行锁会升级为表锁
+
+# 如何进行锁表
+- 共享锁(S)
+
+```sql
+SELECT*FROM table_nameWHERE... LOCK IN SHARE MODE
+```
+
+- 排他锁(X)
+
+```sql
+SELECT*FROMtable_nameWHERE...FOR UPDATE
+```
 #参考
 - [mysql锁机制详解](https://www.cnblogs.com/volcano-liu/p/9890832.html)
 - [MySQL锁机制与用法分析](https://www.jb51.net/article/139113.htm)
