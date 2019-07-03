@@ -12,6 +12,10 @@
 * [Mysql事物隔离级别](数据库/Mysql事物隔离级别.md)
 * [mysql锁机制详解](数据库/mysql锁机制详解.md)
 * [Mysql主从同步原理](数据库/Mysql主从同步原理.md)
+* [Mysql隐式类型转换](数据库/Mysql隐式类型转换.md)
+* [Mysql的时间存储类型选择](数据库/Mysql的时间存储类型选择.md)
+* [Mysql基础数据类型详解](数据库/Mysql基础数据类型详解.md)
+* [Mysql死锁的产生&解决方案](数据库/Mysql死锁的产生&解决方案.md)
 
 ### Linux
 * [Crontab表达式详解](Linux/Crontab表达式详解.md)
@@ -31,9 +35,11 @@
 * [PHP安全处理机制](PHP/PHP安全处理机制.md)
 * [require&include的区别](PHP/require&include的区别.md)
 * [PHP翻转数组](PHP/PHP翻转数组.md)
+* [秒杀系统的设计与实现](PHP/秒杀系统的设计与实现.md)
 
 ### 缓存
 * [Redis分布式锁的实现](缓存/Redis分布式锁的实现.md)
+* [发送短信的缓存设计方案](缓存/发送短信的缓存设计方案.md)
 
 ### 消息队列
 * [RabbitMQ消息一致性怎么保证](消息队列/RabbitMQ消息一致性怎么保证.md)
