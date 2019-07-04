@@ -36,6 +36,7 @@
 * [require&include的区别](PHP/require&include的区别.md)
 * [PHP翻转数组](PHP/PHP翻转数组.md)
 * [秒杀系统的设计与实现](PHP/秒杀系统的设计与实现.md)
+* [PHP的垃圾回收机制](PHP/PHP的垃圾回收机制.md)
 
 ### 缓存
 * [Redis分布式锁的实现](缓存/Redis分布式锁的实现.md)
