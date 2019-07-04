@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Redis的数据类型&使用场景 · PHP面试题集合</title>
+        <title>关于Redis的原子性 · PHP面试题集合</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,7 +74,7 @@
     <link rel="next" href="../消息队列/RabbitMQ消息一致性怎么保证.html" />
     
     
-    <link rel="prev" href="发送短信的缓存设计方案.html" />
+    <link rel="prev" href="Redis的数据类型.html" />
     
 
     </head>
@@ -526,12 +526,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.3" data-path="Redis的数据类型&使用场景.html">
+        <li class="chapter " data-level="6.3" data-path="Redis的数据类型.html">
             
-                <a href="Redis的数据类型&使用场景.html">
+                <a href="Redis的数据类型.html">
             
                     
-                    Redis的数据类型&使用场景
+                    Redis的数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.4" data-path="关于Redis的原子性.html">
+            
+                <a href="关于Redis的原子性.html">
+            
+                    
+                    关于Redis的原子性
             
                 </a>
             
@@ -674,7 +687,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Redis的数据类型&使用场景</a>
+        <a href=".." >关于Redis的原子性</a>
     </h1>
 </div>
 
@@ -689,7 +702,30 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>//&#x5E26;&#x6DFB;&#x52A0;</p>
+                                <h1 id="redis&#x7684;&#x539F;&#x5B50;&#x6027;&#xFF1F;&#x4EC0;&#x4E48;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF1F;">Redis&#x7684;&#x539F;&#x5B50;&#x6027;&#xFF1F;&#x4EC0;&#x4E48;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF1F;</h1>
+<blockquote>
+<p>[!TIP|label:&#x539F;&#x5B50;&#x6027;(atomicity)]</p>
+<ol>
+<li>&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x5206;&#x5272;&#x7684;&#x6700;&#x5C0F;&#x5DE5;&#x4F5C;&#x5355;&#x4F4D;,&#x8981;&#x4E48;&#x90FD;&#x6210;&#x529F;&#x8981;&#x4E48;&#x90FD;&#x5931;&#x8D25;&#x3002;(&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x662F;&#x6307;&#x4F60;&#x7684;&#x4E00;&#x4E2A;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5FC5;&#x987B;&#x662F;&#x4E0D;&#x53EF;&#x62C6;&#x5206;&#x7684;.&#x6BD4;&#x5982;&#x4F60;&#x7ED9;&#x522B;&#x4EBA;&#x8F6C;&#x94B1;,&#x4F60;&#x7684;&#x8D26;&#x53F7;&#x6263;&#x94B1;,&#x522B;&#x4EBA;&#x7684;&#x8D26;&#x53F7;&#x589E;&#x52A0;&#x94B1;,&#x8FD9;&#x4E2A;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5C31;&#x662F;&#x539F;&#x5B50;&#x6027;&#x7684;,&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;,&#x8981;&#x4E48;&#x90FD;&#x6210;&#x529F;&#x8981;&#x4E48;&#x90FD;&#x5931;&#x8D25;)</li>
+<li>&#x5BF9;&#x4E8E;Redis&#x800C;&#x8A00;&#xFF0C;&#x547D;&#x4EE4;&#x7684;&#x539F;&#x5B50;&#x6027;&#x6307;&#x7684;&#x662F;&#xFF1A;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x4E0D;&#x53EF;&#x4EE5;&#x518D;&#x5206;&#xFF0C;&#x64CD;&#x4F5C;&#x8981;&#x4E48;&#x6267;&#x884C;&#xFF0C;&#x8981;&#x4E48;&#x4E0D;&#x6267;&#x884C;&#x3002;</li>
+</ol>
+</blockquote>
+<ul>
+<li>Redis&#x6240;&#x6709;&#x5355;&#x4E2A;&#x547D;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x90FD;&#x662F;&#x539F;&#x5B50;&#x6027;&#x7684;&#x3002;</li>
+<li><p>&#x591A;&#x4E2A;&#x64CD;&#x4F5C;&#x4E5F;&#x652F;&#x6301;&#x4E8B;&#x52A1;&#xFF0C;&#x5373;&#x539F;&#x5B50;&#x6027;&#xFF0C;&#x901A;&#x8FC7;MULTI&#x548C;EXEC&#x6307;&#x4EE4;&#x5305;&#x8D77;&#x6765;</p>
+</li>
+<li><p>Redis&#x662F;&#x5355;&#x8FDB;&#x7A0B;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#xFF0C;&#x7528;&#x7684;&#x662F;epoll&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#xFF0C;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#x90FD;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x5904;&#x7406;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;</p>
+</li>
+<li>Redis&#x7684;&#x5355;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#xFF0C;&#x547D;&#x4EE4;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#x3002;&#xFF08;&#x6709;&#x4E9B;&#x4EFB;&#x52A1;&#x6BD4;&#x5982;rdb&#x548C;aof&#x7B49;&#x64CD;&#x4F5C;&#x662F;fork&#x5B50;&#x8FDB;&#x7A0B;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;redis&#x4E3B;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x547D;&#x4EE4;&#xFF09;</li>
+<li>Redis&#x63D0;&#x4F9B;&#x7684;&#x6240;&#x6709;API&#x64CD;&#x4F5C;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x670D;&#x52A1;&#x7AEF;&#x65B9;&#x9762;&#x90FD;&#x662F;one by one&#x6267;&#x884C;&#x7684;&#xFF0C;&#x547D;&#x4EE4;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x7740;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x5E76;&#x884C;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#x3002;</li>
+<li>Redis&#x7684;&#x64CD;&#x4F5C;&#x4E4B;&#x6240;&#x4EE5;&#x662F;&#x539F;&#x5B50;&#x6027;&#x7684;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;Redis&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7684;(&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#x8C03;&#x5EA6;&#x7684;&#x6700;&#x5C0F;&#x5355;&#x5143;&#x3002;&#x5B83;&#x88AB;&#x5305;&#x542B;&#x5728;&#x8FDB;&#x7A0B;&#x4E4B;&#x4E2D;&#xFF0C;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x8FD0;&#x4F5C;&#x5355;&#x4F4D;&#x3002;&#x4E00;&#x6761;&#x7EBF;&#x7A0B;&#x6307;&#x7684;&#x662F;&#x8FDB;&#x7A0B;&#x4E2D;&#x4E00;&#x4E2A;&#x5355;&#x4E00;&#x987A;&#x5E8F;&#x7684;&#x63A7;&#x5236;&#x6D41;&#xFF0C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x53EF;&#x4EE5;&#x5E76;&#x53D1;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x6BCF;&#x6761;&#x7EBF;&#x7A0B;&#x5E76;&#x884C;&#x6267;&#x884C;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52A1;)</li>
+</ul>
+<h1 id="redis&#x7684;&#x4E8B;&#x52A1;">redis&#x7684;&#x4E8B;&#x52A1;</h1>
+<ul>
+<li>MULTI &#x3001; EXEC &#x3001; DISCARD &#x548C; WATCH &#x662F; Redis &#x4E8B;&#x52A1;&#x76F8;&#x5173;&#x7684;&#x547D;&#x4EE4;&#x3002;&#x4E8B;&#x52A1;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C; &#x5E76;&#x4E14;&#x5E26;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x4FDD;&#x8BC1;</li>
+<li>&#x4E8B;&#x52A1;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x9694;&#x79BB;&#x64CD;&#x4F5C;&#xFF1A;&#x4E8B;&#x52A1;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x547D;&#x4EE4;&#x90FD;&#x4F1A;&#x5E8F;&#x5217;&#x5316;&#x3001;&#x6309;&#x987A;&#x5E8F;&#x5730;&#x6267;&#x884C;&#x3002;&#x4E8B;&#x52A1;&#x5728;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6765;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x6240;&#x6253;&#x65AD;&#x3002;</li>
+<li>&#x4E8B;&#x52A1;&#x662F;&#x4E00;&#x4E2A;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF1A;&#x4E8B;&#x52A1;&#x4E2D;&#x7684;&#x547D;&#x4EE4;&#x8981;&#x4E48;&#x5168;&#x90E8;&#x88AB;&#x6267;&#x884C;&#xFF0C;&#x8981;&#x4E48;&#x5168;&#x90E8;&#x90FD;&#x4E0D;&#x6267;&#x884C;</li>
+</ul>
 
                                 
                                 </section>
@@ -717,7 +753,7 @@
 
             
                 
-                <a href="发送短信的缓存设计方案.html" class="navigation navigation-prev " aria-label="Previous page: 发送短信的缓存设计方案">
+                <a href="Redis的数据类型.html" class="navigation navigation-prev " aria-label="Previous page: Redis的数据类型">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -733,7 +769,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Redis的数据类型&使用场景","level":"6.3","depth":1,"next":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"path":"消息队列/RabbitMQ消息一致性怎么保证.md","ref":"消息队列/RabbitMQ消息一致性怎么保证.md","articles":[]},"previous":{"title":"发送短信的缓存设计方案","level":"6.2","depth":1,"path":"缓存/发送短信的缓存设计方案.md","ref":"缓存/发送短信的缓存设计方案.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"缓存/Redis的数据类型&使用场景.md","mtime":"2019-07-03T10:29:51.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-03T10:30:03.143Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"关于Redis的原子性","level":"6.4","depth":1,"next":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"path":"消息队列/RabbitMQ消息一致性怎么保证.md","ref":"消息队列/RabbitMQ消息一致性怎么保证.md","articles":[]},"previous":{"title":"Redis的数据类型","level":"6.3","depth":1,"path":"缓存/Redis的数据类型.md","ref":"缓存/Redis的数据类型.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"缓存/关于Redis的原子性.md","mtime":"2019-07-04T07:13:30.024Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-04T07:29:52.067Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
