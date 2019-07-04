@@ -1,4 +1,4 @@
-![模型参考](https://pic3.zhimg.com/80/v2-8241be381782789f7fb5735d8541c506_hd.jpg)
+![模型参考](https://image.520mwx.com/static/fbedd8f1f550064860f714bca9069799.jpg)
 
 # OSI分层(7层)
 - 物理层
