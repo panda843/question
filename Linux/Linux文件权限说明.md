@@ -1,8 +1,5 @@
-# 例子
-![实例图](https://upload-images.jianshu.io/upload_images/3369258-e1798cc0cb109185.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
-
 # 位置说明
-![权限位置说明](https://upload-images.jianshu.io/upload_images/3369258-c196788e7b51224d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/468/format/webp)
+![权限位置说明](http://static.oschina.net/uploads/space/2013/0316/152146_wusz_939336.png)
 
 # 第一个字段
 - \- 代表文件

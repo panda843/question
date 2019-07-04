@@ -7,7 +7,7 @@
 6. 缓冲：MQ通过一个缓冲层来帮助任务最高效率执行，写入MQ的处理会尽可能快速。
 
 # RabbitMQ的消息处理过程
-![交换机模型](https://upload-images.jianshu.io/upload_images/1479657-4506e0738da48c2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![交换机模型](https://www.cloudamqp.com/img/blog/exchanges-topic-fanout-direct.png)
 
 # RabbitMQ的四种交换机
 ## 直连交换机：Direct exchange
@@ -15,18 +15,18 @@
 >有优先级的任务，根据任务的优先级把消息发送到对应的队列，这样可以指派更多的资源去处理高优先级的队列。
 
 直连交换机是一种带路由功能的交换机，一个队列会和一个交换机绑定，除此之外再绑定一个routing_key，当消息被发送的时候，需要指定一个binding_key，这个消息被送达交换机的时候，就会被这个交换机送到指定的队列里面去。同样的一个binding_key也是支持应用到多个队列中的。这样当一个交换机绑定多个队列，就会被送到对应的队列去处理。
-![直连交换机](https://upload-images.jianshu.io/upload_images/1479657-3f2eff8920707c97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![直连交换机](http://www.yanzuoguang.com/upload/2019/03/qv737hq5rsgnhp75obrd7hshqj.png)
 
 ## 扇形交换机：Fanout exchange
 广播消息。扇形交换机会把能接收到的消息全部发送给绑定在自己身上的队列。因为广播不需要“思考”，所以扇形交换机处理消息的速度也是所有的交换机类型里面最快的。
-![扇形交换机](https://upload-images.jianshu.io/upload_images/1479657-c06ee960a9925450.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![扇形交换机](http://www.yanzuoguang.com/upload/2019/03/6geblh5ah2jk2rrtof2rfpksm7.png)
 
 ## 主题交换机：Topic exchange
 RabbitMQ提供了一种主题交换机，发送到主题交换机上的消息需要携带指定规则的routing_key，主题交换机会根据这个规则将数据发送到对应的(多个)队列上。
 主题交换机的routing_key需要有一定的规则，交换机和队列的binding_key需要采用*.#.*.....的格式，每个部分用.分开
 - *表示一个单词
 - #表示任意数量（零个或多个）单词。
-![主题交换机](https://upload-images.jianshu.io/upload_images/1479657-48e5409a26f0c75b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/571/format/webp)
+![主题交换机](http://www.yanzuoguang.com/upload/2019/03/us3brfibvaiugr6n5iolpv3dbr.png)
 ## 首部交换机：Headers exchange
 - 首部交换机是忽略routing_key的一种路由方式。路由器和交换机路由的规则是通过Headers信息来交换的，这个有点像HTTP的Headers。将一个交换机声明成首部交换机，绑定一个队列的时候，定义一个Hash的数据结构，消息发送的时候，会携带一组hash数据结构的信息，当Hash的内容匹配上的时候，消息就会被写入队列。
 - 绑定交换机和队列的时候，Hash结构中要求携带一个键“x-match”，这个键的Value可以是any或者all，这代表消息携带的Hash是需要全部匹配(all)，还是仅匹配一个键(any)就可以了。相比直连交换机，首部交换机的优势是匹配的规则不被限定为字符串(string)。
@@ -60,7 +60,7 @@ RabbitMQ提供了一种主题交换机，发送到主题交换机上的消息需
 > 1. 为什么TCP连接只有一条，而每个生产者都会创建一条唯一的信道呢？想象下，实际情况，会有很多的生产者生产消息，多个消费者消费消息，那么就不得不创建多个线程，建立多个TCP连接。多个TCP连接的建立必然会对操作系统性能消耗较高，也不方便管理。从而选择一种类似于NIO（非阻塞I/O, Non-blocking I/O）技术是很有必要的，多信道的在TCP基础上的建立就是这么实现的。
 > 2. 每个线程都有自己的一个信道，复用了Connection的TCP连接，信道之间相互独立，相互保持神秘，节约TCP连接资源，当然本身信道的流量很大的话，也可以创建多个适当的Connection的TCP连接，需要根据具体业务情况制定。
 
-![Connection&Channel原理图](https://img2018.cnblogs.com/blog/1352849/201902/1352849-20190216235902869-1071406953.png)
+![Connection&Channel原理图](http://image.morecoder.com/article/201810/20181001154334353562.png)
 
 
 # 参考
