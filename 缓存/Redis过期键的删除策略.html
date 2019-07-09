@@ -1,0 +1,884 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis过期键的删除策略 · PHP面试题集合</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="SuperPandaMan">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../消息队列/RabbitMQ消息一致性怎么保证.html" />
+    
+    
+    <link rel="prev" href="Redis的持久化处理.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.ganktools.com" target="_blank" class="custom-link">Blog</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        <li class="header">简介</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据库</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../数据库/索引使用说明&注意事项.html">
+            
+                <a href="../数据库/索引使用说明&注意事项.html">
+            
+                    
+                    索引使用说明&注意事项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../数据库/InnoDB&MyIsam的区别.html">
+            
+                <a href="../数据库/InnoDB&MyIsam的区别.html">
+            
+                    
+                    InnoDB&MyIsam的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../数据库/取第一天登录&第二天没有登录的用户.html">
+            
+                <a href="../数据库/取第一天登录&第二天没有登录的用户.html">
+            
+                    
+                    取第一天登录&第二天没有登录的用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../数据库/Mysql的索引类型.html">
+            
+                <a href="../数据库/Mysql的索引类型.html">
+            
+                    
+                    Mysql的索引类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../数据库/Mysql聚集索引&非聚集索引.html">
+            
+                <a href="../数据库/Mysql聚集索引&非聚集索引.html">
+            
+                    
+                    Mysql聚集索引&非聚集索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../数据库/Mysql事物隔离级别.html">
+            
+                <a href="../数据库/Mysql事物隔离级别.html">
+            
+                    
+                    Mysql事物隔离级别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../数据库/mysql锁机制详解.html">
+            
+                <a href="../数据库/mysql锁机制详解.html">
+            
+                    
+                    mysql锁机制详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../数据库/Mysql主从同步原理.html">
+            
+                <a href="../数据库/Mysql主从同步原理.html">
+            
+                    
+                    Mysql主从同步原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../数据库/Mysql隐式类型转换.html">
+            
+                <a href="../数据库/Mysql隐式类型转换.html">
+            
+                    
+                    Mysql隐式类型转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../数据库/Mysql的时间存储类型选择.html">
+            
+                <a href="../数据库/Mysql的时间存储类型选择.html">
+            
+                    
+                    Mysql的时间存储类型选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../数据库/Mysql基础数据类型详解.html">
+            
+                <a href="../数据库/Mysql基础数据类型详解.html">
+            
+                    
+                    Mysql基础数据类型详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../数据库/Mysql死锁的产生&解决方案.html">
+            
+                <a href="../数据库/Mysql死锁的产生&解决方案.html">
+            
+                    
+                    Mysql死锁的产生&解决方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../Linux/Crontab表达式详解.html">
+            
+                <a href="../Linux/Crontab表达式详解.html">
+            
+                    
+                    Crontab表达式详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../Linux/Linux文件权限说明.html">
+            
+                <a href="../Linux/Linux文件权限说明.html">
+            
+                    
+                    Linux文件权限说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">其他</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../其他/TCP的三次握手&四次挥手.html">
+            
+                <a href="../其他/TCP的三次握手&四次挥手.html">
+            
+                    
+                    TCP的三次握手&四次挥手
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../其他/POST&GET区别.html">
+            
+                <a href="../其他/POST&GET区别.html">
+            
+                    
+                    POST&GET区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../其他/Http状态码.html">
+            
+                <a href="../其他/Http状态码.html">
+            
+                    
+                    Http状态码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../其他/OSI七层&五层协议.html">
+            
+                <a href="../其他/OSI七层&五层协议.html">
+            
+                    
+                    OSI七层&五层协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../其他/栈和队列的区别.html">
+            
+                <a href="../其他/栈和队列的区别.html">
+            
+                    
+                    栈和队列的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">PHP</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../PHP/Nginx&PHP通信.html">
+            
+                <a href="../PHP/Nginx&PHP通信.html">
+            
+                    
+                    Nginx&PHP通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../PHP/守护进程的原理与实现.html">
+            
+                <a href="../PHP/守护进程的原理与实现.html">
+            
+                    
+                    守护进程的原理与实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../PHP/Cookie&Session区别.html">
+            
+                <a href="../PHP/Cookie&Session区别.html">
+            
+                    
+                    Cookie&Session区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../PHP/PHP安全处理机制.html">
+            
+                <a href="../PHP/PHP安全处理机制.html">
+            
+                    
+                    PHP安全处理机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../PHP/require&include的区别.html">
+            
+                <a href="../PHP/require&include的区别.html">
+            
+                    
+                    require&include的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../PHP/PHP翻转数组.html">
+            
+                <a href="../PHP/PHP翻转数组.html">
+            
+                    
+                    PHP翻转数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../PHP/秒杀系统的设计与实现.html">
+            
+                <a href="../PHP/秒杀系统的设计与实现.html">
+            
+                    
+                    秒杀系统的设计与实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../PHP/PHP的垃圾回收机制.html">
+            
+                <a href="../PHP/PHP的垃圾回收机制.html">
+            
+                    
+                    PHP的垃圾回收机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">缓存</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="Redis分布式锁的实现.html">
+            
+                <a href="Redis分布式锁的实现.html">
+            
+                    
+                    Redis分布式锁的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="发送短信的缓存设计方案.html">
+            
+                <a href="发送短信的缓存设计方案.html">
+            
+                    
+                    发送短信的缓存设计方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="Redis的数据类型.html">
+            
+                <a href="Redis的数据类型.html">
+            
+                    
+                    Redis的数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="关于Redis的原子性.html">
+            
+                <a href="关于Redis的原子性.html">
+            
+                    
+                    关于Redis的原子性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="Redis的持久化处理.html">
+            
+                <a href="Redis的持久化处理.html">
+            
+                    
+                    Redis的持久化处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.6" data-path="Redis过期键的删除策略.html">
+            
+                <a href="Redis过期键的删除策略.html">
+            
+                    
+                    Redis过期键的删除策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">消息队列</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../消息队列/RabbitMQ消息一致性怎么保证.html">
+            
+                <a href="../消息队列/RabbitMQ消息一致性怎么保证.html">
+            
+                    
+                    RabbitMQ消息一致性怎么保证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../消息队列/RabbitMQ是如何运转的.html">
+            
+                <a href="../消息队列/RabbitMQ是如何运转的.html">
+            
+                    
+                    RabbitMQ是如何运转的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="../消息队列/RabbitMQ集群实现方式.html">
+            
+                <a href="../消息队列/RabbitMQ集群实现方式.html">
+            
+                    
+                    RabbitMQ集群实现方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">算法实现</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../算法实现/常见算法时间复杂度.html">
+            
+                <a href="../算法实现/常见算法时间复杂度.html">
+            
+                    
+                    常见算法时间复杂度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../算法实现/冒泡排序.html">
+            
+                <a href="../算法实现/冒泡排序.html">
+            
+                    
+                    冒泡排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="../算法实现/快速排序.html">
+            
+                <a href="../算法实现/快速排序.html">
+            
+                    
+                    快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="../算法实现/一致性Hash.html">
+            
+                <a href="../算法实现/一致性Hash.html">
+            
+                    
+                    一致性Hash
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Redis过期键的删除策略</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5F53;&#x5185;&#x5B58;&#x8FBE;&#x5230;maxmemory&#x914D;&#x7F6E;&#x65F6;&#x5019;&#xFF0C;&#x89E6;&#x53D1;&#x4E3B;&#x52A8;&#x6E05;&#x7406;&#x7B56;&#x7565;">&#x5F53;&#x5185;&#x5B58;&#x8FBE;&#x5230;maxmemory&#x914D;&#x7F6E;&#x65F6;&#x5019;&#xFF0C;&#x89E6;&#x53D1;&#x4E3B;&#x52A8;&#x6E05;&#x7406;&#x7B56;&#x7565;</h1>
+<ul>
+<li>&#x5F53;&#x524D;&#x5DF2;&#x7528;&#x5185;&#x5B58;&#x8D85;&#x8FC7;maxmemory&#x9650;&#x5B9A;&#x65F6;&#xFF0C;&#x89E6;&#x53D1;&#x4E3B;&#x52A8;&#x6E05;&#x7406;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x4E9B;&#x7B56;&#x7565;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#xFF08;&#x53C2;&#x6570;maxmemory-policy&#xFF09;</li>
+<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x89E6;&#x53D1;maxmemory&#xFF0C;&#x6700;&#x597D;&#x5728;mem_used&#x5185;&#x5B58;&#x5360;&#x7528;&#x8FBE;&#x5230;maxmemory&#x7684;&#x4E00;&#x5B9A;&#x6BD4;&#x4F8B;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x8003;&#x8651;&#x8C03;&#x5927;hz&#x4EE5;&#x52A0;&#x5FEB;&#x6DD8;&#x6C70;&#xFF0C;&#x6216;&#x8005;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x6269;&#x5BB9;&#x3002;</li>
+<li>&#x5F53;mem_used&#x5185;&#x5B58;&#x5DF2;&#x7ECF;&#x8D85;&#x8FC7;maxmemory&#x7684;&#x8BBE;&#x5B9A;&#xFF0C;&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x7684;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#xFF0C;&#x90FD;&#x4F1A;&#x89E6;&#x53D1;redis.c/freeMemoryIfNeeded(void)&#x51FD;&#x6570;&#x4EE5;&#x6E05;&#x7406;&#x8D85;&#x51FA;&#x7684;&#x5185;&#x5B58;&#x3002;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x6E05;&#x7406;&#x8FC7;&#x7A0B;&#x662F;&#x963B;&#x585E;&#x7684;&#xFF0C;&#x76F4;&#x5230;&#x6E05;&#x7406;&#x51FA;&#x8DB3;&#x591F;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x5728;&#x8FBE;&#x5230;maxmemory&#x5E76;&#x4E14;&#x8C03;&#x7528;&#x65B9;&#x8FD8;&#x5728;&#x4E0D;&#x65AD;&#x5199;&#x5165;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x53CD;&#x590D;&#x89E6;&#x53D1;&#x4E3B;&#x52A8;&#x6E05;&#x7406;&#x7B56;&#x7565;&#xFF0C;&#x5BFC;&#x81F4;&#x8BF7;&#x6C42;&#x4F1A;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x5EF6;&#x8FDF;&#x3002;</li>
+<li>&#x6E05;&#x7406;&#x65F6;&#x4F1A;&#x6839;&#x636E;&#x7528;&#x6237;&#x914D;&#x7F6E;&#x7684;maxmemory-policy&#x6765;&#x505A;&#x9002;&#x5F53;&#x7684;&#x6E05;&#x7406;&#xFF08;&#x4E00;&#x822C;&#x662F;LRU&#x6216;TTL&#xFF09;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;LRU&#x6216;TTL&#x7B56;&#x7565;&#x5E76;&#x4E0D;&#x662F;&#x9488;&#x5BF9;redis&#x7684;&#x6240;&#x6709;key&#xFF0C;&#x800C;&#x662F;&#x4EE5;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;maxmemory-samples&#x4E2A;key&#x4F5C;&#x4E3A;&#x6837;&#x672C;&#x6C60;&#x8FDB;&#x884C;&#x62BD;&#x6837;&#x6E05;&#x7406;&#x3002;<h2 id="&#x7B56;&#x7565;&#x5217;&#x8868;">&#x7B56;&#x7565;&#x5217;&#x8868;</h2>
+</li>
+<li>volatile-lru&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].expires&#xFF09;&#x4E2D;&#x6311;&#x9009;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>volatile-ttl&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].expires&#xFF09;&#x4E2D;&#x6311;&#x9009;&#x5C06;&#x8981;&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>volatile-random&#xFF1A;&#x4ECE;&#x5DF2;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].expires&#xFF09;&#x4E2D;&#x4EFB;&#x610F;&#x9009;&#x62E9;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>allkeys-lru&#xFF1A;&#x4ECE;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].dict&#xFF09;&#x4E2D;&#x6311;&#x9009;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>allkeys-random&#xFF1A;&#x4ECE;&#x6570;&#x636E;&#x96C6;&#xFF08;server.db[i].dict&#xFF09;&#x4E2D;&#x4EFB;&#x610F;&#x9009;&#x62E9;&#x6570;&#x636E;&#x6DD8;&#x6C70;</li>
+<li>no-enviction&#xFF08;&#x9A71;&#x9010;&#xFF09;&#xFF1A;&#x7981;&#x6B62;&#x9A71;&#x9010;&#x6570;&#x636E;</li>
+</ul>
+<h1 id="&#x88AB;&#x52A8;&#x5220;&#x9664;&#xFF08;&#x60F0;&#x6027;&#x5220;&#x9664;&#xFF09;">&#x88AB;&#x52A8;&#x5220;&#x9664;&#xFF08;&#x60F0;&#x6027;&#x5220;&#x9664;&#xFF09;</h1>
+<p>&#x5F53;&#x8BFB;/&#x5199;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#x7684;key&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x60F0;&#x6027;&#x5220;&#x9664;&#x7B56;&#x7565;&#xFF0C;&#x76F4;&#x63A5;&#x5220;&#x9664;&#x6389;&#x8FD9;&#x4E2A;&#x8FC7;&#x671F;key</p>
+<ul>
+<li>&#x53EA;&#x6709;key&#x88AB;&#x64CD;&#x4F5C;&#x65F6;(&#x5982;GET)&#xFF0C;REDIS&#x624D;&#x4F1A;&#x88AB;&#x52A8;&#x68C0;&#x67E5;&#x8BE5;key&#x662F;&#x5426;&#x8FC7;&#x671F;&#xFF0C;&#x5982;&#x679C;&#x8FC7;&#x671F;&#x5219;&#x5220;&#x9664;&#x4E4B;&#x5E76;&#x4E14;&#x8FD4;&#x56DE;NIL&#x3002;</li>
+<li>&#x8FD9;&#x79CD;&#x5220;&#x9664;&#x7B56;&#x7565;&#x5BF9;CPU&#x662F;&#x53CB;&#x597D;&#x7684;&#xFF0C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x53EA;&#x6709;&#x5728;&#x4E0D;&#x5F97;&#x4E0D;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x4F1A;&#x8FDB;&#x884C;&#xFF0C;&#x4E0D;&#x4F1A;&#x5176;&#x4ED6;&#x7684;expire key&#x4E0A;&#x6D6A;&#x8D39;&#x65E0;&#x8C13;&#x7684;CPU&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x7B56;&#x7565;&#x5BF9;&#x5185;&#x5B58;&#x4E0D;&#x53CB;&#x597D;&#xFF0C;&#x4E00;&#x4E2A;key&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5B83;&#x88AB;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x4E0D;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x4ECD;&#x7136;&#x5360;&#x636E;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x3002;&#x5982;&#x679C;&#x6709;&#x5927;&#x91CF;&#x7684;&#x8FC7;&#x671F;&#x952E;&#x5B58;&#x5728;&#x4F46;&#x662F;&#x53C8;&#x5F88;&#x5C11;&#x88AB;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x90A3;&#x4F1A;&#x9020;&#x6210;&#x5927;&#x91CF;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x6D6A;&#x8D39;&#x3002;expireIfNeeded(redisDb <em>db, robj </em>key)&#x51FD;&#x6570;&#x4F4D;&#x4E8E;src/db.c&#x3002;</li>
+<li>&#x4F46;&#x4EC5;&#x662F;&#x8FD9;&#x6837;&#x662F;&#x4E0D;&#x591F;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x4E00;&#x4E9B;key&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x518D;&#x6B21;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x8FD9;&#x4E9B;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key&#x4E5F;&#x662F;&#x9700;&#x8981;&#x5728;&#x8FC7;&#x671F;&#x540E;&#x88AB;&#x5220;&#x9664;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x770B;&#x4F5C;&#x662F;&#x4E00;&#x79CD;&#x5185;&#x5B58;&#x6CC4;&#x9732;----&#x65E0;&#x7528;&#x7684;&#x5783;&#x573E;&#x6570;&#x636E;&#x5360;&#x7528;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x800C;&#x670D;&#x52A1;&#x5668;&#x5374;&#x4E0D;&#x4F1A;&#x81EA;&#x5DF1;&#x53BB;&#x91CA;&#x653E;&#x5B83;&#x4EEC;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x975E;&#x5E38;&#x4F9D;&#x8D56;&#x4E8E;&#x5185;&#x5B58;&#x7684;Redis&#x670D;&#x52A1;&#x5668;&#x6765;&#x8BF4;&#xFF0C;&#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x6D88;&#x606F;</li>
+</ul>
+<h1 id="&#x4E3B;&#x52A8;&#x5220;&#x9664;&#xFF08;&#x5B9A;&#x671F;&#x5220;&#x9664;&#xFF09;">&#x4E3B;&#x52A8;&#x5220;&#x9664;&#xFF08;&#x5B9A;&#x671F;&#x5220;&#x9664;&#xFF09;</h1>
+<p>&#x7531;&#x4E8E;&#x60F0;&#x6027;&#x5220;&#x9664;&#x7B56;&#x7565;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x51B7;&#x6570;&#x636E;&#x88AB;&#x53CA;&#x65F6;&#x5220;&#x6389;&#xFF0C;&#x6240;&#x4EE5;Redis&#x4F1A;&#x5B9A;&#x671F;&#x4E3B;&#x52A8;&#x6DD8;&#x6C70;&#x4E00;&#x6279;&#x5DF2;&#x8FC7;&#x671F;&#x7684;key</p>
+<p>&#x5148;&#x8BF4;&#x4E00;&#x4E0B;&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;&#xFF0C;&#x5BF9;&#x4E8E;&#x6301;&#x7EED;&#x8FD0;&#x884C;&#x7684;&#x670D;&#x52A1;&#x5668;&#x6765;&#x8BF4;&#xFF0C; &#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x5B9A;&#x671F;&#x5BF9;&#x81EA;&#x8EAB;&#x7684;&#x8D44;&#x6E90;&#x548C;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x5FC5;&#x8981;&#x7684;&#x68C0;&#x67E5;&#x548C;&#x6574;&#x7406;&#xFF0C; &#x4ECE;&#x800C;&#x8BA9;&#x670D;&#x52A1;&#x5668;&#x7EF4;&#x6301;&#x5728;&#x4E00;&#x4E2A;&#x5065;&#x5EB7;&#x7A33;&#x5B9A;&#x7684;&#x72B6;&#x6001;&#xFF0C; &#x8FD9;&#x7C7B;&#x64CD;&#x4F5C;&#x88AB;&#x7EDF;&#x79F0;&#x4E3A;&#x5E38;&#x89C4;&#x64CD;&#x4F5C;&#xFF08;cron job&#xFF09;</p>
+<p>&#x5728; Redis &#x4E2D;&#xFF0C; &#x5E38;&#x89C4;&#x64CD;&#x4F5C;&#x7531; redis.c/serverCron &#x5B9E;&#x73B0;&#xFF0C; &#x5B83;&#x4E3B;&#x8981;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;</p>
+<ul>
+<li>&#x66F4;&#x65B0;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5404;&#x7C7B;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x65F6;&#x95F4;&#x3001;&#x5185;&#x5B58;&#x5360;&#x7528;&#x3001;&#x6570;&#x636E;&#x5E93;&#x5360;&#x7528;&#x60C5;&#x51B5;&#x7B49;&#x3002;</li>
+<li>&#x6E05;&#x7406;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x8FC7;&#x671F;&#x952E;&#x503C;&#x5BF9;&#x3002;</li>
+<li>&#x5BF9;&#x4E0D;&#x5408;&#x7406;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x5927;&#x5C0F;&#x8C03;&#x6574;&#x3002;</li>
+<li>&#x5173;&#x95ED;&#x548C;&#x6E05;&#x7406;&#x8FDE;&#x63A5;&#x5931;&#x6548;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</li>
+<li>&#x5C1D;&#x8BD5;&#x8FDB;&#x884C; AOF &#x6216; RDB &#x6301;&#x4E45;&#x5316;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x662F;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x5BF9;&#x9644;&#x5C5E;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x5B9A;&#x671F;&#x540C;&#x6B65;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5904;&#x4E8E;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x7684;&#x8BDD;&#xFF0C;&#x5BF9;&#x96C6;&#x7FA4;&#x8FDB;&#x884C;&#x5B9A;&#x671F;&#x540C;&#x6B65;&#x548C;&#x8FDE;&#x63A5;&#x6D4B;&#x8BD5;&#x3002;</li>
+</ul>
+<p>Redis &#x5C06; serverCron &#x4F5C;&#x4E3A;&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;&#x6765;&#x8FD0;&#x884C;&#xFF0C; &#x4ECE;&#x800C;&#x786E;&#x4FDD;&#x5B83;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8FD0;&#x884C;&#x4E00;&#x6B21;&#xFF0C; &#x53C8;&#x56E0;&#x4E3A; serverCron &#x9700;&#x8981;&#x5728; Redis &#x670D;&#x52A1;&#x5668;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#x4E00;&#x76F4;&#x5B9A;&#x671F;&#x8FD0;&#x884C;&#xFF0C; &#x6240;&#x4EE5;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;&#xFF1A; serverCron &#x4F1A;&#x4E00;&#x76F4;&#x5B9A;&#x671F;&#x6267;&#x884C;&#xFF0C;&#x76F4;&#x5230;&#x670D;&#x52A1;&#x5668;&#x5173;&#x95ED;&#x4E3A;&#x6B62;&#x3002;</p>
+<p>&#x5728; Redis 2.6 &#x7248;&#x672C;&#x4E2D;&#xFF0C; &#x7A0B;&#x5E8F;&#x89C4;&#x5B9A; serverCron &#x6BCF;&#x79D2;&#x8FD0;&#x884C; 10 &#x6B21;&#xFF0C; &#x5E73;&#x5747;&#x6BCF; 100 &#x6BEB;&#x79D2;&#x8FD0;&#x884C;&#x4E00;&#x6B21;&#x3002; &#x4ECE; Redis 2.8 &#x5F00;&#x59CB;&#xFF0C; &#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4FEE;&#x6539; hz&#x9009;&#x9879;&#x6765;&#x8C03;&#x6574; serverCron &#x7684;&#x6BCF;&#x79D2;&#x6267;&#x884C;&#x6B21;&#x6570;&#xFF0C; &#x5177;&#x4F53;&#x4FE1;&#x606F;&#x8BF7;&#x53C2;&#x8003; redis.conf &#x6587;&#x4EF6;&#x4E2D;&#x5173;&#x4E8E; hz &#x9009;&#x9879;&#x7684;&#x8BF4;&#x660E;</p>
+<hr>
+<p>&#x4E5F;&#x53EB;&#x5B9A;&#x65F6;&#x5220;&#x9664;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x201C;&#x5B9A;&#x671F;&#x201D;&#x6307;&#x7684;&#x662F;Redis&#x5B9A;&#x671F;&#x89E6;&#x53D1;&#x7684;&#x6E05;&#x7406;&#x7B56;&#x7565;&#xFF0C;&#x7531;&#x4F4D;&#x4E8E;src/redis.c&#x7684;activeExpireCycle(void)&#x51FD;&#x6570;&#x6765;&#x5B8C;&#x6210;&#x3002;</p>
+<p>serverCron&#x662F;&#x7531;redis&#x7684;&#x4E8B;&#x4EF6;&#x6846;&#x67B6;&#x9A71;&#x52A8;&#x7684;&#x5B9A;&#x4F4D;&#x4EFB;&#x52A1;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x4E2D;&#x4F1A;&#x8C03;&#x7528;activeExpireCycle&#x51FD;&#x6570;&#xFF0C;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;db&#x5728;&#x9650;&#x5236;&#x7684;&#x65F6;&#x95F4;REDIS_EXPIRELOOKUPS_TIME_LIMIT&#x5185;&#x8FDF;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5220;&#x9664;&#x8FC7;&#x671F;key&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x8981;&#x9650;&#x5236;&#x65F6;&#x95F4;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x8FC7;&#x957F;&#x65F6;&#x95F4; &#x7684;&#x963B;&#x585E;&#x5F71;&#x54CD;redis&#x7684;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;&#x8FD9;&#x79CD;&#x4E3B;&#x52A8;&#x5220;&#x9664;&#x7B56;&#x7565;&#x5F25;&#x8865;&#x4E86;&#x88AB;&#x52A8;&#x5220;&#x9664;&#x7B56;&#x7565;&#x5728;&#x5185;&#x5B58;&#x4E0A;&#x7684;&#x4E0D;&#x53CB;&#x597D;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;Redis&#x4F1A;&#x5468;&#x671F;&#x6027;&#x7684;&#x968F;&#x673A;&#x6D4B;&#x8BD5;&#x4E00;&#x6279;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x6D4B;&#x8BD5;&#x5230;&#x7684;&#x5DF2;&#x8FC7;&#x671F;&#x7684;key&#x5C06;&#x88AB;&#x5220;&#x9664;&#x3002;&#x5178;&#x578B;&#x7684;&#x65B9;&#x5F0F;&#x4E3A;,Redis&#x6BCF;&#x79D2;&#x505A;10&#x6B21;&#x5982;&#x4E0B;&#x7684;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x968F;&#x673A;&#x6D4B;&#x8BD5;100&#x4E2A;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;key</li>
+<li>&#x5220;&#x9664;&#x6240;&#x6709;&#x53D1;&#x73B0;&#x7684;&#x5DF2;&#x8FC7;&#x671F;&#x7684;key</li>
+<li>&#x82E5;&#x5220;&#x9664;&#x7684;key&#x8D85;&#x8FC7;25&#x4E2A;&#x5219;&#x91CD;&#x590D;&#x6B65;&#x9AA4;1</li>
+</ul>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x6982;&#x7387;&#x7684;&#x7B80;&#x5355;&#x7B97;&#x6CD5;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x5047;&#x8BBE;&#x662F;&#x62BD;&#x51FA;&#x7684;&#x6837;&#x672C;&#x80FD;&#x591F;&#x4EE3;&#x8868;&#x6574;&#x4E2A;key&#x7A7A;&#x95F4;&#xFF0C;redis&#x6301;&#x7EED;&#x6E05;&#x7406;&#x8FC7;&#x671F;&#x7684;&#x6570;&#x636E;&#x76F4;&#x81F3;&#x5C06;&#x8981;&#x8FC7;&#x671F;&#x7684;key&#x7684;&#x767E;&#x5206;&#x6BD4;&#x964D;&#x5230;&#x4E86;25%&#x4EE5;&#x4E0B;&#x3002;&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x5728;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x523B;&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#x4F46;&#x4ECD;&#x5360;&#x636E;&#x7740;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;key&#x7684;&#x91CF;&#x6700;&#x591A;&#x4E3A;&#x6BCF;&#x79D2;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#x91CF;&#x9664;&#x4EE5;4.</p>
+<p>Redis-3.0.0&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x662F;10&#xFF0C;&#x4EE3;&#x8868;&#x6BCF;&#x79D2;&#x949F;&#x8C03;&#x7528;10&#x6B21;&#x540E;&#x53F0;&#x4EFB;&#x52A1;&#x3002; </p>
+<p>&#x9664;&#x4E86;&#x4E3B;&#x52A8;&#x6DD8;&#x6C70;&#x7684;&#x9891;&#x7387;&#x5916;&#xFF0C;Redis&#x5BF9;&#x6BCF;&#x6B21;&#x6DD8;&#x6C70;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7684;&#x6700;&#x5927;&#x65F6;&#x957F;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x9650;&#x5B9A;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x4E86;&#x6BCF;&#x6B21;&#x4E3B;&#x52A8;&#x6DD8;&#x6C70;&#x4E0D;&#x4F1A;&#x8FC7;&#x591A;&#x963B;&#x585E;&#x5E94;&#x7528;&#x8BF7;&#x6C42;</p>
+<p>hz&#x8C03;&#x5927;&#x5C06;&#x4F1A;&#x63D0;&#x9AD8;Redis&#x4E3B;&#x52A8;&#x6DD8;&#x6C70;&#x7684;&#x9891;&#x7387;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;Redis&#x5B58;&#x50A8;&#x4E2D;&#x5305;&#x542B;&#x5F88;&#x591A;&#x51B7;&#x6570;&#x636E;&#x5360;&#x7528;&#x5185;&#x5B58;&#x8FC7;&#x5927;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x8C03;&#x5927;&#xFF0C;&#x4F46;Redis&#x4F5C;&#x8005;&#x5EFA;&#x8BAE;&#x8FD9;&#x4E2A;&#x503C;&#x4E0D;&#x8981;&#x8D85;&#x8FC7;100&#x3002;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x7EBF;&#x4E0A;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x8C03;&#x5927;&#x5230;100&#xFF0C;&#x89C2;&#x5BDF;&#x5230;CPU&#x4F1A;&#x589E;&#x52A0;2%&#x5DE6;&#x53F3;&#xFF0C;&#x4F46;&#x5BF9;&#x51B7;&#x6570;&#x636E;&#x7684;&#x5185;&#x5B58;&#x91CA;&#x653E;&#x901F;&#x5EA6;&#x786E;&#x5B9E;&#x6709;&#x660E;&#x663E;&#x7684;&#x63D0;&#x9AD8;&#xFF08;&#x901A;&#x8FC7;&#x89C2;&#x5BDF;keyspace&#x4E2A;&#x6570;&#x548C;used_memory&#x5927;&#x5C0F;&#xFF09;&#x3002; </p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;timelimit&#x548C;server.hz&#x662F;&#x4E00;&#x4E2A;&#x5012;&#x6570;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;hz&#x914D;&#x7F6E;&#x8D8A;&#x5927;&#xFF0C;timelimit&#x5C31;&#x8D8A;&#x5C0F;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#x662F;&#x6BCF;&#x79D2;&#x949F;&#x671F;&#x671B;&#x7684;&#x4E3B;&#x52A8;&#x6DD8;&#x6C70;&#x9891;&#x7387;&#x8D8A;&#x9AD8;&#xFF0C;&#x5219;&#x6BCF;&#x6B21;&#x6DD8;&#x6C70;&#x6700;&#x957F;&#x5360;&#x7528;&#x65F6;&#x95F4;&#x5C31;&#x8D8A;&#x77ED;&#x3002;&#x8FD9;&#x91CC;&#x6BCF;&#x79D2;&#x949F;&#x7684;&#x6700;&#x957F;&#x6DD8;&#x6C70;&#x5360;&#x7528;&#x65F6;&#x95F4;&#x662F;&#x56FA;&#x5B9A;&#x7684;250ms&#xFF08;1000000*ACTIVE_EXPIRE_CYCLE_SLOW_TIME_PERC/100&#xFF09;&#xFF0C;&#x800C;&#x6DD8;&#x6C70;&#x9891;&#x7387;&#x548C;&#x6BCF;&#x6B21;&#x6DD8;&#x6C70;&#x7684;&#x6700;&#x957F;&#x65F6;&#x95F4;&#x662F;&#x901A;&#x8FC7;hz&#x53C2;&#x6570;&#x63A7;&#x5236;&#x7684;&#x3002; </p>
+<p>&#x4ECE;&#x4EE5;&#x4E0A;&#x7684;&#x5206;&#x6790;&#x770B;&#xFF0C;&#x5F53;redis&#x4E2D;&#x7684;&#x8FC7;&#x671F;key&#x6BD4;&#x7387;&#x6CA1;&#x6709;&#x8D85;&#x8FC7;25%&#x4E4B;&#x524D;&#xFF0C;&#x63D0;&#x9AD8;hz&#x53EF;&#x4EE5;&#x660E;&#x663E;&#x63D0;&#x9AD8;&#x626B;&#x63CF;key&#x7684;&#x6700;&#x5C0F;&#x4E2A;&#x6570;&#x3002;&#x5047;&#x8BBE;hz&#x4E3A;10&#xFF0C;&#x5219;&#x4E00;&#x79D2;&#x5185;&#x6700;&#x5C11;&#x626B;&#x63CF;200&#x4E2A;key&#xFF08;&#x4E00;&#x79D2;&#x8C03;&#x7528;10&#x6B21;*&#x6BCF;&#x6B21;&#x6700;&#x5C11;&#x968F;&#x673A;&#x53D6;&#x51FA;20&#x4E2A;key&#xFF09;&#xFF0C;&#x5982;&#x679C;hz&#x6539;&#x4E3A;100&#xFF0C;&#x5219;&#x4E00;&#x79D2;&#x5185;&#x6700;&#x5C11;&#x626B;&#x63CF;2000&#x4E2A;key&#xFF1B;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x5982;&#x679C;&#x8FC7;&#x671F;key&#x6BD4;&#x7387;&#x8D85;&#x8FC7;25%&#xFF0C;&#x5219;&#x626B;&#x63CF;key&#x7684;&#x4E2A;&#x6570;&#x65E0;&#x4E0A;&#x9650;&#xFF0C;&#x4F46;&#x662F;cpu&#x65F6;&#x95F4;&#x6BCF;&#x79D2;&#x949F;&#x6700;&#x591A;&#x5360;&#x7528;250ms&#x3002; </p>
+<p>&#x5F53;REDIS&#x8FD0;&#x884C;&#x5728;&#x4E3B;&#x4ECE;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x53EA;&#x6709;&#x4E3B;&#x7ED3;&#x70B9;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x8FD9;&#x4E24;&#x79CD;&#x8FC7;&#x671F;&#x5220;&#x9664;&#x7B56;&#x7565;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x201D;del key&#x201D;&#x540C;&#x6B65;&#x5230;&#x4ECE;&#x7ED3;&#x70B9;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Redis的持久化处理.html" class="navigation navigation-prev " aria-label="Previous page: Redis的持久化处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../消息队列/RabbitMQ消息一致性怎么保证.html" class="navigation navigation-next " aria-label="Next page: RabbitMQ消息一致性怎么保证">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redis过期键的删除策略","level":"6.6","depth":1,"next":{"title":"RabbitMQ消息一致性怎么保证","level":"7.1","depth":1,"path":"消息队列/RabbitMQ消息一致性怎么保证.md","ref":"消息队列/RabbitMQ消息一致性怎么保证.md","articles":[]},"previous":{"title":"Redis的持久化处理","level":"6.5","depth":1,"path":"缓存/Redis的持久化处理.md","ref":"缓存/Redis的持久化处理.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SuperPandaMan","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://www.ganktools.com"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"缓存/Redis过期键的删除策略.md","mtime":"2019-07-09T01:47:53.139Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-09T01:54:29.959Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
