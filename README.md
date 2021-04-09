@@ -7,6 +7,112 @@
 - [php-be-intervie](https://github.com/rucblake/php-be-interview)
 - [PHP面试题及答案](https://github.com/lengyue1024/BAT_interviews/blob/master/PHP%E9%9D%A2%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.md)
 - [mysql优化面试题](mysql优化面试题.pdf)
+- [PHP8新特性之JIT简介](https://www.laruence.com/2020/06/27/5963.html)
+- [PHP8新特性盘点](https://blog.thinkphp.cn/2052124)
+- [PHP7新特性](https://www.runoob.com/w3cnote/php7-new-features.html)
+- [CGI、FastCGI和PHP-FPM关系图解](https://www.awaimai.com/371.html)
+- [PHP7为什么比5快](https://blog.csdn.net/changfangyuansh/article/details/102692923)
+
+
+## 消息队列
+- [消息队列高频问题](http://www.mianshigee.com/tag/messagequeen/s1/)
+- [2021最新 RabbitMQ面试题精选](https://blog.csdn.net/lupengfei1009/article/details/114525479)
+
+## 缓存
+- [redis中跳表原理&实现](https://blog.csdn.net/mffandxx/article/details/112284405)
+- [码上一波 Redis 面试题，面试跳槽不要慌!](https://blog.csdn.net/weixin_50333534/article/details/112447835?spm=1001.2014.3001.5501)
+- [2021一波最新 Redis 面试题](https://blog.csdn.net/weixin_50333534/article/details/112447879?spm=1001.2014.3001.5501)
+- [2021年最新版 68道Redis面试题](https://www.php.cn/faq/457390.html)
+- [史上最全的50个Redis面试题及答案](https://www.php.cn/redis/436652.html)
+- [2021年Redis面试题（持续更新）](https://blog.csdn.net/qq1515312832/article/details/113880849)
+
+## Linux
+
+### 统计nginx日志里访问次数最多的前十个IP
+```bash
+awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -nr -k1 | head -n 10
+```
+
+## 常见算法
+- [数据结构与算法系列目录](https://www.cnblogs.com/skywang12345/p/3603935.html)
+
+### 树常见面试题
+- [红黑树常见面试问题整理](https://blog.csdn.net/fantacy10000/article/details/100855055)
+- [红黑树之原理和算法详细介绍](https://www.cnblogs.com/skywang12345/p/3245399.html)
+- [B树，B+树，红黑树 数据库常见面试题](https://blog.csdn.net/zhangshk_/article/details/83013482)
+- [腾讯、阿里面试题 了解B+树吗？](https://blog.csdn.net/zycxnanwang/article/details/105384618)
+
+### 二分查找
+
+```php
+#二分查找
+function binarySearch(Array $arr, $target) {
+    $low = 0;
+    $high = count($arr) - 1;
+        
+    while($low <= $high) {
+        $mid = floor(($low + $high) / 2);
+        #找到元素
+        if($arr[$mid] == $target) return $mid;
+        #中元素比目标大,查找左部
+        if($arr[$mid] > $target) $high = $mid - 1;
+        #重元素比目标小,查找右部
+        if($arr[$mid] < $target) $low = $mid + 1;
+    }
+    #查找失败
+    return false;
+}
+```
+
+### 冒泡排序
+
+```php
+$demo_array = array(23,15,43,25,54,2,6,82,11,5,21,32,65);
+// 第一层for循环可以理解为从数组中键为0开始循环到最后一个
+for ($i=0;$i<count($demo_array);$i++) {
+    // 第二层将从键为$i的地方循环到数组最后
+    for ($j=$i+1;$j<count($demo_array);$j++) {
+        // 比较数组中相邻两个值的大小
+        if ($demo_array[$i] > $demo_array[$j]) {
+            $tmp            = $demo_array[$i]; // 这里的tmp是临时变量
+            $demo_array[$i] = $demo_array[$j]; // 第一次更换位置
+            $demo_array[$j] = $tmp;            // 完成位置互换
+        }
+    }
+}
+```
+
+### 快速排序
+
+```php
+function quick_sort($arr){
+    //先判断是否需要继续进行
+    $length = count($arr);
+    if($length <= 1) {
+        return $arr;
+    }
+    //选择第一个元素作为基准
+    $base_num = $arr[0];
+    //遍历除了标尺外的所有元素，按照大小关系放入两个数组内
+    //初始化两个数组
+    $left_array = array();  //小于基准的
+    $right_array = array();  //大于基准的
+    for($i=1; $i<$length; $i++) {
+        if($base_num > $arr[$i]) {
+            //放入左边数组
+            $left_array[] = $arr[$i];
+        } else {
+            //放入右边
+            $right_array[] = $arr[$i];
+        }
+    }
+    //再分别对左边和右边的数组进行相同的排序处理方式递归调用这个函数
+    $left_array = quick_sort($left_array);
+    $right_array = quick_sort($right_array);
+    //合并
+    return array_merge($left_array, array($base_num), $right_array);;
+}
+```
 
 ## 常见问题
 
