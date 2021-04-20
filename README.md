@@ -116,6 +116,46 @@ function quick_sort($arr){
 
 ## 常见问题
 
+### laravel执行流程
+```
+1、载入Composer的自动加载文件，自动加载的真正实现是通过/vendor/autoload.php实现的，代码如下
+
+2、加载/bootstrap/app.php文件，实例化服务容器，存在$app
+
+3、向服务容器里绑定了三个服务：HTTP、Console、Excepiton
+
+4、make方法取出http，存到$request变量中（$request变量贯穿始终）
+
+5、按照app配置文件顺序register所有的服务提供者
+
+6、按照注册顺序执行所有服务提供者的boot方法
+
+7、将请求发送到route
+
+8、执行中间件
+
+9、发送请求
+
+10、返回响应
+```
+
+### Redis SDS
+
+```
+分配规则: 当字符串长度小于 1M 时，扩容都是加倍现有的空间，如果超过 1M，扩容时一次只会多扩 1M 的空间
+typedef定义的 char*,C语言printf 能直接打印
+struct sdshdr {
+    unsigned int len;   //buf中已经使用的长度
+    unsigned int free;  //buf中未使用的长度
+    char buf[];         //柔性数组buf
+};
+在Redis 3.2 版本中，对数据结构做出了修改，针对不同的长度范围定义了不同的结构
+
+len表示sds当前sds的长度(单位是字节)，不包括'0'终止符，通过len直接获取字符串长度，不需要扫一遍string，这就是上文说的封装sds的理由之一；
+alloc表示当前为sds分配的大小(单位是字节)(3.2以前的版本用的free是表示还剩free字节可用空间)，不包括'0'终止符；
+flags表示当前sdshdr的类型，声明为char 一共有1个字节(8位)，仅用低三位就可以表示所有5种sdshdr类型(详见上文代码注释):
+```
+
 ### Redis跳表的实现,延迟队列的实现
 
 ```
