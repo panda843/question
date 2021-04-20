@@ -848,7 +848,40 @@
 }
 </code></pre>
 <h2 id="&#x5E38;&#x89C1;&#x95EE;&#x9898;">&#x5E38;&#x89C1;&#x95EE;&#x9898;</h2>
-<h3 id="redis&#x8DF3;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x7684;&#x5B9E;&#x73B0;">Redis&#x8DF3;&#x8868;&#x7684;&#x5B9E;&#x73B0;,&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x7684;&#x5B9E;&#x73B0;</h3>
+<h3 id="laravel&#x6267;&#x884C;&#x6D41;&#x7A0B;">laravel&#x6267;&#x884C;&#x6D41;&#x7A0B;</h3>
+<pre><code>1&#x3001;&#x8F7D;&#x5165;Composer&#x7684;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x6587;&#x4EF6;&#xFF0C;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x7684;&#x771F;&#x6B63;&#x5B9E;&#x73B0;&#x662F;&#x901A;&#x8FC7;/vendor/autoload.php&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;
+
+2&#x3001;&#x52A0;&#x8F7D;/bootstrap/app.php&#x6587;&#x4EF6;&#xFF0C;&#x5B9E;&#x4F8B;&#x5316;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#xFF0C;&#x5B58;&#x5728;$app
+
+3&#x3001;&#x5411;&#x670D;&#x52A1;&#x5BB9;&#x5668;&#x91CC;&#x7ED1;&#x5B9A;&#x4E86;&#x4E09;&#x4E2A;&#x670D;&#x52A1;&#xFF1A;HTTP&#x3001;Console&#x3001;Excepiton
+
+4&#x3001;make&#x65B9;&#x6CD5;&#x53D6;&#x51FA;http&#xFF0C;&#x5B58;&#x5230;$request&#x53D8;&#x91CF;&#x4E2D;&#xFF08;$request&#x53D8;&#x91CF;&#x8D2F;&#x7A7F;&#x59CB;&#x7EC8;&#xFF09;
+
+5&#x3001;&#x6309;&#x7167;app&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x987A;&#x5E8F;register&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;
+
+6&#x3001;&#x6309;&#x7167;&#x6CE8;&#x518C;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x6240;&#x6709;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7684;boot&#x65B9;&#x6CD5;
+
+7&#x3001;&#x5C06;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x5230;route
+
+8&#x3001;&#x6267;&#x884C;&#x4E2D;&#x95F4;&#x4EF6;
+
+9&#x3001;&#x53D1;&#x9001;&#x8BF7;&#x6C42;
+
+10&#x3001;&#x8FD4;&#x56DE;&#x54CD;&#x5E94;
+</code></pre><h3 id="redis-sds">Redis SDS</h3>
+<pre><code>&#x5206;&#x914D;&#x89C4;&#x5219;: &#x5F53;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x5C0F;&#x4E8E; 1M &#x65F6;&#xFF0C;&#x6269;&#x5BB9;&#x90FD;&#x662F;&#x52A0;&#x500D;&#x73B0;&#x6709;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x8D85;&#x8FC7; 1M&#xFF0C;&#x6269;&#x5BB9;&#x65F6;&#x4E00;&#x6B21;&#x53EA;&#x4F1A;&#x591A;&#x6269; 1M &#x7684;&#x7A7A;&#x95F4;
+typedef&#x5B9A;&#x4E49;&#x7684; char*,C&#x8BED;&#x8A00;printf &#x80FD;&#x76F4;&#x63A5;&#x6253;&#x5370;
+struct sdshdr {
+    unsigned int len;   //buf&#x4E2D;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x7684;&#x957F;&#x5EA6;
+    unsigned int free;  //buf&#x4E2D;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x957F;&#x5EA6;
+    char buf[];         //&#x67D4;&#x6027;&#x6570;&#x7EC4;buf
+};
+&#x5728;Redis 3.2 &#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x505A;&#x51FA;&#x4E86;&#x4FEE;&#x6539;&#xFF0C;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x957F;&#x5EA6;&#x8303;&#x56F4;&#x5B9A;&#x4E49;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x6784;
+
+len&#x8868;&#x793A;sds&#x5F53;&#x524D;sds&#x7684;&#x957F;&#x5EA6;(&#x5355;&#x4F4D;&#x662F;&#x5B57;&#x8282;)&#xFF0C;&#x4E0D;&#x5305;&#x62EC;&apos;0&apos;&#x7EC8;&#x6B62;&#x7B26;&#xFF0C;&#x901A;&#x8FC7;len&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x626B;&#x4E00;&#x904D;string&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4E0A;&#x6587;&#x8BF4;&#x7684;&#x5C01;&#x88C5;sds&#x7684;&#x7406;&#x7531;&#x4E4B;&#x4E00;&#xFF1B;
+alloc&#x8868;&#x793A;&#x5F53;&#x524D;&#x4E3A;sds&#x5206;&#x914D;&#x7684;&#x5927;&#x5C0F;(&#x5355;&#x4F4D;&#x662F;&#x5B57;&#x8282;)(3.2&#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x7528;&#x7684;free&#x662F;&#x8868;&#x793A;&#x8FD8;&#x5269;free&#x5B57;&#x8282;&#x53EF;&#x7528;&#x7A7A;&#x95F4;)&#xFF0C;&#x4E0D;&#x5305;&#x62EC;&apos;0&apos;&#x7EC8;&#x6B62;&#x7B26;&#xFF1B;
+flags&#x8868;&#x793A;&#x5F53;&#x524D;sdshdr&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x58F0;&#x660E;&#x4E3A;char &#x4E00;&#x5171;&#x6709;1&#x4E2A;&#x5B57;&#x8282;(8&#x4F4D;)&#xFF0C;&#x4EC5;&#x7528;&#x4F4E;&#x4E09;&#x4F4D;&#x5C31;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x6240;&#x6709;5&#x79CD;sdshdr&#x7C7B;&#x578B;(&#x8BE6;&#x89C1;&#x4E0A;&#x6587;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;):
+</code></pre><h3 id="redis&#x8DF3;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x7684;&#x5B9E;&#x73B0;">Redis&#x8DF3;&#x8868;&#x7684;&#x5B9E;&#x73B0;,&#x5EF6;&#x8FDF;&#x961F;&#x5217;&#x7684;&#x5B9E;&#x73B0;</h3>
 <pre><code>Redis&#x8DF3;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x548C;&#x5206;&#x6210;&#x7ED3;&#x6784;&#x5B9E;&#x73B0;&#x7684;, &#x5206;&#x6210;&#x7684;&#x673A;&#x5236;&#x662F;&#x6709;&#x629B;&#x786C;&#x5E01;&#x51B3;&#x5B9A;&#x7684;,&#x8FDE;&#x7EED;&#x629B;&#x51FA;&#x6B63;&#x9762;&#x7684;&#x6B21;&#x6570;&#x51B3;&#x5B9A;&#x4E86;&#x4ED6;&#x7684;&#x5C42;&#x6570;, &#x8282;&#x70B9;&#x4E2D;&#x53EA;&#x4FDD;&#x5B58;&#x4E86;&#x7D22;&#x5F15;&#x4E66;&#x548C;&#x6307;&#x9488;&#x6D6A;&#x8D39;&#x7684;&#x5185;&#x5B58;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x4E0D;&#x8BA1;
 
 &#x5EF6;&#x65F6;&#x961F;&#x5217;&#x4F7F;&#x7528;&#x6709;&#x5E8F;&#x96C6;&#x5408;&#x5B9E;&#x73B0; score &#x5B58;&#x5230;&#x671F;&#x65F6;&#x95F4;key&#x4E3A;&#x6D88;&#x606F;&#x5185;&#x5BB9;, &#x5E76;&#x4F7F;&#x7528;zrangebyscore(0 - &#x5F53;&#x524D;&#x65F6;&#x95F4;,limit 1)&#x8FDB;&#x884C;&#x6D88;&#x8D39;
@@ -1086,7 +1119,7 @@ header&#x538B;&#x7F29;&#xFF1A;&#x901A;&#x8FC7;&#x7F13;&#x5B58;&#x5934;&#x90E8;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"项目简介","level":"1.1","depth":1,"next":{"title":"索引使用说明&注意事项","level":"2.1","depth":1,"path":"数据库/索引使用说明&注意事项.md","ref":"数据库/索引使用说明&注意事项.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"是潘达呀","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://panda843.github.io"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"README.md","mtime":"2021-04-11T12:09:11.639Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-11T12:09:22.135Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"项目简介","level":"1.1","depth":1,"next":{"title":"索引使用说明&注意事项","level":"2.1","depth":1,"path":"数据库/索引使用说明&注意事项.md","ref":"数据库/索引使用说明&注意事项.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"是潘达呀","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://panda843.github.io"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"README.md","mtime":"2021-04-20T00:55:11.962Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-20T00:55:18.592Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
