@@ -42,6 +42,73 @@ awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -nr -k1 | hea
 - [B树，B+树，红黑树 数据库常见面试题](https://blog.csdn.net/zhangshk_/article/details/83013482)
 - [腾讯、阿里面试题 了解B+树吗？](https://blog.csdn.net/zycxnanwang/article/details/105384618)
 
+### 删除链表倒数第N个节点
+
+```php
+<?php
+//删除链表中倒数第n个节点，返回链表的头节点
+
+class Node
+{
+    public $value;
+    public $next = null;
+
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
+}
+
+/**
+ * @param $node 头节点
+ * @param $n 倒数第几个节点
+ * 思路：要删除倒数第n个节点，我们就要找到其前面一个节点，也就是倒数第n+1个节点，找到这个节点就可以进行删除
+ * 定义两个指针，p和cur，cur指针向前走，走了n+1步之后，p指针开始走，当cur指针走到链表结尾的时候，p指针刚好走到倒数第n+1个节点处
+ */
+function delete($node, $n = 2)
+{
+    if(empty($node))
+    {
+        return $node;
+    }
+    $header = new node(0);
+    $header->next = $node;//头节点不能丢失(有可能是删除头节点)
+    $cur = $node;
+    $p = $node;//n的个数比节点数大时，删除第一个节点
+    //cur指针先移动n步
+    for($i=0; $i<$n; $i++)
+    {
+        $cur = $cur->next;
+    }
+
+    //找到倒数第n+1个节点
+    while($cur->next != null)
+    {
+        $cur = $cur->next;
+        $p = $p->next;
+    }
+
+    //删除
+    $p->next = $p->next->next;
+    return $header->next;
+}
+
+//创建链表可封装成一个方法
+$A = new Node(1);
+$B = new Node(2);
+$C = new Node(3);
+$D = new Node(4);
+$E = new Node(5);
+$A->next = $B;
+$B->next = $C;
+$C->next = $D;
+$D->next = $E;
+
+echo "<pre>";
+print_r(delete($A, 2));
+?>
+```
+
 ### 二分查找
 
 ```php
