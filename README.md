@@ -48,27 +48,18 @@ awk '{print $1}' /var/log/nginx/access.log | sort | uniq -c | sort -nr -k1 | hea
 <?php
 //删除链表中倒数第n个节点，返回链表的头节点
 
-class Node
-{
+class Node{
     public $value;
     public $next = null;
-
-    public function __construct($value)
-    {
+    public function __construct($value){
         $this->value = $value;
     }
 }
 
-/**
- * @param $node 头节点
- * @param $n 倒数第几个节点
- * 思路：要删除倒数第n个节点，我们就要找到其前面一个节点，也就是倒数第n+1个节点，找到这个节点就可以进行删除
- * 定义两个指针，p和cur，cur指针向前走，走了n+1步之后，p指针开始走，当cur指针走到链表结尾的时候，p指针刚好走到倒数第n+1个节点处
- */
-function delete($node, $n = 2)
-{
-    if(empty($node))
-    {
+//思路：要删除倒数第n个节点，我们就要找到其前面一个节点，也就是倒数第n+1个节点，找到这个节点就可以进行删除
+//定义两个指针，p和cur，cur指针向前走，走了n+1步之后，p指针开始走，当cur指针走到链表结尾的时候，p指针刚好走到倒数第n+1个节点处
+function delete($node, $n = 2){
+    if(empty($node)){
         return $node;
     }
     $header = new node(0);
@@ -76,14 +67,12 @@ function delete($node, $n = 2)
     $cur = $node;
     $p = $node;//n的个数比节点数大时，删除第一个节点
     //cur指针先移动n步
-    for($i=0; $i<$n; $i++)
-    {
+    for($i=0; $i<$n; $i++){
         $cur = $cur->next;
     }
 
     //找到倒数第n+1个节点
-    while($cur->next != null)
-    {
+    while($cur->next != null){
         $cur = $cur->next;
         $p = $p->next;
     }
