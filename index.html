@@ -788,27 +788,18 @@
 <pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
 <span class="hljs-comment">//&#x5220;&#x9664;&#x94FE;&#x8868;&#x4E2D;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x8FD4;&#x56DE;&#x94FE;&#x8868;&#x7684;&#x5934;&#x8282;&#x70B9;</span>
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span>
-</span>{
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span></span>{
     <span class="hljs-keyword">public</span> $value;
     <span class="hljs-keyword">public</span> $next = <span class="hljs-keyword">null</span>;
-
-    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($value)</span>
-    </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($value)</span></span>{
         <span class="hljs-keyword">$this</span>-&gt;value = $value;
     }
 }
 
-<span class="hljs-comment">/**
- * <span class="hljs-doctag">@param</span> $node &#x5934;&#x8282;&#x70B9;
- * <span class="hljs-doctag">@param</span> $n &#x5012;&#x6570;&#x7B2C;&#x51E0;&#x4E2A;&#x8282;&#x70B9;
- * &#x601D;&#x8DEF;&#xFF1A;&#x8981;&#x5220;&#x9664;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x627E;&#x5230;&#x5176;&#x524D;&#x9762;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5012;&#x6570;&#x7B2C;n+1&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5220;&#x9664;
- * &#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#xFF0C;p&#x548C;cur&#xFF0C;cur&#x6307;&#x9488;&#x5411;&#x524D;&#x8D70;&#xFF0C;&#x8D70;&#x4E86;n+1&#x6B65;&#x4E4B;&#x540E;&#xFF0C;p&#x6307;&#x9488;&#x5F00;&#x59CB;&#x8D70;&#xFF0C;&#x5F53;cur&#x6307;&#x9488;&#x8D70;&#x5230;&#x94FE;&#x8868;&#x7ED3;&#x5C3E;&#x7684;&#x65F6;&#x5019;&#xFF0C;p&#x6307;&#x9488;&#x521A;&#x597D;&#x8D70;&#x5230;&#x5012;&#x6570;&#x7B2C;n+1&#x4E2A;&#x8282;&#x70B9;&#x5904;
- */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">($node, $n = <span class="hljs-number">2</span>)</span>
-</span>{
-    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>($node))
-    {
+<span class="hljs-comment">//&#x601D;&#x8DEF;&#xFF1A;&#x8981;&#x5220;&#x9664;&#x5012;&#x6570;&#x7B2C;n&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x627E;&#x5230;&#x5176;&#x524D;&#x9762;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5012;&#x6570;&#x7B2C;n+1&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5220;&#x9664;</span>
+<span class="hljs-comment">//&#x5B9A;&#x4E49;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#xFF0C;p&#x548C;cur&#xFF0C;cur&#x6307;&#x9488;&#x5411;&#x524D;&#x8D70;&#xFF0C;&#x8D70;&#x4E86;n+1&#x6B65;&#x4E4B;&#x540E;&#xFF0C;p&#x6307;&#x9488;&#x5F00;&#x59CB;&#x8D70;&#xFF0C;&#x5F53;cur&#x6307;&#x9488;&#x8D70;&#x5230;&#x94FE;&#x8868;&#x7ED3;&#x5C3E;&#x7684;&#x65F6;&#x5019;&#xFF0C;p&#x6307;&#x9488;&#x521A;&#x597D;&#x8D70;&#x5230;&#x5012;&#x6570;&#x7B2C;n+1&#x4E2A;&#x8282;&#x70B9;&#x5904;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delete</span><span class="hljs-params">($node, $n = <span class="hljs-number">2</span>)</span></span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>($node)){
         <span class="hljs-keyword">return</span> $node;
     }
     $header = <span class="hljs-keyword">new</span> node(<span class="hljs-number">0</span>);
@@ -816,14 +807,12 @@
     $cur = $node;
     $p = $node;<span class="hljs-comment">//n&#x7684;&#x4E2A;&#x6570;&#x6BD4;&#x8282;&#x70B9;&#x6570;&#x5927;&#x65F6;&#xFF0C;&#x5220;&#x9664;&#x7B2C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;</span>
     <span class="hljs-comment">//cur&#x6307;&#x9488;&#x5148;&#x79FB;&#x52A8;n&#x6B65;</span>
-    <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>; $i&lt;$n; $i++)
-    {
+    <span class="hljs-keyword">for</span>($i=<span class="hljs-number">0</span>; $i&lt;$n; $i++){
         $cur = $cur-&gt;next;
     }
 
     <span class="hljs-comment">//&#x627E;&#x5230;&#x5012;&#x6570;&#x7B2C;n+1&#x4E2A;&#x8282;&#x70B9;</span>
-    <span class="hljs-keyword">while</span>($cur-&gt;next != <span class="hljs-keyword">null</span>)
-    {
+    <span class="hljs-keyword">while</span>($cur-&gt;next != <span class="hljs-keyword">null</span>){
         $cur = $cur-&gt;next;
         $p = $p-&gt;next;
     }
@@ -1180,7 +1169,7 @@ header&#x538B;&#x7F29;&#xFF1A;&#x901A;&#x8FC7;&#x7F13;&#x5B58;&#x5934;&#x90E8;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"项目简介","level":"1.1","depth":1,"next":{"title":"索引使用说明&注意事项","level":"2.1","depth":1,"path":"数据库/索引使用说明&注意事项.md","ref":"数据库/索引使用说明&注意事项.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"是潘达呀","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://panda843.github.io"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"README.md","mtime":"2021-04-22T12:14:38.701Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-22T12:15:02.729Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"项目简介","level":"1.1","depth":1,"next":{"title":"索引使用说明&注意事项","level":"2.1","depth":1,"path":"数据库/索引使用说明&注意事项.md","ref":"数据库/索引使用说明&注意事项.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","highlight","-sharing","code","splitter","search-pro","pageview-count","auto-scroll-table","flexible-alerts","emphasize"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"emphasize":{},"splitter":{},"search-pro":{},"auto-scroll-table":{},"code":{"copyButtons":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"pageview-count":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"是潘达呀","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"PHP面试题集合","language":"zh-hans","links":{"sidebar":{"Blog":"https://panda843.github.io"}},"gitbook":"3.2.3","description":"PHP面试题集合"},"file":{"path":"README.md","mtime":"2021-04-22T12:18:07.756Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-22T12:18:30.972Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
